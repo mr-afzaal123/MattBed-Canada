@@ -325,51 +325,34 @@
       notes:         (document.getElementById('notes').value || '').trim()
     };
 
-    // Submit via hidden iframe form — most reliable method for Google Apps Script
+    // Send order via image pixel + redirect (bypasses all CORS/iframe issues)
+    // The Google Script URL is called as an image src — fires GET in background
     try {
-      // Create hidden iframe to receive response
-      const iframeName = 'mc_frame_' + Date.now();
-      const iframe = document.createElement('iframe');
-      iframe.name = iframeName;
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
+      const params = [
+        'name='          + encodeURIComponent(orderData.name),
+        'whatsapp='      + encodeURIComponent(orderData.whatsapp),
+        'city='          + encodeURIComponent(orderData.city),
+        'address='       + encodeURIComponent(orderData.address),
+        'delivery_time=' + encodeURIComponent(orderData.delivery_time),
+        'cart_items='    + encodeURIComponent(orderData.cart_items),
+        'notes='         + encodeURIComponent(orderData.notes)
+      ].join('&');
 
-      // Create hidden form targeting the iframe
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = GOOGLE_SCRIPT_URL;
-      form.target = iframeName;
-      form.style.display = 'none';
+      // Fire the request as an image — works cross-origin, no CORS issues
+      const img = new Image();
+      img.src = GOOGLE_SCRIPT_URL + '?' + params;
 
-      // Add all order fields
-      const fields = {
-        name:          orderData.name,
-        whatsapp:      orderData.whatsapp,
-        city:          orderData.city,
-        address:       orderData.address,
-        delivery_time: orderData.delivery_time,
-        cart_items:    orderData.cart_items,
-        notes:         orderData.notes
-      };
+      // Also try fetch with no-cors as backup
+      fetch(GOOGLE_SCRIPT_URL + '?' + params, {
+        method: 'GET',
+        mode: 'no-cors'
+      }).catch(() => {});
 
-      Object.keys(fields).forEach(key => {
-        const input = document.createElement('input');
-        input.type  = 'hidden';
-        input.name  = key;
-        input.value = fields[key];
-        form.appendChild(input);
-      });
-
-      document.body.appendChild(form);
-
-      // Redirect after 3 seconds (enough time for form to submit)
+      // Give 2 seconds for requests to fire then redirect
+      localStorage.removeItem('mc_cart');
       setTimeout(() => {
-        localStorage.removeItem('mc_cart');
         window.location.href = 'thankyou.html';
-      }, 3000);
-
-      // Submit the form
-      form.submit();
+      }, 2000);
 
     } catch(err) {
       btn.disabled = false;
