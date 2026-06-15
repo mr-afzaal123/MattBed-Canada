@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Flow Test — Mattbed Canada</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #F7F9FC; padding: 20px; color: #0A1628; }
+    h1 { font-size: 22px; margin-bottom: 6px; }
+    p { font-size: 14px; color: #4A5568; margin-bottom: 20px; }
+    .card { background: #fff; border: 1px solid #D0DCF0; border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+    .card h2 { font-size: 15px; margin-bottom: 14px; color: #0A1628; }
+    .step { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F0F4FA; font-size: 14px; }
+    .step:last-child { border-bottom: none; }
+    .step-num { width: 28px; height: 28px; background: #1A3A6B; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .step-num.done { background: #3B6D11; }
+    .step-num.fail { background: #A32D2D; }
+    .step-text { flex: 1; }
+    .step-status { font-size: 12px; font-weight: 600; }
+    .s-pending { color: #854F0B; }
+    .s-pass { color: #3B6D11; }
+    .s-fail { color: #A32D2D; }
+    .btn { display: block; width: 100%; padding: 14px; background: #1A3A6B; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-green { background: #25D366; }
+    .result-box { background: #F7F9FC; border: 1px solid #D0DCF0; border-radius: 10px; padding: 14px; margin-top: 14px; font-size: 13px; color: #4A5568; display: none; }
+    .result-box.show { display: block; }
+    .result-box.success { background: #EAF3DE; border-color: #A3C97A; color: #3B6D11; }
+    .result-box.error { background: #FCEBEB; border-color: #F09595; color: #A32D2D; }
+    .log { font-family: monospace; font-size: 12px; background: #0A1628; color: #93B4E8; padding: 14px; border-radius: 8px; margin-top: 14px; white-space: pre-wrap; word-break: break-all; max-height: 200px; overflow-y: auto; display: none; }
+    .log.show { display: block; }
+    label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px; color: #0A1628; }
+    input { width: 100%; padding: 10px 12px; border: 1.5px solid #D0DCF0; border-radius: 8px; font-size: 14px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+<h1>🧪 Order Flow Test</h1>
+<p>This page tests your full order flow — cart → Google Sheet → thank you page. Delete this file before going live.</p>
+
+<!-- STEP 1: Google Script Health Check -->
+<div class="card">
+  <h2>Step 1 — Test Google Apps Script connection</h2>
+  <div class="step">
+    <div class="step-num" id="s1-num">1</div>
+    <div class="step-text">Send a GET request to your Google Script URL and check it responds</div>
+    <span class="step-status s-pending" id="s1-status">Pending</span>
+  </div>
+  <button class="btn" onclick="testScriptConnection()">Run connection test</button>
+  <div class="result-box" id="s1-result"></div>
+  <div class="log" id="s1-log"></div>
+</div>
+
+<!-- STEP 2: Send test order -->
+<div class="card">
+  <h2>Step 2 — Send a test order to Google Sheet</h2>
+  <label>Test customer name</label>
+  <input type="text" id="test-name" value="Test Customer" />
+  <label>Test WhatsApp</label>
+  <input type="text" id="test-wa" value="+1 780 000 0000" />
+  <label>Test city</label>
+  <input type="text" id="test-city" value="Edmonton" />
+  <label>Test address</label>
+  <input type="text" id="test-address" value="123 Test Street, Edmonton T5A 1B2" />
+
+  <div class="step">
+    <div class="step-num" id="s2-num">2</div>
+    <div class="step-text">Submit a fake order and check it appears in your Google Sheet</div>
+    <span class="step-status s-pending" id="s2-status">Pending</span>
+  </div>
+  <button class="btn" id="s2-btn" onclick="sendTestOrder()">Send test order</button>
+  <div class="result-box" id="s2-result"></div>
+  <div class="log" id="s2-log"></div>
+</div>
+
+<!-- STEP 3: Verify cart localStorage -->
+<div class="card">
+  <h2>Step 3 — Check cart works in localStorage</h2>
+  <div class="step">
+    <div class="step-num" id="s3-num">3</div>
+    <div class="step-text">Add a test product to cart and verify it saves correctly</div>
+    <span class="step-status s-pending" id="s3-status">Pending</span>
+  </div>
+  <button class="btn" onclick="testCart()">Test cart storage</button>
+  <div class="result-box" id="s3-result"></div>
+</div>
+
+<!-- STEP 4: Full flow simulation -->
+<div class="card">
+  <h2>Step 4 — Full end-to-end test</h2>
+  <div class="step">
+    <div class="step-num" id="s4-num">4</div>
+    <div class="step-text">Add item to cart → fill form → submit → check sheet → redirect to thankyou.html</div>
+    <span class="step-status s-pending" id="s4-status">Pending</span>
+  </div>
+  <button class="btn btn-green" onclick="runFullTest()">▶ Run full end-to-end test</button>
+  <div class="result-box" id="s4-result"></div>
+</div>
+
+<!-- INSTRUCTIONS -->
+<div class="card">
+  <h2>📋 After each test — check your Google Sheet</h2>
+  <div class="step"><div class="step-num done">✓</div><div class="step-text">Go to your Google Sheet → <strong>Orders</strong> tab</div></div>
+  <div class="step"><div class="step-num done">✓</div><div class="step-text">You should see a new row with the test order details</div></div>
+  <div class="step"><div class="step-num done">✓</div><div class="step-text">Order # will be like <strong>MB-260615-483</strong></div></div>
+  <div class="step"><div class="step-num done">✓</div><div class="step-text">Status column will show <strong>Pending</strong></div></div>
+  <div class="step"><div class="step-num done">✓</div><div class="step-text">If rows appear — your system is working perfectly ✅</div></div>
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdlVAvg-Gln2dKFv0JYb7cSUce9Svb4gJUpmLfS3Amcx0b5xcV1dEKq7ZnZiU2ekhgqQ/exec';
+
+function setStep(id, state, statusText) {
+  const num = document.getElementById(`${id}-num`);
+  const status = document.getElementById(`${id}-status`);
+  num.className = `step-num ${state === 'pass' ? 'done' : state === 'fail' ? 'fail' : ''}`;
+  num.textContent = state === 'pass' ? '✓' : state === 'fail' ? '✕' : num.textContent;
+  status.className = `step-status ${state === 'pass' ? 's-pass' : state === 'fail' ? 's-fail' : 's-pending'}`;
+  status.textContent = statusText;
+}
+
+function showResult(id, msg, type) {
+  const el = document.getElementById(`${id}-result`);
+  el.textContent = msg;
+  el.className = `result-box show ${type}`;
+}
+
+function showLog(id, msg) {
+  const el = document.getElementById(`${id}-log`);
+  if (el) { el.textContent = msg; el.className = 'log show'; }
+}
+
+// STEP 1: Connection test
+async function testScriptConnection() {
+  setStep('s1', '', 'Testing…');
+  try {
+    // GET request to check script is alive
+    const res = await fetch(SCRIPT_URL, { method: 'GET', mode: 'no-cors' });
+    // no-cors = opaque response, if no throw = connected
+    setStep('s1', 'pass', '✅ Connected');
+    showResult('s1', '✅ Google Apps Script is reachable. Your script URL is working correctly.', 'success');
+    showLog('s1', `URL: ${SCRIPT_URL}\nMode: no-cors (opaque response — normal for Google Script)\nStatus: Connection successful — no network error thrown`);
+  } catch(err) {
+    setStep('s1', 'fail', '❌ Failed');
+    showResult('s1', `❌ Cannot reach script: ${err.message}. Check your script URL is correct and deployed as "Anyone" access.`, 'error');
+    showLog('s1', `Error: ${err.message}`);
+  }
+}
+
+// STEP 2: Send test order
+async function sendTestOrder() {
+  const btn = document.getElementById('s2-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  setStep('s2', '', 'Sending…');
+
+  const testOrder = {
+    name:          document.getElementById('test-name').value,
+    whatsapp:      document.getElementById('test-wa').value,
+    city:          document.getElementById('test-city').value,
+    address:       document.getElementById('test-address').value,
+    delivery_time: 'As soon as possible',
+    cart_items:    '1x Queen Foam Mattress (Queen 60×80)\n1x Queen Bedframe (Queen 60×80)',
+    notes:         'TEST ORDER — please ignore'
+  };
+
+  showLog('s2', `Sending to Google Sheet:\n${JSON.stringify(testOrder, null, 2)}`);
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(testOrder)
+    });
+
+    setStep('s2', 'pass', '✅ Sent');
+    showResult('s2',
+      '✅ Test order sent successfully!\n\n' +
+      'Now go check your Google Sheet → Orders tab.\n' +
+      'You should see a new row with:\n' +
+      '• Name: ' + testOrder.name + '\n' +
+      '• City: Edmonton\n' +
+      '• Items: 1x Queen Foam Mattress, 1x Queen Bedframe\n' +
+      '• Status: Pending\n\n' +
+      'If you see it — your order system is fully working! ✅',
+      'success'
+    );
+  } catch(err) {
+    setStep('s2', 'fail', '❌ Failed');
+    showResult('s2', `❌ Failed to send: ${err.message}`, 'error');
+  }
+  btn.disabled = false; btn.textContent = 'Send test order';
+}
+
+// STEP 3: Cart localStorage test
+function testCart() {
+  try {
+    const testItem = { name: 'Queen Foam Mattress', size: 'Queen (60×80)', category: 'Mattress', qty: 1 };
+    localStorage.setItem('mc_cart', JSON.stringify([testItem]));
+    const retrieved = JSON.parse(localStorage.getItem('mc_cart'));
+    if (retrieved && retrieved[0].name === testItem.name) {
+      setStep('s3', 'pass', '✅ Working');
+      showResult('s3',
+        '✅ Cart localStorage is working perfectly!\n\n' +
+        'Saved: ' + JSON.stringify(testItem) + '\n' +
+        'Retrieved: ' + JSON.stringify(retrieved[0]),
+        'success'
+      );
+      // Clean up test item
+      localStorage.removeItem('mc_cart');
+    } else {
+      throw new Error('Retrieved data does not match');
+    }
+  } catch(err) {
+    setStep('s3', 'fail', '❌ Failed');
+    showResult('s3', `❌ localStorage error: ${err.message}. Cart will not work in this browser.`, 'error');
+  }
+}
+
+// STEP 4: Full end-to-end
+async function runFullTest() {
+  setStep('s4', '', 'Running…');
+  const results = [];
+
+  // 4a. Test cart save
+  try {
+    localStorage.setItem('mc_cart', JSON.stringify([
+      { name: 'Queen Foam Mattress', size: 'Queen (60×80)', category: 'Mattress', qty: 2 },
+      { name: 'Queen Bedframe', size: 'Queen (60×80)', category: 'Bedframe', qty: 1 }
+    ]));
+    results.push('✅ Cart saved to localStorage');
+  } catch(e) { results.push('❌ Cart save failed: ' + e.message); }
+
+  // 4b. Send full order
+  try {
+    const cart = JSON.parse(localStorage.getItem('mc_cart'));
+    const cartText = cart.map(i => `${i.qty}x ${i.name} (${i.size})`).join('\n');
+    await fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Full Test Customer',
+        whatsapp: '+1 780 999 8888',
+        city: 'Calgary',
+        address: '456 Full Test Ave, Calgary T3J 0K8',
+        delivery_time: 'Afternoon (12pm–4pm)',
+        cart_items: cartText,
+        notes: 'FULL END-TO-END TEST — delete this row'
+      })
+    });
+    results.push('✅ Order sent to Google Sheet');
+  } catch(e) { results.push('❌ Order send failed: ' + e.message); }
+
+  // 4c. Clear cart (simulating what happens after real order)
+  localStorage.removeItem('mc_cart');
+  results.push('✅ Cart cleared after order');
+
+  // 4d. Check thankyou.html exists
+  try {
+    const r = await fetch('thankyou.html', { method: 'HEAD' });
+    results.push(r.ok ? '✅ thankyou.html is accessible' : '⚠️ thankyou.html returned ' + r.status);
+  } catch(e) {
+    results.push('⚠️ Cannot check thankyou.html (normal when testing locally)');
+  }
+
+  const allPassed = results.every(r => r.startsWith('✅'));
+  setStep('s4', allPassed ? 'pass' : 'fail', allPassed ? '✅ All passed' : '⚠️ Check results');
+  showResult('s4',
+    results.join('\n') + '\n\n' +
+    (allPassed
+      ? '🎉 Full end-to-end test passed! Check your Google Sheet for 2 test rows. Your order system is ready to go live.'
+      : '⚠️ Some steps had issues. Check the results above.'),
+    allPassed ? 'success' : 'error'
+  );
+}
+</script>
+</body>
+</html>

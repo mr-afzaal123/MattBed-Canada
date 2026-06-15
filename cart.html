@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review your cart and complete your order. Same-day delivery. Cash on delivery.">
+  <meta property="og:title" content="Your Cart & Checkout | Mattbed Canada">
+  <meta property="og:description" content="Review your cart and complete your order. Same-day delivery. Cash on delivery.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mattressbedframe.ca/cart.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Your Cart & Checkout | Mattbed Canada</title>
+  <link rel="canonical" href="https://mattressbedframe.ca/cart.html">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🛏</span>
+        <span class="logo-text">Mattbed <strong>Canada</strong></span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="#" aria-haspopup="true">
+            Cities <span id="nav-city-badge"></span> ▾
+          </a>
+          <ul class="dropdown">
+            <li><a href="edmonton.html">Edmonton</a></li>
+            <li><a href="calgary.html">Calgary</a></li>
+            <li><a href="vancouver.html">Vancouver</a></li>
+            <li><a href="reddeer.html">Red Deer</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="cart.html" style="display:inline-flex;align-items:center;gap:5px;"  class="active">
+            🛒 Cart <span class="nav-badge" id="nav-badge" style="display:none;">0</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero" id="main-content">
+    <h1>🛒 Your Cart &amp; Checkout</h1>
+    <p>Review your items, select sizes, then fill in your delivery details</p>
+  </section>
+
+  <div id="success-banner" style="max-width:960px;margin:0 auto;padding:0 20px;"></div>
+
+  <section class="checkout-section">
+
+    <!-- LEFT: Cart items -->
+    <div class="panel">
+      <h2 class="panel-title">🛒 Your items</h2>
+      <div id="empty-state">
+        <p>Your cart is empty.</p>
+        <a href="index.html">← Choose your city to shop</a>
+      </div>
+      <ul id="cart-items-list"></ul>
+      <div class="cart-summary" id="cart-summary" style="display:none;">
+        <div class="summary-row"><span>Items</span><span id="summary-count">0</span></div>
+        <div class="summary-row"><span>Delivery</span><span>Same day</span></div>
+        <div class="summary-row"><span>Payment</span><span>Cash on delivery</span></div>
+        <span class="cod-badge">💵 Pay when we arrive — no upfront payment</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Checkout form -->
+    <div class="panel">
+      <h2 class="panel-title">📋 Your details</h2>
+      <form id="checkout-form" novalidate>
+        <input type="hidden" name="cart_items" id="hidden-cart">
+        <input type="hidden" name="selected_city" id="hidden-city">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full name *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp number *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="+1 780 000 0000" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city-select">Your city *</label>
+          <select id="city-select" name="city" required>
+            <option value="" disabled selected>Select your city</option>
+            <option value="Edmonton">Edmonton</option>
+            <option value="Calgary">Calgary</option>
+            <option value="Vancouver">Vancouver</option>
+            <option value="Red Deer">Red Deer</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery address *</label>
+          <input type="text" id="address" name="address" placeholder="Street, apartment number, postal code" required autocomplete="street-address">
+        </div>
+
+        <div class="form-group">
+          <label for="delivery_time">Preferred delivery time</label>
+          <select id="delivery_time" name="delivery_time">
+            <option value="As soon as possible">As soon as possible</option>
+            <option value="Morning (9am–12pm)">Morning (9am–12pm)</option>
+            <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
+            <option value="Evening (4pm–8pm)">Evening (4pm–8pm)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Special instructions</label>
+          <textarea id="notes" name="notes" placeholder="Floor number, gate code, specific sizes or colours, or any other details..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Place Order →</button>
+        <p class="form-note">We'll confirm on WhatsApp · Cash on delivery · No upfront payment</p>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+</form>
+
+      <div class="wa-alt">
+        <p>Prefer to order directly on WhatsApp?</p>
+        <a href="https://wa.me/923257757878?text=Hi%2C+I%27d+like+to+place+an+order" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Order on WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <a href="https://wa.me/923257757878?text=Hi%2C+I%27d+like+to+order+a+mattress+or+bedframe" class="wa-float" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="logo-text">🛏 Mattbed <strong>Canada</strong></span>
+          <p>Affordable same-day mattress &amp; bedframe delivery across Alberta &amp; BC. Cash on delivery.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Cities</h4>
+          <ul>
+            <li><a href="edmonton.html">Edmonton</a></li>
+            <li><a href="calgary.html">Calgary</a></li>
+            <li><a href="vancouver.html">Vancouver</a></li>
+            <li><a href="reddeer.html">Red Deer</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="edmonton.html#mattresses">Mattresses</a></li>
+            <li><a href="edmonton.html#bedframes">Bedframes</a></li>
+            <li><a href="edmonton.html#springboxes">Spring Boxes</a></li>
+            <li><a href="edmonton.html#furniture">Sofas &amp; Furniture</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="blog.html">Sleep blog</a></li>
+            <li><a href="cart.html">Your cart</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mattbed Canada. Same-day mattress &amp; bedframe delivery — Edmonton, Calgary, Vancouver, Red Deer.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+  <script>
+  /* Cart page — render + form logic */
+  const SIZES = ["Single (38\u00d775)", "Double (54\u00d775)", "Queen (60\u00d780)", "King (76\u00d780)"];
+
+  function getCart()   { try { return JSON.parse(localStorage.getItem('mc_cart')) || []; } catch(e) { return []; } }
+  function saveCart(c) { localStorage.setItem('mc_cart', JSON.stringify(c)); }
+
+  function renderCart() {
+    const cart = getCart();
+    const list    = document.getElementById('cart-items-list');
+    const empty   = document.getElementById('empty-state');
+    const summary = document.getElementById('cart-summary');
+    const countEl = document.getElementById('summary-count');
+    const btn     = document.getElementById('submit-btn');
+    const badgeEl = document.getElementById('nav-badge');
+
+    list.innerHTML = '';
+    const totalQty = cart.reduce((s,i) => s+i.qty, 0);
+
+    if (cart.length === 0) {
+      empty.style.display = 'block';
+      summary.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = 'Add items to cart first';
+      if (badgeEl) badgeEl.style.display = 'none';
+    } else {
+      empty.style.display = 'none';
+      summary.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Place Order →';
+      if (countEl) countEl.textContent = totalQty;
+      if (badgeEl) { badgeEl.textContent = totalQty; badgeEl.style.display = 'inline-flex'; }
+
+      cart.forEach((item, idx) => {
+        const li = document.createElement('li');
+        li.className = 'cart-item';
+
+        // Size options for this item in cart
+        const sizeOpts = SIZES.map(s =>
+          `<button class="cart-size-opt${item.size === s ? ' selected' : ''}" data-idx="${idx}" data-size="${s}" onclick="changeSize(${idx}, '${s}', this)">${s}</button>`
+        ).join('');
+
+        li.innerHTML = `
+          <div class="item-info">
+            <p class="item-name">${item.name}</p>
+            <p class="item-meta">Category: ${item.category || 'Product'}</p>
+            <div class="cart-size-select">
+              <label>Size:</label>
+              <div class="cart-size-opts">${sizeOpts}</div>
+            </div>
+          </div>
+          <div class="item-controls">
+            <button class="qty-btn" onclick="changeQty(${idx}, -1)" aria-label="Decrease quantity">−</button>
+            <span class="qty-display">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${idx}, 1)" aria-label="Increase quantity">+</button>
+            <button class="remove-btn" onclick="removeItem(${idx})" aria-label="Remove item">×</button>
+          </div>
+        `;
+        list.appendChild(li);
+      });
+
+      const cartText = cart.map(i => `${i.qty}x ${i.name} (${i.size})`).join(' | ');
+      document.getElementById('hidden-cart').value = cartText;
+    }
+  }
+
+  function changeSize(idx, newSize, el) {
+    const cart = getCart();
+    cart[idx].size = newSize;
+    saveCart(cart);
+    // Update UI without full re-render
+    el.closest('.cart-size-opts').querySelectorAll('.cart-size-opt').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    // Update hidden field
+    const cartText = cart.map(i => `${i.qty}x ${i.name} (${i.size})`).join(' | ');
+    document.getElementById('hidden-cart').value = cartText;
+  }
+
+  function changeQty(idx, delta) {
+    const cart = getCart();
+    cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+    saveCart(cart); renderCart();
+  }
+
+  function removeItem(idx) {
+    const cart = getCart();
+    cart.splice(idx, 1);
+    saveCart(cart); renderCart();
+  }
+
+  /* Pre-fill city from localStorage */
+  (function() {
+    const slug = localStorage.getItem('mc_city') || '';
+    const map = {edmonton:'Edmonton',calgary:'Calgary',vancouver:'Vancouver',reddeer:'Red Deer'};
+    const sel = document.getElementById('city-select');
+    if (sel && map[slug]) sel.value = map[slug];
+    const hid = document.getElementById('hidden-city');
+    if (hid && map[slug]) hid.value = map[slug];
+  })();
+
+  /* ── Order submission — Google Sheets + WhatsApp notification ── */
+  // Your Google Apps Script Web App URL (deployed from Google Sheets)
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdlVAvg-Gln2dKFv0JYb7cSUce9Svb4gJUpmLfS3Amcx0b5xcV1dEKq7ZnZiU2ekhgqQ/exec';
+
+  document.getElementById('checkout-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const cart = getCart();
+    if (cart.length === 0) { alert('Please add items to your cart first.'); return; }
+
+    // Validate required fields
+    const name    = document.getElementById('name').value.trim();
+    const wa      = document.getElementById('whatsapp').value.trim();
+    const city    = document.getElementById('city-select').value;
+    const address = document.getElementById('address').value.trim();
+    if (!name || !wa || !city || !address) {
+      alert('Please fill in all required fields (name, WhatsApp, city, address).');
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg> Placing your order…</span>';
+
+    // Build cart text
+    const cartItems = cart.map(i => `${i.qty}x ${i.name} (${i.size})`).join('\n');
+
+    const orderData = {
+      name:          name,
+      whatsapp:      wa,
+      city:          city,
+      address:       address,
+      delivery_time: document.getElementById('delivery_time').value,
+      cart_items:    cartItems,
+      notes:         (document.getElementById('notes').value || '').trim()
+    };
+
+    // Submit via hidden iframe form — most reliable method for Google Apps Script
+    try {
+      // Create hidden iframe to receive response
+      const iframeName = 'mc_frame_' + Date.now();
+      const iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      // Create hidden form targeting the iframe
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GOOGLE_SCRIPT_URL;
+      form.target = iframeName;
+      form.style.display = 'none';
+
+      // Add all order fields
+      const fields = {
+        name:          orderData.name,
+        whatsapp:      orderData.whatsapp,
+        city:          orderData.city,
+        address:       orderData.address,
+        delivery_time: orderData.delivery_time,
+        cart_items:    orderData.cart_items,
+        notes:         orderData.notes
+      };
+
+      Object.keys(fields).forEach(key => {
+        const input = document.createElement('input');
+        input.type  = 'hidden';
+        input.name  = key;
+        input.value = fields[key];
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+
+      // Redirect after 3 seconds (enough time for form to submit)
+      setTimeout(() => {
+        localStorage.removeItem('mc_cart');
+        window.location.href = 'thankyou.html';
+      }, 3000);
+
+      // Submit the form
+      form.submit();
+
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Place Order →';
+      const waMsg = encodeURIComponent(
+        'Hi, I\'d like to place an order:\n\n' +
+        'Name: ' + name + '\nCity: ' + city + '\nAddress: ' + address +
+        '\n\nItems:\n' + cartItems +
+        '\n\nDelivery: ' + orderData.delivery_time
+      );
+      if (confirm('Network issue. Order via WhatsApp instead?')) {
+        window.open('https://wa.me/923257757878?text=' + waMsg, '_blank');
+      }
+    }
+  });
+
+  renderCart();
+  </script>
+</body>
+</html>
