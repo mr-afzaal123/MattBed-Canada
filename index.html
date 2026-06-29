@@ -3,31 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Affordable same-day mattress & bedframe delivery in Edmonton, Calgary, Vancouver & Red Deer. Queen mattresses, memory foam, orthopedic. Cash on delivery.">
+  <title>Mattbed Canada | Same-Day Mattress & Bedframe Delivery — Calgary, Edmonton, Vancouver, Red Deer</title>
+  <meta name="description" content="Affordable same-day mattress and bedframe delivery in Calgary, Edmonton, Vancouver & Red Deer. Memory foam, orthopedic, bamboo mattresses. Bedframes, sofas & furniture. Cash on delivery. Free delivery.">
+  <meta name="keywords" content="mattress delivery Calgary, mattress delivery Edmonton, same day mattress Vancouver, bedframe delivery Calgary, cash on delivery mattress Canada">
+  <link rel="canonical" href="https://mattressbedframe.ca/">
   <meta property="og:title" content="Mattbed Canada | Same-Day Mattress & Bedframe Delivery">
-  <meta property="og:description" content="Affordable same-day mattress & bedframe delivery in Edmonton, Calgary, Vancouver & Red Deer. Queen mattresses, memory foam, orthopedic. Cash on delivery.">
+  <meta property="og:description" content="Affordable same-day mattress & bedframe delivery in Calgary, Edmonton, Vancouver & Red Deer. Cash on delivery. Free delivery.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mattressbedframe.ca/">
-  <meta name="twitter:card" content="summary_large_image">
-  <title>Mattbed Canada | Same-Day Mattress & Bedframe Delivery</title>
-  <link rel="canonical" href="https://mattressbedframe.ca/">
+  <meta name="geo.region" content="CA-AB">
+  <meta name="geo.country" content="CA">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Mattbed Canada",
+        "url": "https://mattressbedframe.ca",
+        "description": "Same-day mattress and bedframe delivery across Calgary, Edmonton, Vancouver and Red Deer. Cash on delivery. Free delivery.",
+        "areaServed": ["Calgary", "Edmonton", "Vancouver", "Red Deer"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"Do you offer same-day mattress delivery in Calgary?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mattbed Canada offers same-day mattress delivery across Calgary. Order before 4pm and receive your mattress the same day, with cash on delivery and free delivery."}},
+          {"@type":"Question","name":"Can I pay cash on delivery for a mattress in Edmonton?","acceptedAnswer":{"@type":"Answer","text":"Yes. We accept cash on delivery for all mattresses and bedframes in Edmonton, Calgary, Vancouver and Red Deer. No credit card or advance payment required."}},
+          {"@type":"Question","name":"What cities do you deliver mattresses to in Canada?","acceptedAnswer":{"@type":"Answer","text":"Mattbed Canada delivers same-day to Calgary, Edmonton, Vancouver and Red Deer. All deliveries include cash on delivery and free delivery options."}}
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Mattbed Canada",
-    "description": "Affordable same-day mattress and bedframe delivery across Edmonton, Calgary, Vancouver and Red Deer. Cash on delivery.",
-    "url": "https://mattressbedframe.ca",
-    "areaServed": ["Edmonton","Calgary","Vancouver","Red Deer"],
-    "priceRange": "$"
-  }
-  </script></head>
+
+  <style>
+    /* ── HOMEPAGE SPECIFIC ── */
+
+    /* Hero */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0A1628;
+      background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.3) saturate(0.8);
+      z-index: 0;
+    }
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 92vh;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding-top: 48px !important;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 3 !important;
+      order: 1;
+    }
+    .hero-3d {
+      position: relative;
+      z-index: 3 !important;
+      order: 2;
+      margin-top: 16px;
+      margin-bottom: 0;
+    }
+    .hero-trust {
+      position: relative;
+      z-index: 3 !important;
+      order: 3;
+      margin-top: 24px;
+    }
+    .hero-badge { position: relative; z-index: 3 !important; }
+    .hero-orb { position: absolute !important; z-index: 1 !important; }
+
+    /* City cards with real photos */
+    .city-card-img {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      transition: transform 0.4s ease;
+    }
+    .city-card:hover .city-card-img { transform: scale(1.03); }
+    .city-card { overflow: hidden; }
+    .city-card-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.2) 60%, transparent 100%);
+    }
+    .city-card-img-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Product category cards with photos */
+    .cat-card-photo {
+      height: 110px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+    .cat-card:hover .cat-card-photo { transform: scale(1.05); }
+    .cat-card-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.6) 0%, rgba(10,22,40,0.1) 100%);
+      transition: opacity 0.3s;
+    }
+    .cat-card:hover .cat-card-photo::before { opacity: 0.4; }
+    .cat-photo-icon {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 32px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    }
+
+    /* Newcomers section background */
+    .newcomers-section {
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .newcomers-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10,22,40,0.88);
+    }
+    .newcomers-section > * { position: relative; z-index: 2; }
+    .newcomers-section .section-label { color: var(--gold-light); }
+    .newcomers-section h2 { color: white; }
+    .newcomers-section .section-desc { color: rgba(255,255,255,0.75); }
+    .why-card-dark {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+    }
+    .why-card-dark h3 { color: white; }
+    .why-card-dark p { color: rgba(255,255,255,0.7); }
+    .why-card-dark:hover { background: rgba(255,255,255,0.12); border-color: var(--gold); }
+  </style>
+</head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
   <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo">
@@ -40,11 +181,9 @@
     </div>
     <nav class="nav" id="nav" aria-label="Main navigation">
       <ul>
-        <li><a href="index.html"  class="active">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li class="has-dropdown">
-          <a href="#" aria-haspopup="true">
-            Cities <span id="nav-city-badge"></span> ▾
-          </a>
+          <a href="#" aria-haspopup="true">Cities ▾</a>
           <ul class="dropdown">
             <li><a href="edmonton.html">Edmonton</a></li>
             <li><a href="calgary.html">Calgary</a></li>
@@ -55,41 +194,28 @@
         <li><a href="about.html">About</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li>
-          <a href="cart.html" style="display:inline-flex;align-items:center;gap:5px;">
-            🛒 Cart <span class="nav-badge" id="nav-badge" style="display:none;">0</span>
-          </a>
-        </li>
       </ul>
     </nav>
   </header>
 
-  <!-- City selection modal (shows if no city saved) -->
+  <!-- CITY MODAL -->
   <div id="city-modal" role="dialog" aria-modal="true" aria-label="Choose your city" style="display:none;">
     <div class="city-modal-box">
-      <div style="font-size:36px; margin-bottom:12px;">🛏</div>
+      <div style="font-size:44px;margin-bottom:14px;">🛏</div>
       <h2>Where are you located?</h2>
-      <p>We'll show you products and prices available in your city.</p>
+      <p>We'll show you products available in your city with same-day delivery.</p>
       <div class="city-pick-grid">
-        <button class="city-pick-btn" data-city="edmonton">
-          <span class="city-flag">🏙</span>
-          Edmonton
-          <span class="city-prov">Alberta</span>
+        <button class="city-pick-btn" data-city="edmonton" data-href="edmonton.html">
+          <span class="city-flag">🏙</span>Edmonton<span class="city-prov">Alberta</span>
         </button>
-        <button class="city-pick-btn" data-city="calgary">
-          <span class="city-flag">🏔</span>
-          Calgary
-          <span class="city-prov">Alberta</span>
+        <button class="city-pick-btn" data-city="calgary" data-href="calgary.html">
+          <span class="city-flag">🏔</span>Calgary<span class="city-prov">Alberta</span>
         </button>
-        <button class="city-pick-btn" data-city="vancouver">
-          <span class="city-flag">🌊</span>
-          Vancouver
-          <span class="city-prov">British Columbia</span>
+        <button class="city-pick-btn" data-city="vancouver" data-href="vancouver.html">
+          <span class="city-flag">🌊</span>Vancouver<span class="city-prov">British Columbia</span>
         </button>
-        <button class="city-pick-btn" data-city="reddeer">
-          <span class="city-flag">🦌</span>
-          Red Deer
-          <span class="city-prov">Alberta</span>
+        <button class="city-pick-btn" data-city="reddeer" data-href="reddeer.html">
+          <span class="city-flag">🦌</span>Red Deer<span class="city-prov">Alberta</span>
         </button>
       </div>
     </div>
@@ -97,111 +223,225 @@
 
   <!-- HERO -->
   <section id="main-content" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <!-- 3D Mattress SVG -->
+    <div class="hero-3d">
+      <svg class="mattress-3d" viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="140" cy="148" rx="110" ry="12" fill="rgba(0,0,0,0.25)"/>
+        <path d="M30 120 L140 140 L250 120 L250 100 L140 120 L30 100 Z" fill="#0A1628"/>
+        <path d="M30 60 L30 100 L140 120 L140 80 Z" fill="#1A3A6B"/>
+        <path d="M250 60 L250 100 L140 120 L140 80 Z" fill="#152D54"/>
+        <path d="M30 60 L140 80 L250 60 L140 40 Z" fill="#2A5298"/>
+        <path d="M70 52 L140 62 L210 52" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+        <path d="M55 56 L140 68 L225 56" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+        <path d="M30 78 L140 98 L250 78 L250 72 L140 92 L30 72 Z" fill="#C9A84C" opacity="0.6"/>
+        <ellipse cx="100" cy="55" rx="34" ry="12" fill="white" opacity="0.9"/>
+        <ellipse cx="100" cy="52" rx="30" ry="9" fill="white"/>
+        <ellipse cx="180" cy="55" rx="34" ry="12" fill="white" opacity="0.9"/>
+        <ellipse cx="180" cy="52" rx="30" ry="9" fill="white"/>
+        <ellipse cx="94" cy="49" rx="10" ry="4" fill="rgba(255,255,255,0.5)" transform="rotate(-10 94 49)"/>
+        <ellipse cx="174" cy="49" rx="10" ry="4" fill="rgba(255,255,255,0.5)" transform="rotate(-10 174 49)"/>
+        <rect x="36" y="100" width="8" height="28" rx="2" fill="#0A1628"/>
+        <rect x="236" y="100" width="8" height="28" rx="2" fill="#0A1628"/>
+        <rect x="136" y="118" width="8" height="22" rx="2" fill="#0A1628"/>
+      </svg>
+    </div>
+
     <div class="hero-inner">
       <div class="hero-badge">
-        <span class="badge-dot"></span> Same-day delivery — Edmonton, Calgary, Vancouver &amp; Red Deer
+        <span class="badge-dot"></span>
+        Same-day delivery — Calgary, Edmonton, Vancouver & Red Deer
       </div>
       <h1>Affordable Mattresses &amp; Bedframes<br>Delivered <em>Same Day</em></h1>
-      <p class="hero-sub">Queen mattresses, memory foam, orthopedic &amp; pillow top — all sizes. Bedframes, sofas, spring boxes. Cash on delivery. WhatsApp to order in minutes.</p>
+      <p class="hero-sub">Premium memory foam, bamboo, orthopedic and pillow top mattresses. Stylish bedframes and furniture. Cash on delivery — no credit card needed.</p>
       <div class="hero-actions">
-        <a href="#cities" class="btn btn-primary">Shop by city</a>
-        <a href="https://wa.me/923257757878?text=Hi%2C+I%27d+like+to+order+a+mattress+or+bedframe" class="btn btn-wa" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp to order
-        </a>
+        <a href="#cities" class="btn btn-primary btn-lg">Choose Your City →</a>
+        <a href="about.html" class="btn btn-outline btn-lg">Learn More</a>
       </div>
     </div>
+
     <div class="hero-trust">
       <div class="trust-item"><span class="trust-icon">🚚</span><span class="trust-text">Same-day<br>delivery</span></div>
       <div class="trust-divider"></div>
       <div class="trust-item"><span class="trust-icon">💵</span><span class="trust-text">Cash on<br>delivery</span></div>
       <div class="trust-divider"></div>
-      <div class="trust-item"><span class="trust-icon">💰</span><span class="trust-text">Lowest<br>prices</span></div>
-      <div class="trust-divider"></div>
       <div class="trust-item"><span class="trust-icon">✅</span><span class="trust-text">Free<br>delivery</span></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><span class="trust-icon">💰</span><span class="trust-text">Lowest<br>prices</span></div>
     </div>
   </section>
 
-  <!-- CITIES -->
-  <section class="section cities" id="cities">
+  <!-- CITY SELECTION WITH REAL PHOTOS -->
+  <section class="section" id="cities" style="background:var(--off-white);">
     <div class="container">
-      <div class="section-label">Where we deliver</div>
-      <h2>Select Your City to Shop</h2>
-      <p class="section-desc">Click your city to browse all available mattresses, bedframes, spring boxes, sofas and furniture with same-day delivery.</p>
+      <div class="section-label fade-up">Where we deliver</div>
+      <h2 class="fade-up delay-1">Select Your City to Shop</h2>
+      <p class="section-desc fade-up delay-2">Click your city to browse all available mattresses, bedframes and furniture with same-day delivery and cash on delivery.</p>
       <div class="city-grid">
-        <a href="edmonton.html" class="city-card" onclick="localStorage.setItem('mc_city','edmonton')">
-          <div class="city-img"><div class="city-overlay"><span class="city-name">Edmonton</span><span class="city-province">Alberta · AB</span></div></div>
-          <div class="city-footer"><span class="city-tag">Same-day mattress delivery</span><span class="city-arrow">→</span></div>
+
+        <a href="edmonton.html" class="city-card fade-up delay-1" onclick="localStorage.setItem('mc_city','edmonton')">
+          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');">
+            <div class="city-card-img-inner">
+              <span class="city-name">Edmonton</span><br>
+              <span class="city-province">Alberta · AB</span>
+            </div>
+          </div>
+          <div class="city-footer">
+            <span class="city-tag">Same-day mattress delivery</span>
+            <span class="city-arrow">→</span>
+          </div>
         </a>
-        <a href="calgary.html" class="city-card" onclick="localStorage.setItem('mc_city','calgary')">
-          <div class="city-img"><div class="city-overlay"><span class="city-name">Calgary</span><span class="city-province">Alberta · AB</span></div></div>
-          <div class="city-footer"><span class="city-tag">Same-day mattress delivery</span><span class="city-arrow">→</span></div>
+
+        <a href="calgary.html" class="city-card fade-up delay-2" onclick="localStorage.setItem('mc_city','calgary')">
+          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80');">
+            <div class="city-card-img-inner">
+              <span class="city-name">Calgary</span><br>
+              <span class="city-province">Alberta · AB</span>
+            </div>
+          </div>
+          <div class="city-footer">
+            <span class="city-tag">Same-day mattress delivery</span>
+            <span class="city-arrow">→</span>
+          </div>
         </a>
-        <a href="vancouver.html" class="city-card" onclick="localStorage.setItem('mc_city','vancouver')">
-          <div class="city-img"><div class="city-overlay"><span class="city-name">Vancouver</span><span class="city-province">British Columbia · BC</span></div></div>
-          <div class="city-footer"><span class="city-tag">Same-day mattress delivery</span><span class="city-arrow">→</span></div>
+
+        <a href="vancouver.html" class="city-card fade-up delay-3" onclick="localStorage.setItem('mc_city','vancouver')">
+          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?w=600&q=80');">
+            <div class="city-card-img-inner">
+              <span class="city-name">Vancouver</span><br>
+              <span class="city-province">British Columbia · BC</span>
+            </div>
+          </div>
+          <div class="city-footer">
+            <span class="city-tag">Same-day mattress delivery</span>
+            <span class="city-arrow">→</span>
+          </div>
         </a>
-        <a href="reddeer.html" class="city-card" onclick="localStorage.setItem('mc_city','reddeer')">
-          <div class="city-img"><div class="city-overlay"><span class="city-name">Red Deer</span><span class="city-province">Alberta · AB</span></div></div>
-          <div class="city-footer"><span class="city-tag">Same-day mattress delivery</span><span class="city-arrow">→</span></div>
+
+        <a href="reddeer.html" class="city-card fade-up delay-4" onclick="localStorage.setItem('mc_city','reddeer')">
+          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80');">
+            <div class="city-card-img-inner">
+              <span class="city-name">Red Deer</span><br>
+              <span class="city-province">Alberta · AB</span>
+            </div>
+          </div>
+          <div class="city-footer">
+            <span class="city-tag">Same-day mattress delivery</span>
+            <span class="city-arrow">→</span>
+          </div>
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- PRODUCTS OVERVIEW -->
-  <section class="section categories" id="products">
+  <!-- PRODUCT CATEGORIES WITH REAL PHOTOS -->
+  <section class="section" id="products">
     <div class="container">
-      <div class="section-label">What we deliver</div>
-      <h2>Mattresses, Bedframes, Spring Boxes &amp; Furniture</h2>
-      <p class="section-desc">Everything you need for your bedroom — delivered same day. Select a city above to see all available products.</p>
+      <div class="section-label fade-up">What we deliver</div>
+      <h2 class="fade-up delay-1">Mattresses, Bedframes & Furniture</h2>
+      <p class="section-desc fade-up delay-2">Everything for your bedroom and home delivered same day. Select a city above to see all available products with prices.</p>
       <div class="cat-grid">
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-mattress"><div class="cat-icon">🛏</div></div>
-          <div class="cat-info"><span class="cat-name">Foam Mattresses</span><span class="cat-sub">7", 10", 12" — all sizes</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-1">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80');">
+            <span class="cat-photo-icon">🛏</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Bamboo Mattresses</span>
+            <span class="cat-sub">10", 12", 14" — all sizes</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-bedframe"><div class="cat-icon">🧠</div></div>
-          <div class="cat-info"><span class="cat-name">Memory Foam Mattresses</span><span class="cat-sub">Pressure relief · All sizes</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-2">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80');">
+            <span class="cat-photo-icon">🧠</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Memory Foam Mattresses</span>
+            <span class="cat-sub">Roll-pack · All sizes</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-furniture"><div class="cat-icon">💪</div></div>
-          <div class="cat-info"><span class="cat-name">Orthopedic &amp; Hybrid</span><span class="cat-sub">Back support · Firm feel</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-3">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&q=80');">
+            <span class="cat-photo-icon">💪</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Orthopedic Mattresses</span>
+            <span class="cat-sub">Firm · Double-sided</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-other"><div class="cat-icon">☁️</div></div>
-          <div class="cat-info"><span class="cat-name">Pillow Top Mattresses</span><span class="cat-sub">Soft &amp; plush · Queen &amp; King</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-4">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=400&q=80');">
+            <span class="cat-photo-icon">☁️</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Pillow Top Mattresses</span>
+            <span class="cat-sub">Plush · Queen & King</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-mattress"><div class="cat-icon">🪵</div></div>
-          <div class="cat-info"><span class="cat-name">Bedframes</span><span class="cat-sub">Platform, upholstered, storage</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-1">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80');">
+            <span class="cat-photo-icon">🪵</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Platform Bedframes</span>
+            <span class="cat-sub">Leather, velvet, wood</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-bedframe"><div class="cat-icon">🌀</div></div>
-          <div class="cat-info"><span class="cat-name">Spring Boxes</span><span class="cat-sub">Regular &amp; split · All sizes</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-2">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80');">
+            <span class="cat-photo-icon">📦</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Storage Bedframes</span>
+            <span class="cat-sub">Hydraulic lift · Drawers</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-furniture"><div class="cat-icon">🛋</div></div>
-          <div class="cat-info"><span class="cat-name">Sofas</span><span class="cat-sub">3-seater &amp; L-shape corner sofas</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-3">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80');">
+            <span class="cat-photo-icon">🛋</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Sofas & Seating</span>
+            <span class="cat-sub">Velvet sofa sets · Chairs</span>
+          </div>
         </a>
-        <a href="#cities" class="cat-card">
-          <div class="cat-img cat-img-other"><div class="cat-icon">🗄</div></div>
-          <div class="cat-info"><span class="cat-name">Nightstands &amp; Dressers</span><span class="cat-sub">Bedside tables · Storage</span></div>
+
+        <a href="#cities" class="cat-card fade-up delay-4">
+          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80');">
+            <span class="cat-photo-icon">🗄</span>
+          </div>
+          <div class="cat-info">
+            <span class="cat-name">Nightstands & Tables</span>
+            <span class="cat-sub">USB charging · Storage</span>
+          </div>
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- NEW IMMIGRANTS -->
-  <section class="section immigrants">
+  <!-- NEWCOMERS with background photo -->
+  <section class="section newcomers-section">
     <div class="container">
-      <div class="section-label">For newcomers to Canada</div>
-      <h2>Just Moved to Canada? We Make It Easy</h2>
-      <p class="section-desc">Thousands of newcomers from South Asia, Pakistan, India &amp; beyond trust Mattbed Canada. We understand you need a mattress fast — no credit card, no deposit, no waiting weeks.</p>
+      <div class="section-label fade-up">For newcomers to Canada</div>
+      <h2 class="fade-up delay-1">Just Moved to Canada? We Make It Easy</h2>
+      <p class="section-desc fade-up delay-2">Thousands of newcomers from South Asia, Pakistan, India & beyond trust Mattbed Canada. No credit card, no deposit — just same-day delivery and cash on arrival.</p>
       <div class="why-grid">
-        <div class="why-card"><div class="why-icon">🇨🇦</div><h3>No credit needed</h3><p>Pay cash when we arrive. No credit card, no bank account required.</p></div>
-        <div class="why-card"><div class="why-icon">📱</div><h3>Order on WhatsApp</h3><p>Message us in English or Urdu — we confirm and deliver same day.</p></div>
-        <div class="why-card"><div class="why-icon">🛏</div><h3>Firm mattresses available</h3><p>We stock firm orthopedic mattresses preferred by South Asian families.</p></div>
-        <div class="why-card"><div class="why-icon">💰</div><h3>Lowest prices in the city</h3><p>Affordable mattress and bedframe prices with free delivery.</p></div>
+        <div class="why-card why-card-dark fade-up delay-1"><div class="why-icon">🇨🇦</div><h3>No credit card needed</h3><p>Pay cash when we arrive. No bank account or credit history required to order.</p></div>
+        <div class="why-card why-card-dark fade-up delay-2"><div class="why-icon">📱</div><h3>Easy ordering process</h3><p>Browse online, choose your city, pick your product and we confirm your order fast.</p></div>
+        <div class="why-card why-card-dark fade-up delay-3"><div class="why-icon">🛏</div><h3>Firm mattresses available</h3><p>We stock firm orthopedic mattresses preferred by South Asian and Pakistani families.</p></div>
+        <div class="why-card why-card-dark fade-up delay-4"><div class="why-icon">💰</div><h3>Lowest prices guaranteed</h3><p>Wholesale prices on all mattresses and bedframes — free delivery included.</p></div>
       </div>
     </div>
   </section>
@@ -209,75 +449,72 @@
   <!-- HOW IT WORKS -->
   <section class="section how">
     <div class="container">
-      <div class="section-label">Simple process</div>
-      <h2>How to Order — 4 Easy Steps</h2>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Choose your city</h3><p>Tap your city above — Edmonton, Calgary, Vancouver, or Red Deer.</p></div></div>
+      <div class="section-label fade-up">Simple process</div>
+      <h2 class="fade-up delay-1">How to Order in 4 Easy Steps</h2>
+      <div class="steps" style="margin-top:40px;">
+        <div class="step fade-up delay-1">
+          <div class="step-num">1</div>
+          <div class="step-content"><h3>Choose your city</h3><p>Select Edmonton, Calgary, Vancouver, or Red Deer above.</p></div>
+        </div>
         <div class="step-line"></div>
-        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Pick products &amp; size</h3><p>Browse mattresses, bedframes, spring boxes and furniture. Select your size and add to cart.</p></div></div>
+        <div class="step fade-up delay-2">
+          <div class="step-num">2</div>
+          <div class="step-content"><h3>Browse products</h3><p>View all mattresses, bedframes and furniture in your city.</p></div>
+        </div>
         <div class="step-line"></div>
-        <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Checkout</h3><p>Fill your name, WhatsApp number and address. Submit — we confirm in minutes.</p></div></div>
+        <div class="step fade-up delay-3">
+          <div class="step-num">3</div>
+          <div class="step-content"><h3>Add to cart</h3><p>Select your size, add to cart and proceed to checkout.</p></div>
+        </div>
         <div class="step-line"></div>
-        <div class="step"><div class="step-num">4</div><div class="step-content"><h3>We deliver, you pay cash</h3><p>Your order arrives the same day. Pay cash on delivery — no advance payment.</p></div></div>
+        <div class="step fade-up delay-4">
+          <div class="step-num">4</div>
+          <div class="step-content"><h3>Pay on delivery</h3><p>Your order arrives same day. Pay cash — no advance payment ever.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-label fade-up" style="text-align:center;">Common questions</div>
+      <h2 class="fade-up delay-1" style="text-align:center;margin-bottom:32px;">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item fade-up delay-1"><button class="faq-q">Do you offer same-day mattress delivery in Calgary? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Mattbed Canada offers same-day mattress delivery across Calgary including NE, NW, SE and SW Calgary. Order before 4pm and receive your mattress the same day. Cash on delivery, free delivery.</p></div></div>
+        <div class="faq-item fade-up delay-2"><button class="faq-q">Can I pay cash on delivery for a mattress? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Every order is cash on delivery. You pay only when your mattress or bedframe arrives at your door. No credit card, no advance payment, no deposit required.</p></div></div>
+        <div class="faq-item fade-up delay-3"><button class="faq-q">What cities do you deliver to in Canada? <span class="faq-icon">+</span></button><div class="faq-a"><p>We currently deliver same-day to Calgary (Alberta), Edmonton (Alberta), Vancouver (British Columbia) and Red Deer (Alberta). Each city has its own product selection.</p></div></div>
+        <div class="faq-item fade-up delay-4"><button class="faq-q">Do you deliver mattresses to newcomers and immigrants? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolutely. We specialize in helping newcomers to Canada get a mattress fast — no credit card, no bank account, no waiting. Thousands of South Asian and Pakistani families have ordered from us.</p></div></div>
+        <div class="faq-item fade-up"><button class="faq-q">Is delivery really free? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes, delivery is free on most items across all four cities. There are no hidden fees — the price you see is what you pay on delivery.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section class="cta-banner">
     <div class="container">
-      <h2>Order Your Mattress or Bedframe Today</h2>
-      <p>Same-day delivery · Cash on delivery · Free delivery · Edmonton, Calgary, Vancouver, Red Deer</p>
-      <div class="cta-actions">
-        <a href="#cities" class="btn btn-primary btn-lg">Shop by city</a>
-        <a href="https://wa.me/923257757878?text=Hi%2C+I%27d+like+to+order+a+mattress+or+bedframe" class="btn btn-wa btn-lg" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp to order
-        </a>
+      <h2 class="fade-up">Order Your Mattress or Bedframe Today</h2>
+      <p class="fade-up delay-1">Same-day delivery · Cash on delivery · Free delivery · Calgary, Edmonton, Vancouver, Red Deer</p>
+      <div class="cta-actions fade-up delay-2">
+        <a href="#cities" class="btn btn-primary btn-lg">Shop by City →</a>
       </div>
     </div>
   </section>
 
-  <a href="https://wa.me/923257757878?text=Hi%2C+I%27d+like+to+order+a+mattress+or+bedframe" class="wa-float" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-  </a>
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
           <span class="logo-text">🛏 Mattbed <strong>Canada</strong></span>
-          <p>Affordable same-day mattress &amp; bedframe delivery across Alberta &amp; BC. Cash on delivery.</p>
+          <p>Affordable same-day mattress & bedframe delivery across Alberta & BC. Cash on delivery. Free delivery.</p>
         </div>
-        <div class="footer-links">
-          <h4>Cities</h4>
-          <ul>
-            <li><a href="edmonton.html">Edmonton</a></li>
-            <li><a href="calgary.html">Calgary</a></li>
-            <li><a href="vancouver.html">Vancouver</a></li>
-            <li><a href="reddeer.html">Red Deer</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="edmonton.html#mattresses">Mattresses</a></li>
-            <li><a href="edmonton.html#bedframes">Bedframes</a></li>
-            <li><a href="edmonton.html#springboxes">Spring Boxes</a></li>
-            <li><a href="edmonton.html#furniture">Sofas &amp; Furniture</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="blog.html">Sleep blog</a></li>
-            <li><a href="cart.html">Your cart</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy policy</a></li>
-          </ul>
-        </div>
+        <div class="footer-links"><h4>Cities</h4><ul><li><a href="edmonton.html">Edmonton</a></li><li><a href="calgary.html">Calgary</a></li><li><a href="vancouver.html">Vancouver</a></li><li><a href="reddeer.html">Red Deer</a></li></ul></div>
+        <div class="footer-links"><h4>Products</h4><ul><li><a href="calgary.html#mattresses">Mattresses</a></li><li><a href="calgary.html#bedframes">Bedframes</a></li><li><a href="calgary.html#furniture">Sofas & Furniture</a></li></ul></div>
+        <div class="footer-links"><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="blog.html">Sleep blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy policy</a></li></ul></div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Mattbed Canada. Same-day mattress &amp; bedframe delivery — Edmonton, Calgary, Vancouver, Red Deer.</p>
+        <p>&copy; 2026 Mattbed Canada. Same-day mattress & bedframe delivery — Calgary, Edmonton, Vancouver, Red Deer.</p>
       </div>
     </div>
   </footer>
