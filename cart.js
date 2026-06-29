@@ -477,19 +477,30 @@ Order placed via mattressbedframe.ca
   `.trim();
 
   try {
-    await emailjs.send('service_mbkodkq', 'template_qnqxv2k', {
-      from_name: name,
-      reply_to: 'afzaalakram7329@gmail.com',
-      message: orderText,
-      order_total: `$${total.toLocaleString()} CAD`
+    const response = await fetch('https://formspree.io/f/meebzolk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        address: address,
+        postcode: postcode,
+        order_total: `$${total.toLocaleString()} CAD`,
+        promo_code: appliedPromo || 'None',
+        message: orderText
+      })
     });
-    showOrderSuccess(name, total);
-    cart = [];
-    appliedPromo = null;
-    updateCartBadge();
-    closeCheckout();
+    if (response.ok) {
+      showOrderSuccess(name, total);
+      cart = [];
+      appliedPromo = null;
+      updateCartBadge();
+      closeCheckout();
+    } else {
+      throw new Error('Submission failed');
+    }
   } catch (err) {
-    console.error('EmailJS error:', err);
+    console.error('Formspree error:', err);
     btn.textContent = '✅ Place Order — Cash on Delivery';
     btn.disabled = false;
     alert('There was an issue sending your order. Please try again.');
