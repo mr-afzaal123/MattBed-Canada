@@ -478,12 +478,10 @@ Order placed via mattressbedframe.ca
 
   try {
     await emailjs.send('service_mbkodkq', 'template_qnqxv2k', {
-      to_email: 'afzaalakram7329@gmail.com',
       from_name: name,
+      reply_to: 'afzaalakram7329@gmail.com',
       message: orderText,
-      customer_phone: phone,
-      order_total: `$${total.toLocaleString()} CAD`,
-      reply_to: 'afzaalakram7329@gmail.com'
+      order_total: `$${total.toLocaleString()} CAD`
     });
     showOrderSuccess(name, total);
     cart = [];
