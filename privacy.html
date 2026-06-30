@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+  <script>document.documentElement.classList.remove('no-js');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Mattbed Canada</title>
@@ -22,15 +23,15 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header class="header">
+  <header class="header">
     <div class="header-inner">
       <a href="index.html" class="logo"><span class="logo-icon">🛏</span><span class="logo-text">Mattbed <strong>Canada</strong></span></a>
-      <button class="nav-toggle" aria-label="Open menu" id="navToggle"><span></span><span></span><span></span></button>
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
     <nav class="nav" id="nav">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li class="has-dropdown"><a href="#" aria-haspopup="true">Cities <span id="nav-city-badge"></span> ▾</a>
+        <li class="has-dropdown"><a href="#" aria-haspopup="true">Cities ▾</a>
           <ul class="dropdown">
             <li><a href="edmonton.html">Edmonton</a></li>
             <li><a href="calgary.html">Calgary</a></li>
@@ -41,13 +42,6 @@
         <li><a href="about.html">About</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="order.html" class="nav-cta">Order Now</a></li>
-        <li>
-          <a href="cart.html" style="display:inline-flex; align-items:center; gap:6px;">
-            🛒 Cart
-            <span class="nav-badge" id="nav-badge" style="background:#e53e3e; color:#fff; font-size:11px; font-weight:700; width:18px; height:18px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span>
-          </a>
-        </li>
       </ul>
     </nav>
   </header>
@@ -56,33 +50,17 @@
 
   <div class="page-content">
     <h2>Information we collect</h2>
-    <p>When you place an order through our website form, we collect your name, delivery address, city, and order details. This information is used solely to process and deliver your order.</p>
-    <h2>WhatsApp communications</h2>
-    <p>When you contact us via WhatsApp, your messages are subject to WhatsApp's own privacy policy. We use your contact only to respond to your enquiry or process your order.</p>
+    <p>When you place an order through our website, we collect your name, phone number, delivery address, city, and order details. This information is used solely to process and deliver your order.</p>
     <h2>How we use your information</h2>
-    <p>Your information is used only to fulfil your delivery. We do not sell, share, or distribute your personal data to any third parties.</p>
+    <p>Your information is used only to fulfil your delivery and to contact you to confirm your order. We do not sell, share, or distribute your personal data to any third parties.</p>
+    <h2>Live chat</h2>
+    <p>If you use the live chat feature on our website, your messages are handled through our chat provider to allow our team to respond to your enquiry.</p>
     <h2>Contact</h2>
     <p>For any privacy concerns, please contact us via <a href="contact.html" style="color:#1A3A6B;">our contact page</a>.</p>
   </div>
 
-  <footer class="footer"><div class="footer-bottom" style="border-top:none;"><p>&copy; 2026 Mattbed Canada</p></div></footer>
-  <a href="https://wa.me/923257757878" class="wa-float" target="_blank" rel="noopener" aria-label="Order mattress on WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.882a.5.5 0 00.611.632l6.197-1.624A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.528-5.204-1.443l-.374-.223-3.875 1.016 1.034-3.772-.244-.386A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-  </a>
+  <footer class="footer"><div class="footer-bottom"><p>&copy; 2026 Mattbed Canada</p></div></footer>
   <script src="main.js" defer></script>
-  <script>
-  (function() {
-    try {
-      var cart = JSON.parse(localStorage.getItem('mc_cart')) || [];
-      var count = cart.reduce(function(s, i) { return s + i.qty; }, 0);
-      var badge = document.getElementById('nav-badge');
-      if (badge && count > 0) {
-        badge.textContent = count;
-        badge.style.display = 'inline-flex';
-      }
-    } catch(e) {}
-  })();
-  </script>
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
