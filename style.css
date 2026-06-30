@@ -68,7 +68,15 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .fade-up.delay-2 { transition-delay: 0.2s; }
 .fade-up.delay-3 { transition-delay: 0.3s; }
 .fade-up.delay-4 { transition-delay: 0.4s; }
+   any reason, force all fade-up elements visible after 2.5s so content is
+   never permanently stuck invisible. */
+.fade-up { animation: fadeUpFallback 0.01s 2.5s forwards; }
+@keyframes fadeUpFallback { to { opacity: 1; transform: translateY(0); } }
 
+/* Fallback 2: if JavaScript is fully disabled/blocked, this class (added by
+   an inline script in <head>, removed only when main.js successfully runs)
+   ensures content is visible immediately with no animation at all. */
+.no-js .fade-up { opacity: 1 !important; transform: none !important; animation: none !important; }
 /* ===========================
    SKIP LINK
    =========================== */
@@ -1337,3 +1345,24 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   .filter-btn { min-height: 38px; }
   .review-card, .why-card, .value-card { -webkit-tap-highlight-color: transparent; }
 }
+
+/* ===========================
+   SIMPLE CONTENT PAGES (privacy policy, etc)
+   =========================== */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  padding: 48px 24px;
+  text-align: left;
+}
+.page-hero h1 { color: white; font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 8px; }
+.page-hero p { color: rgba(255,255,255,0.65); font-size: 14px; }
+.page-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+.page-content h2 { font-size: 1.2rem; color: var(--navy); margin: 28px 0 12px; }
+.page-content h2:first-child { margin-top: 0; }
+.page-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 14px; }
+.page-content a { color: var(--navy-mid); font-weight: 600; }
+.page-content a:hover { color: var(--gold); }
