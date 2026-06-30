@@ -148,17 +148,26 @@
     .cities-served { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
     @media(min-width: 768px) { .cities-served { grid-template-columns: repeat(4, 1fr); } }
     .city-served-card {
-      background: white;
-      border: 2px solid var(--border);
+      position: relative;
       border-radius: var(--radius-lg);
-      padding: 24px 16px;
-      text-align: center;
-      transition: border-color 0.2s, transform 0.2s;
+      overflow: hidden;
+      height: 160px;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background-size: cover;
+      background-position: center;
     }
-    .city-served-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .city-served-card .city-emoji { font-size: 36px; display: block; margin-bottom: 10px; }
-    .city-served-card h3 { font-size: 15px; color: var(--navy); margin-bottom: 4px; }
-    .city-served-card p { font-size: 12px; color: var(--text-muted); }
+    .city-served-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.25) 60%, rgba(10,22,40,0.05) 100%);
+    }
+    .city-served-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .city-served-card-inner { position: relative; z-index: 2; padding: 16px; width: 100%; }
+    .city-served-card h3 { font-size: 16px; color: white; margin-bottom: 2px; font-family: 'Poppins', sans-serif; }
+    .city-served-card p { font-size: 12px; color: rgba(255,255,255,0.75); }
 
     .timeline { position: relative; padding: 72px 0; }
     .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border); transform: translateX(-50%); }
@@ -313,25 +322,29 @@
       <h2 class="fade-up delay-1" style="text-align:center;">Serving 4 Canadian Cities</h2>
       <p style="text-align:center;color:var(--text-secondary);max-width:500px;margin:0 auto;" class="fade-up delay-2">We started in Calgary and have grown to serve Edmonton, Vancouver and Red Deer — with more cities on the horizon.</p>
       <div class="cities-served">
-        <a href="calgary.html" class="city-served-card fade-up delay-1">
-          <span class="city-emoji">🏔</span>
-          <h3>Calgary</h3>
-          <p>Alberta · Est. 2024</p>
+        <a href="calgary.html" class="city-served-card fade-up delay-1" style="background-image:url('https://images.unsplash.com/photo-1609825488888-3a766db05542?w=500&q=80');">
+          <div class="city-served-card-inner">
+            <h3>Calgary</h3>
+            <p>Alberta · Est. 2024</p>
+          </div>
         </a>
-        <a href="edmonton.html" class="city-served-card fade-up delay-2">
-          <span class="city-emoji">🏙</span>
-          <h3>Edmonton</h3>
-          <p>Alberta</p>
+        <a href="edmonton.html" class="city-served-card fade-up delay-2" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80');">
+          <div class="city-served-card-inner">
+            <h3>Edmonton</h3>
+            <p>Alberta</p>
+          </div>
         </a>
-        <a href="vancouver.html" class="city-served-card fade-up delay-3">
-          <span class="city-emoji">🌊</span>
-          <h3>Vancouver</h3>
-          <p>British Columbia</p>
+        <a href="vancouver.html" class="city-served-card fade-up delay-3" style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?w=500&q=80');">
+          <div class="city-served-card-inner">
+            <h3>Vancouver</h3>
+            <p>British Columbia</p>
+          </div>
         </a>
-        <a href="reddeer.html" class="city-served-card fade-up delay-4">
-          <span class="city-emoji">🦌</span>
-          <h3>Red Deer</h3>
-          <p>Alberta</p>
+        <a href="reddeer.html" class="city-served-card fade-up delay-4" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80');">
+          <div class="city-served-card-inner">
+            <h3>Red Deer</h3>
+            <p>Alberta</p>
+          </div>
         </a>
       </div>
     </div>
