@@ -515,9 +515,10 @@ function showOrderSuccess(name, total) {
     <div class="success-box">
       <div style="font-size:56px;margin-bottom:16px;">🎉</div>
       <h2 style="color:var(--navy);margin-bottom:10px;">Order Placed!</h2>
-      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px;">Thank you <strong>${name}</strong>!</p>
-      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Your order of <strong>$${total.toLocaleString()} CAD</strong> has been received. We will contact you shortly to confirm delivery.</p>
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px;">Thank you <strong>${name}</strong> for placing your order!</p>
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Your order of <strong>$${total.toLocaleString()} CAD</strong> has been received. You will soon receive a text message on your provided phone number confirming your order and delivery details.</p>
       <div style="background:var(--navy-pale);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--text-secondary);text-align:left;">
+        📱 <strong>Confirmation:</strong> Sent via text message<br>
         💵 <strong>Payment:</strong> Cash on delivery<br>
         🚚 <strong>Delivery:</strong> Same day (if ordered before 4pm)<br>
         ✅ <strong>Delivery fee:</strong> Free
