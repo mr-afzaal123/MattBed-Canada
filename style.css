@@ -150,12 +150,14 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   padding-left: 12px;
   border-left: 2px solid var(--navy-mid);
   margin: 4px 20px 4px 32px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.25s ease;
 }
 @media (max-width: 767px) {
+  .nav .dropdown {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+  }
   .nav .has-dropdown.dropdown-open .dropdown { max-height: 300px; opacity: 1; }
   .nav .has-dropdown > a::after { content: ''; }
 }
