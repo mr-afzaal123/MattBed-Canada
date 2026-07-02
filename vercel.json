@@ -1,0 +1,49 @@
+{
+  "redirects": [
+    {
+      "source": "/mattressdeliveryvancouverbc.html",
+      "destination": "/mattress-delivery-vancouver-bc.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattress-delivery-vancouver-bc",
+      "destination": "/mattress-delivery-vancouver-bc.html",
+      "permanent": true
+    },
+    {
+      "source": "/bestmattressdeliveryedmonton.html",
+      "destination": "/best-mattress-delivery-edmonton.html",
+      "permanent": true
+    },
+    {
+      "source": "/best-mattress-delivery-edmonton",
+      "destination": "/best-mattress-delivery-edmonton.html",
+      "permanent": true
+    },
+    {
+      "source": "/best-mattress-delivery-calgary",
+      "destination": "/best-mattress-delivery-calgary.html",
+      "permanent": true
+    },
+    {
+      "source": "/Mattressfornewcomers.html",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattressfornewcomers.html",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattress-for-newcomers-canada",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/red-deer.html",
+      "destination": "/reddeer.html",
+      "permanent": true
+    }
+  ]
+}
