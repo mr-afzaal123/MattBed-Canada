@@ -208,7 +208,7 @@ function openProductDetail(card) {
 
   // Collect sizes from hidden rows
   const sizes = [];
-  card.querySelectorAll('.size-select-row[style*="display:none"] .size-btn[data-price]').forEach(btn => {
+  card.querySelectorAll('.size-btn[data-price]').forEach(btn => {
     if (btn.dataset.price && parseInt(btn.dataset.price) > 0) {
       sizes.push({ size: btn.dataset.size, price: parseInt(btn.dataset.price) });
     }
@@ -216,7 +216,8 @@ function openProductDetail(card) {
 
   // Collect colours
   const colors = [];
-  card.querySelectorAll('.size-select-row[style*="display:none"] .size-btn:not([data-price])').forEach(btn => {
+  // colours from size-btns without data-price
+  card.querySelectorAll('.size-btn:not([data-price])').forEach(btn => {
     if (btn.dataset.size) colors.push(btn.dataset.size);
   });
 
