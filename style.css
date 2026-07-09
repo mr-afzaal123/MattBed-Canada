@@ -1366,3 +1366,144 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .page-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 14px; }
 .page-content a { color: var(--navy-mid); font-weight: 600; }
 .page-content a:hover { color: var(--gold); }
+
+/* ============================================================
+   SALE STYLES — DreamBreeze Flash Sale
+   ============================================================ */
+
+/* Sitewide sale announcement bar */
+.sale-announcement-bar {
+  background: linear-gradient(90deg, #C2293D 0%, #8B1A28 50%, #C2293D 100%);
+  background-size: 200% 100%;
+  animation: saleSlide 3s ease infinite;
+  color: white;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 300;
+}
+@keyframes saleSlide {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.sale-announcement-bar a { color: #FFD700; text-decoration: underline; }
+.sale-bar-inner { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.sale-bar-timer { background: rgba(0,0,0,0.25); padding: 3px 12px; border-radius: 20px; font-size: 12px; }
+
+/* Product card sale badge */
+.sale-badge {
+  position: absolute; top: 8px; right: 8px;
+  background: linear-gradient(135deg, #C2293D, #8B1A28);
+  color: white; font-size: 10px; font-weight: 800;
+  padding: 4px 10px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(194,41,61,0.5);
+  animation: pulseSale 2s ease infinite;
+  z-index: 10;
+}
+@keyframes pulseSale {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Strikethrough old price */
+.size-btn .orig-price {
+  text-decoration: line-through;
+  opacity: 0.55;
+  font-size: 10px;
+  margin-left: 4px;
+}
+.size-btn.on-sale {
+  border-color: #C2293D !important;
+  color: #C2293D;
+}
+.size-btn.on-sale.selected {
+  background: #C2293D !important;
+  border-color: #C2293D !important;
+  color: white !important;
+}
+
+/* Homepage sale hero section */
+.sale-hero-section {
+  background: linear-gradient(135deg, #0A1628 0%, #1a0a0a 100%);
+  padding: 56px 0;
+  position: relative;
+  overflow: hidden;
+}
+.sale-hero-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(194,41,61,0.2), transparent);
+  pointer-events: none;
+}
+.sale-hero-inner { position: relative; z-index: 2; }
+.sale-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(194,41,61,0.15); border: 1px solid rgba(194,41,61,0.4);
+  color: #FF6B7A; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 6px 14px; border-radius: 30px; margin-bottom: 18px;
+}
+.sale-hero-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 32px; align-items: center;
+}
+@media(min-width: 768px) { .sale-hero-grid { grid-template-columns: 1fr 1fr; } }
+
+.sale-hero-content h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: white; margin-bottom: 12px; line-height: 1.2;
+}
+.sale-hero-content h2 em { color: #FFD700; font-style: normal; }
+.sale-hero-content p { color: rgba(255,255,255,0.75); font-size: 15px; margin-bottom: 24px; line-height: 1.7; }
+
+.sale-price-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 24px;
+}
+.sale-price-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 14px; text-align: center;
+}
+.sale-price-card .size-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.sale-price-card .was { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-bottom: 2px; }
+.sale-price-card .now { font-size: 22px; font-weight: 800; color: #FFD700; font-family: 'Poppins','Fraunces',serif; }
+.sale-price-card .save { font-size: 11px; color: #4ADE80; margin-top: 3px; font-weight: 600; }
+
+.sale-hero-img {
+  position: relative; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.sale-hero-img img { width: 100%; height: auto; display: block; border-radius: 20px; }
+.sale-hero-img-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: linear-gradient(135deg, #C2293D, #8B1A28);
+  color: white; font-size: 13px; font-weight: 800;
+  padding: 8px 16px; border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(194,41,61,0.5);
+}
+.sale-stars { color: #FFD700; font-size: 16px; letter-spacing: 2px; margin-bottom: 8px; display: block; }
+
+/* Sale product detail modal extras */
+.detail-sale-price {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.detail-sale-now { font-size: 28px; font-weight: 800; color: #C2293D; }
+.detail-sale-was { font-size: 16px; color: #94A3B8; text-decoration: line-through; }
+.detail-sale-save { font-size: 12px; font-weight: 700; background: #FEF2F2; color: #C2293D; padding: 3px 10px; border-radius: 20px; }
+
+/* Countdown timer */
+.sale-countdown { display: flex; gap: 8px; margin-bottom: 24px; }
+.countdown-unit { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 10px 14px; text-align: center; min-width: 56px; }
+.countdown-num { font-size: 22px; font-weight: 800; color: #FFD700; display: block; font-family: 'Poppins',monospace; }
+.countdown-label { font-size: 10px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Mobile optimised sale strip on product cards */
+@media(max-width: 640px) {
+  .sale-badge { font-size: 9px; padding: 3px 8px; top: 6px; right: 6px; }
+  .sale-hero-section { padding: 40px 0; }
+  .sale-price-card .now { font-size: 18px; }
+}
