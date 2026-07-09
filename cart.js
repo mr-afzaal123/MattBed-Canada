@@ -210,7 +210,8 @@ function openProductDetail(card) {
   const sizes = [];
   card.querySelectorAll('.size-btn[data-price]').forEach(btn => {
     if (btn.dataset.price && parseInt(btn.dataset.price) > 0) {
-      sizes.push({ size: btn.dataset.size, price: parseInt(btn.dataset.price) });
+      const orig = btn.dataset.orig ? parseInt(btn.dataset.orig) : null;
+      sizes.push({ size: btn.dataset.size, price: parseInt(btn.dataset.price), orig: orig });
     }
   });
 
@@ -234,10 +235,11 @@ function openProductDetail(card) {
   }
 
   const sizesHTML = sizes.map((s, i) => `
-    <button class="size-btn ${i === 0 ? 'selected' : ''}"
-      data-size="${s.size}" data-price="${s.price}"
+    <button class="size-btn ${i === 0 ? 'selected' : ''} ${s.orig ? 'on-sale' : ''}"
+      data-size="${s.size}" data-price="${s.price}" data-orig="${s.orig || ''}"
       onclick="selectDetailSize(this)">
       ${s.size} — $${s.price.toLocaleString()}
+      ${s.orig ? `<span style="text-decoration:line-through;opacity:0.5;font-size:10px;margin-left:4px;">$${s.orig}</span>` : ''}
     </button>`).join('');
 
   const colorsHTML = colors.length > 0 ? `
@@ -260,7 +262,10 @@ function openProductDetail(card) {
         <div class="detail-info">
           <span class="product-cat-tag">${cat}</span>
           <h2 class="detail-name">${name}</h2>
-          <div id="detail-price" class="detail-price">$${sizes[0].price.toLocaleString()} <span>CAD · cash on delivery</span></div>
+          <div class="detail-sale-price">
+            <span class="detail-sale-now">$${sizes[0].price.toLocaleString()}</span>
+            ${sizes[0].orig ? `<span class="detail-sale-was">$${sizes[0].orig.toLocaleString()}</span><span class="detail-sale-save">Save $${(sizes[0].orig - sizes[0].price).toLocaleString()}</span>` : ''}
+          </div>
           <div class="detail-trust">
             <span>🚚 Same-day</span>
             <span>💵 Cash on delivery</span>
@@ -561,7 +566,11 @@ function initViewDetailButtons() {
     const firstPriceBtn = card.querySelector('.size-select-row .size-btn[data-price]');
     const startPrice = firstPriceBtn ? parseInt(firstPriceBtn.dataset.price) : null;
 
-    btn.innerHTML = `👁 View Details${startPrice ? ` — from $${startPrice.toLocaleString()}` : ''}`;
+    const origPrice = firstPriceBtn ? parseInt(firstPriceBtn.dataset.orig || 0) : 0;
+    const saleLabel = origPrice && origPrice > startPrice
+      ? `<span style="text-decoration:line-through;opacity:0.5;font-size:11px;margin-left:4px;">$${origPrice}</span>`
+      : '';
+    btn.innerHTML = `👁 View Details${startPrice ? ` — $${startPrice.toLocaleString()}` : ''}${saleLabel}`;
     btn.style.cssText = `
       width:100%;padding:11px;background:var(--gold);color:var(--navy);
       border:none;border-radius:var(--radius-md);font-size:14px;font-weight:700;
@@ -585,3 +594,31 @@ document.addEventListener('DOMContentLoaded', () => {
   initViewDetailButtons();
   updateCartBadge();
 });
+
+
+/* ── Sale countdown timer ─────────────────────────────────── */
+(function() {
+  function updateCountdown() {
+    // 24hr rolling countdown - resets each day at midnight Edmonton time
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(23, 59, 59, 999);
+    const diff = midnight - now;
+    
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    
+    const hEl = document.getElementById('cd-h');
+    const mEl = document.getElementById('cd-m');
+    const sEl = document.getElementById('cd-s');
+    if (hEl) hEl.textContent = String(h).padStart(2,'0');
+    if (mEl) mEl.textContent = String(m).padStart(2,'0');
+    if (sEl) sEl.textContent = String(s).padStart(2,'0');
+    
+    const timerBar = document.getElementById('saleBarTimer');
+    if (timerBar) timerBar.textContent = `⏰ Ends in ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+})();
