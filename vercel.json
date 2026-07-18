@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/cheap-mattress-delivery-canada.html",
+      "destination": "/affordable-mattress-delivery-edmonton-calgary.html",
+      "permanent": true
+    },
+    {
+      "source": "/cheap-mattress-delivery-canada",
+      "destination": "/affordable-mattress-delivery-edmonton-calgary.html",
+      "permanent": true
+    },
+    {
       "source": "/mattressdeliveryvancouverbc.html",
       "destination": "/mattress-delivery-vancouver-bc.html",
       "permanent": true
@@ -44,6 +54,17 @@
       "source": "/red-deer.html",
       "destination": "/reddeer.html",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
     }
   ]
 }
