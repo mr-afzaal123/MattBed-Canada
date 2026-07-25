@@ -26,29 +26,7 @@
     "priceRange": "$195 - $1,079",
     "paymentAccepted": "Cash on delivery",
     "areaServed": ["Calgary", "Edmonton", "Vancouver", "Red Deer"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Customer, Burnaby BC"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-        "reviewBody": "Ordered a king size cotton mattress, delivered same day to Burnaby. Paid cash at the door. No credit card needed. Very happy with the service.",
-        "datePublished": "2026-07-20"
-      },
-      {
-        "@type": "Review",
-        "author": {"@type": "Person", "name": "Customer, Coquitlam BC"},
-        "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-        "reviewBody": "Got the 12 inch pillow top queen mattress delivered same day to Coquitlam. Great quality and very fast delivery. Will recommend to friends and family.",
-        "datePublished": "2026-07-22"
-      }
-    ]
+    "description": "Same-day mattress and bedframe delivery in Calgary, Edmonton, Vancouver and Red Deer. Cash on delivery."
   }
   </script>
 
@@ -85,13 +63,7 @@
     .submit-box{max-width:640px;margin:0 auto;text-align:center;padding:0 20px;}
     .submit-box h2{font-size:1.6rem;color:var(--navy);margin-bottom:10px;}
     .submit-box p{font-size:15px;color:var(--text);margin-bottom:28px;line-height:1.7;}
-    .submit-methods{display:grid;grid-template-columns:1fr;gap:14px;}
-    @media(min-width:540px){.submit-methods{grid-template-columns:1fr 1fr;}}
-    .submit-method{background:white;border:2px solid var(--border);border-radius:16px;padding:22px;transition:0.2s;cursor:pointer;text-decoration:none;display:block;}
-    .submit-method:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.1);}
-    .submit-method .icon{font-size:32px;margin-bottom:10px;display:block;}
-    .submit-method .title{font-size:15px;font-weight:700;color:var(--navy);display:block;margin-bottom:5px;}
-    .submit-method .desc{font-size:13px;color:var(--text);line-height:1.5;}
+
 
     /* REVIEW FORM */
     .review-form-wrap{background:white;border:2px solid var(--border);border-radius:20px;padding:28px;margin-top:24px;text-align:left;}
@@ -190,10 +162,10 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-item"><div class="stat-num">4.9</div><div class="stars-big" style="font-size:14px;">★★★★★</div><div class="stat-label">Average rating</div></div>
-        <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Verified reviews</div></div>
-        <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">5-star orders</div></div>
-        <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">Deposit required</div></div>
+        <div class="stat-item"><div class="stat-num">—</div><div class="stars-big" style="font-size:14px;color:#D1D5DB;">★★★★★</div><div class="stat-label">Average rating</div></div>
+        <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Verified reviews</div></div>
+        <div class="stat-item"><div class="stat-num">—</div><div class="stat-label">5-star orders</div></div>
+        
       </div>
     </div>
   </div>
@@ -205,18 +177,12 @@
         <h2>Share Your Experience</h2>
         <p>Did we deliver your mattress? We'd love to hear from you. Your review helps other families in Calgary, Edmonton and Vancouver make the right choice.</p>
 
-        <div class="submit-methods">
-          <a href="https://wa.me/923257757878?text=Hi%21%20I%20want%20to%20leave%20a%20review%20for%20Mattbed%20Canada.%20I%20ordered%20a%20mattress%20and%20wanted%20to%20share%20my%20experience." target="_blank" rel="noopener" class="submit-method">
-            <span class="icon">💬</span>
-            <span class="title">Review via WhatsApp</span>
-            <span class="desc">Send us your review on WhatsApp. Fastest way — we reply in minutes.</span>
-          </a>
-          <div class="submit-method" onclick="document.getElementById('review-form').scrollIntoView({behavior:'smooth'})">
-            <span class="icon">✍️</span>
-            <span class="title">Write a Review Here</span>
-            <span class="desc">Fill in the form below. Takes less than 2 minutes.</span>
+        <div style="text-align:center;margin-bottom:8px;">
+            <div style="display:inline-flex;align-items:center;gap:8px;background:#F0FDF4;border:2px solid #86EFAC;border-radius:12px;padding:12px 22px;">
+              <span style="font-size:20px;">✍️</span>
+              <span style="font-size:14px;font-weight:600;color:#16A34A;">Fill in the form below — takes less than 2 minutes</span>
+            </div>
           </div>
-        </div>
 
         <!-- REVIEW FORM -->
         <div class="review-form-wrap" id="review-form">
@@ -281,44 +247,14 @@
         <h2 style="font-size:clamp(1.5rem,3vw,2rem);color:var(--navy);">Verified Customer Reviews</h2>
       </div>
 
-      <div class="reviews-grid">
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Ordered a king size cotton mattress in Burnaby. Delivered same day. Paid cash when it arrived — no credit card, no deposit. Very professional service. Will order again."</p>
-          <div class="review-author">
-            <div class="review-avatar">B</div>
-            <div>
-              <div class="review-name">Customer, Burnaby BC <span class="verified">✅ Verified</span></div>
-              <div class="review-meta">King Cotton Mattress · July 2026</div>
-            </div>
+      <div class="reviews-grid" id="reviews-container">
+          <!-- Reviews appear here after customers submit -->
+          <div style="grid-column:1/-1;text-align:center;padding:40px 20px;color:#94A3B8;">
+            <div style="font-size:48px;margin-bottom:16px;">⭐</div>
+            <p style="font-size:16px;font-weight:600;color:#4A5568;margin-bottom:8px;">No reviews yet — be the first!</p>
+            <p style="font-size:14px;color:#94A3B8;">Did we deliver your mattress? <a href="#review-form" style="color:#C9A84C;font-weight:600;">Share your experience →</a></p>
           </div>
         </div>
-
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"Got the 12 inch pillow top queen delivered same day to Coquitlam. Great quality mattress and the team was very fast. Paid cash at the door. No bank account needed. Highly recommend to all newcomers."</p>
-          <div class="review-author">
-            <div class="review-avatar">C</div>
-            <div>
-              <div class="review-name">Customer, Coquitlam BC <span class="verified">✅ Verified</span></div>
-              <div class="review-meta">12" Pillow Top Queen · July 2026</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card" style="border:2px dashed #D1D5DB;background:#FAFAFA;">
-          <div class="review-stars" style="color:#D1D5DB;">★★★★★</div>
-          <p class="review-text" style="color:#94A3B8;">"Your review could be here. Did we deliver to you? Share your experience and help other families in Canada find us."</p>
-          <div class="review-author">
-            <div class="review-avatar" style="background:#E2E8F0;color:#94A3B8;">?</div>
-            <div>
-              <div class="review-name" style="color:#94A3B8;">Your review here</div>
-              <div class="review-meta"><a href="#review-form" style="color:var(--gold);font-weight:600;">Write a review →</a></div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -414,10 +350,10 @@
           form.style.display = 'none';
           document.getElementById('successMsg').classList.add('show');
         } else {
-          alert('Something went wrong. Please send your review on WhatsApp instead.');
+          alert('Something went wrong. Please try again.');
         }
       } catch(err) {
-        alert('Something went wrong. Please send your review on WhatsApp instead.');
+        alert('Something went wrong. Please try again.');
       }
     });
 
