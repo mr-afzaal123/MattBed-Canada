@@ -1,69 +1,24 @@
 {
   "redirects": [
-    {
-      "source": "/cheap-mattress-delivery-canada.html",
-      "destination": "/affordable-mattress-delivery-edmonton-calgary.html",
-      "permanent": true
-    },
-    {
-      "source": "/cheap-mattress-delivery-canada",
-      "destination": "/affordable-mattress-delivery-edmonton-calgary.html",
-      "permanent": true
-    },
-    {
-      "source": "/mattressdeliveryvancouverbc.html",
-      "destination": "/mattress-delivery-vancouver-bc.html",
-      "permanent": true
-    },
-    {
-      "source": "/mattress-delivery-vancouver-bc",
-      "destination": "/mattress-delivery-vancouver-bc.html",
-      "permanent": true
-    },
-    {
-      "source": "/bestmattressdeliveryedmonton.html",
-      "destination": "/best-mattress-delivery-edmonton.html",
-      "permanent": true
-    },
-    {
-      "source": "/best-mattress-delivery-edmonton",
-      "destination": "/best-mattress-delivery-edmonton.html",
-      "permanent": true
-    },
-    {
-      "source": "/best-mattress-delivery-calgary",
-      "destination": "/best-mattress-delivery-calgary.html",
-      "permanent": true
-    },
-    {
-      "source": "/Mattressfornewcomers.html",
-      "destination": "/mattress-for-newcomers-canada.html",
-      "permanent": true
-    },
-    {
-      "source": "/mattressfornewcomers.html",
-      "destination": "/mattress-for-newcomers-canada.html",
-      "permanent": true
-    },
-    {
-      "source": "/mattress-for-newcomers-canada",
-      "destination": "/mattress-for-newcomers-canada.html",
-      "permanent": true
-    },
-    {
-      "source": "/red-deer.html",
-      "destination": "/reddeer.html",
-      "permanent": true
-    }
+    {"source": "/mattressdeliveryvancouverbc.html", "destination": "/mattress-delivery-vancouver-bc.html", "permanent": true},
+    {"source": "/mattress-delivery-vancouver-bc", "destination": "/mattress-delivery-vancouver-bc.html", "permanent": true},
+    {"source": "/bestmattressdeliveryedmonton.html", "destination": "/best-mattress-delivery-edmonton.html", "permanent": true},
+    {"source": "/best-mattress-delivery-edmonton", "destination": "/best-mattress-delivery-edmonton.html", "permanent": true},
+    {"source": "/best-mattress-delivery-calgary", "destination": "/best-mattress-delivery-calgary.html", "permanent": true},
+    {"source": "/Mattressfornewcomers.html", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
+    {"source": "/mattressfornewcomers.html", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
+    {"source": "/mattress-for-newcomers-canada", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
+    {"source": "/red-deer.html", "destination": "/reddeer.html", "permanent": true},
+    {"source": "/cheap-mattress-delivery-canada.html", "destination": "/affordable-mattress-delivery-edmonton-calgary.html", "permanent": true}
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {"key": "X-Content-Type-Options", "value": "nosniff"},
+        {"key": "X-Frame-Options", "value": "SAMEORIGIN"},
+        {"key": "X-XSS-Protection", "value": "1; mode=block"},
+        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"}
       ]
     }
   ]
