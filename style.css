@@ -1507,3 +1507,29 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   .sale-hero-section { padding: 40px 0; }
   .sale-price-card .now { font-size: 18px; }
 }
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.whatsapp-float svg { width: 30px; height: 30px; }
+@media(max-width: 640px) {
+  .whatsapp-float { width: 52px; height: 52px; bottom: 16px; right: 16px; }
+  .whatsapp-float svg { width: 26px; height: 26px; }
+}
