@@ -444,7 +444,7 @@ async function placeOrder() {
   if (cart.length === 0) { alert('Your cart is empty.'); return; }
 
   const btn = document.getElementById('place-order-btn');
-  btn.textContent = '⏳ Sending order...';
+  btn.textContent = '⏳ Opening WhatsApp...';
   btn.disabled = true;
 
   const orderLines = cart.map(item =>
@@ -482,35 +482,32 @@ ${notes || 'None provided'}
 Order placed via mattressbedframe.ca
   `.trim();
 
-  try {
-    const response = await fetch('https://formspree.io/f/meebzolk', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        name: name,
-        phone: phone,
-        address: address,
-        postcode: postcode,
-        order_total: `$${total.toLocaleString()} CAD`,
-        promo_code: appliedPromo || 'None',
-        message: orderText
-      })
-    });
-    if (response.ok) {
-      showOrderSuccess(name, total);
-      cart = [];
-      appliedPromo = null;
-      updateCartBadge();
-      closeCheckout();
-    } else {
-      throw new Error('Submission failed');
-    }
-  } catch (err) {
-    console.error('Formspree error:', err);
-    btn.textContent = '✅ Place Order — Cash on Delivery';
-    btn.disabled = false;
-    alert('There was an issue sending your order. Please try again.');
-  }
+  // Backup: fire order to Formspree in the background — never blocks the WhatsApp flow
+  fetch('https://formspree.io/f/meebzolk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      address: address,
+      postcode: postcode,
+      order_total: `$${total.toLocaleString()} CAD`,
+      promo_code: appliedPromo || 'None',
+      message: orderText
+    })
+  }).catch(err => console.error('Formspree backup submission failed (non-blocking):', err));
+
+  // Primary: open WhatsApp with the order pre-filled, ready for the customer to send
+  const waUrl = `https://wa.me/15878389102?text=${encodeURIComponent(orderText)}`;
+  window.open(waUrl, '_blank', 'noopener');
+
+  showOrderSuccess(name, total);
+  cart = [];
+  appliedPromo = null;
+  updateCartBadge();
+  closeCheckout();
+  btn.textContent = '✅ Place Order — Cash on Delivery';
+  btn.disabled = false;
 }
 
 function showOrderSuccess(name, total) {
@@ -522,9 +519,9 @@ function showOrderSuccess(name, total) {
       <div style="font-size:56px;margin-bottom:16px;">🎉</div>
       <h2 style="color:var(--navy);margin-bottom:10px;">Order Placed!</h2>
       <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px;">Thank you <strong>${name}</strong> for placing your order!</p>
-      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Your order of <strong>$${total.toLocaleString()} CAD</strong> has been received. You will soon receive a text message on your provided phone number confirming your order and delivery details.</p>
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Your order of <strong>$${total.toLocaleString()} CAD</strong> has been sent to WhatsApp with all the details filled in — just hit send in the WhatsApp tab that opened to confirm your order with us.</p>
       <div style="background:var(--navy-pale);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--text-secondary);text-align:left;">
-        📱 <strong>Confirmation:</strong> Sent via text message<br>
+        💬 <strong>Confirmation:</strong> Send the pre-filled WhatsApp message<br>
         💵 <strong>Payment:</strong> Cash on delivery<br>
         🚚 <strong>Delivery:</strong> Same day (if ordered before 4pm)<br>
         ✅ <strong>Delivery fee:</strong> Free
