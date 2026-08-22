@@ -121,6 +121,8 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 }
 .logo-icon { font-size: 24px; }
 .logo strong { color: var(--gold); }
+.logo-img { height: 40px; width: auto; display: block; }
+.logo-img-footer { height: 44px; width: auto; display: block; }
 
 .nav-toggle {
   background: none;
