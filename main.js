@@ -182,3 +182,15 @@ if (header) {
     }
   }, { passive: true });
 })();
+
+// Rotating sale bar messages
+(function () {
+  const msgs = document.querySelectorAll('.sale-bar-inner .bar-msg');
+  if (msgs.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    msgs[i].classList.remove('active');
+    i = (i + 1) % msgs.length;
+    msgs[i].classList.add('active');
+  }, 4500);
+})();
