@@ -1394,6 +1394,9 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .sale-announcement-bar a { color: #FFD700; text-decoration: underline; }
 .sale-bar-inner { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .sale-bar-timer { background: rgba(0,0,0,0.25); padding: 3px 12px; border-radius: 20px; font-size: 12px; }
+.bar-msg { display: none; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; opacity: 0; transition: opacity 0.4s ease; width: 100%; }
+.bar-msg.active { display: flex; opacity: 1; }
+.bar-msg a { color: white; font-weight: 700; text-decoration: underline; white-space: nowrap; }
 
 /* Product card sale badge */
 .sale-badge {
