@@ -17,6 +17,18 @@ const PROMO_DISCOUNT = 10;
 let cart = [];
 let appliedPromo = null;
 
+// Vancouver has distance-based delivery charges; Calgary, Edmonton and
+// Red Deer have free delivery. This checks the currently selected city.
+function isVancouverDelivery() {
+  return (localStorage.getItem('mc_city') || '').toLowerCase().includes('vancouver');
+}
+function deliveryLabel() {
+  return isVancouverDelivery() ? 'Charges may apply by distance' : 'Free delivery';
+}
+function deliveryShortLabel() {
+  return isVancouverDelivery() ? 'By distance' : 'FREE';
+}
+
 function getCartTotal() { return cart.reduce((sum, i) => sum + i.price * i.qty, 0); }
 function getDiscount() { return appliedPromo ? PROMO_DISCOUNT : 0; }
 function getFinalTotal() { return Math.max(0, getCartTotal() - getDiscount()); }
@@ -147,7 +159,7 @@ function renderCartDrawer() {
     <button onclick="openCheckout()" class="btn btn-primary" style="width:100%;padding:14px;font-size:15px;margin-top:16px;border-radius:12px;">
       Proceed to Checkout →
     </button>
-    <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Cash on delivery · Free delivery</p>`;
+    <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Cash on delivery · ${deliveryLabel()}</p>`;
 }
 
 // ── Product Detail Modal ─────────────────────
@@ -192,7 +204,7 @@ function openProductDetail(card) {
   };
 
   // Find matching description
-  let desc = 'Premium quality product with same-day delivery, free delivery and cash on delivery in ' + (localStorage.getItem('mc_city') || 'your city') + '. No advance payment required.';
+  let desc = 'Premium quality product with same-day delivery and cash on delivery in ' + (localStorage.getItem('mc_city') || 'your city') + '. No advance payment required.';
   for (const [key, val] of Object.entries(descriptions)) {
     if (name.includes(key)) { desc = val; break; }
   }
@@ -201,7 +213,7 @@ function openProductDetail(card) {
   const features = [
     'Same-day delivery (order before 4pm)',
     'Cash on delivery — pay when it arrives',
-    'Free delivery — no hidden charges',
+    isVancouverDelivery() ? 'Delivery charges may apply by distance' : 'Free delivery — no hidden charges',
     'No advance payment or deposit required',
     'Easy assembly — all tools included'
   ];
@@ -269,7 +281,7 @@ function openProductDetail(card) {
           <div class="detail-trust">
             <span>🚚 Same-day</span>
             <span>💵 Cash on delivery</span>
-            <span>✅ Free delivery</span>
+            <span>${isVancouverDelivery() ? '📍 Charges may apply by distance' : '✅ Free delivery'}</span>
           </div>
           <div style="margin:20px 0 16px;">
             <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">Select Size:</p>
@@ -366,7 +378,7 @@ function openCheckout() {
           <button onclick="placeOrder()" id="place-order-btn" class="btn btn-primary" style="width:100%;padding:15px;font-size:16px;margin-top:20px;border-radius:12px;">
             ✅ Place Order — Cash on Delivery
           </button>
-          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">No advance payment · Free delivery · Same day</p>
+          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">No advance payment · ${deliveryLabel()} · Same day</p>
         </div>
         <div class="checkout-summary-col">
           <h3 style="font-size:1rem;color:var(--navy);margin-bottom:16px;">Order Summary</h3>
@@ -406,7 +418,8 @@ function renderCheckoutSummary() {
   totalsEl.innerHTML = `
     <div style="border-top:2px solid var(--border);margin-top:12px;padding-top:12px;">
       <div class="summary-total-row"><span>Subtotal</span><span>$${subtotal.toLocaleString()} CAD</span></div>
-      <div class="summary-total-row"><span>Delivery</span><span style="color:var(--success);">FREE</span></div>
+      <div class="summary-total-row"><span>Delivery</span><span style="color:${isVancouverDelivery() ? 'var(--text-muted)' : 'var(--success)'};">${deliveryShortLabel()}</span></div>
+      ${isVancouverDelivery() ? '<p style="font-size:11px;color:var(--text-muted);margin-top:-4px;">We\'ll confirm your exact delivery charge via WhatsApp before dispatch.</p>' : ''}
       ${discount > 0 ? `<div class="summary-total-row" style="color:var(--success);"><span>Promo (${appliedPromo})</span><span>−$${discount}</span></div>` : ''}
       <div class="summary-total-row" style="font-size:16px;font-weight:700;color:var(--navy);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">
         <span>Total to Pay</span><span>$${total.toLocaleString()} CAD</span>
@@ -471,7 +484,7 @@ ${orderLines}
 
 ORDER SUMMARY
 Subtotal: $${subtotal.toLocaleString()} CAD
-Delivery: FREE
+Delivery: ${isVancouverDelivery() ? 'CHARGES MAY APPLY (Vancouver) — confirm with customer via WhatsApp before delivery' : 'FREE'}
 ${appliedPromo ? `Promo Code: ${appliedPromo} (−$${discount})` : 'No promo code used'}
 TOTAL TO COLLECT: $${total.toLocaleString()} CAD
 
@@ -527,7 +540,7 @@ function showOrderSuccess(name, total) {
         📱 <strong>Confirmation:</strong> Sent via text message<br>
         💵 <strong>Payment:</strong> Cash on delivery<br>
         🚚 <strong>Delivery:</strong> Same day (if ordered before 4pm)<br>
-        ✅ <strong>Delivery fee:</strong> Free
+        ${isVancouverDelivery() ? '📍 <strong>Delivery fee:</strong> May apply by distance, we\'ll confirm via WhatsApp' : '✅ <strong>Delivery fee:</strong> Free'}
       </div>
       <p style="color:var(--text-secondary);font-size:13px;margin-bottom:16px;">Have questions? Continue the chat on WhatsApp anytime.</p>
       <a href="https://wa.me/15878389102" target="_blank" rel="noopener" class="btn btn-wa" style="padding:12px 32px;border-radius:12px;display:inline-block;margin-bottom:10px;text-decoration:none;">
