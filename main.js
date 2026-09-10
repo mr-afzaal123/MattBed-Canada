@@ -73,7 +73,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.add('active');
     const filter = btn.dataset.filter;
     document.querySelectorAll('.product-card').forEach(card => {
-      card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter);
+      const cats = (card.dataset.cat || '').split(' ');
+      card.classList.toggle('hidden', filter !== 'all' && !cats.includes(filter));
     });
   });
 });
