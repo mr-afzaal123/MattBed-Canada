@@ -922,16 +922,17 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   margin-bottom: 16px;
 }
 .size-btn {
-  padding: 5px 10px;
+  padding: 12px 14px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   background: var(--white);
   color: var(--text-secondary);
   transition: all var(--transition);
   font-family: 'Inter', sans-serif;
+  min-height: 44px;
 }
 .size-btn:hover { border-color: var(--navy-mid); color: var(--navy-mid); }
 .size-btn.selected { background: var(--navy); color: var(--white); border-color: var(--navy); }
