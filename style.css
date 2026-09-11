@@ -1255,7 +1255,7 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 
 #back-to-top {
   position: fixed;
-  bottom: 24px;
+  bottom: 92px;
   right: 24px;
   width: 48px;
   height: 48px;
@@ -1274,6 +1274,9 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 }
 #back-to-top:hover { background: var(--navy-mid); transform: translateY(-3px); }
 #back-to-top.visible { display: flex; }
+@media(max-width: 640px) {
+  #back-to-top { bottom: 78px; right: 16px; width: 44px; height: 44px; }
+}
 
 /* ===========================
    CUSTOMER REVIEWS SECTION
