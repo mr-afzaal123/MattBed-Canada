@@ -491,7 +491,7 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   gap: 20px;
 }
 @media (min-width: 768px) {
-  .city-grid { grid-template-columns: repeat(4, 1fr); }
+  .city-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
 
 .city-card {
