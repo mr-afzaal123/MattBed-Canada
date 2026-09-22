@@ -847,6 +847,13 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   border-color: var(--gold);
 }
 .product-card.hidden { display: none; }
+.product-card.bedframe-note-card,
+.product-card.bedframe-note-card:hover {
+  background: none;
+  border: none;
+  box-shadow: none;
+  grid-column: 1 / -1;
+}
 
 .product-img {
   width: 100%;
