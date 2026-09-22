@@ -1214,7 +1214,7 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .form-group label { display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px; }
 .form-group input, .form-group textarea {
   width:100%;padding:11px 14px;border:2px solid var(--border);
-  border-radius:10px;font-size:14px;color:var(--text-primary);
+  border-radius:10px;font-size:16px;color:var(--text-primary);
   font-family:inherit;transition:border-color 0.2s;outline:none;
   background:white;
 }
@@ -1223,7 +1223,7 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .promo-row { display:flex;gap:8px;align-items:center;margin-top:4px; }
 .promo-row input {
   flex:1;padding:10px 14px;border:2px solid var(--border);
-  border-radius:10px;font-size:14px;font-family:inherit;outline:none;
+  border-radius:10px;font-size:16px;font-family:inherit;outline:none;
 }
 .promo-row input:focus { border-color:var(--gold); }
 .summary-item {
