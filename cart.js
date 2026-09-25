@@ -368,7 +368,126 @@ function openCheckout() {
           <div class="form-group"><label>Full Name *</label><input type="text" id="co-name" placeholder="e.g. Ahmed Hassan" required></div>
           <div class="form-group"><label>Delivery Address *</label><input type="text" id="co-address" placeholder="Street address, unit number"></div>
           <div class="form-group"><label>City & Postal Code *</label><input type="text" id="co-postcode" placeholder="e.g. Calgary, AB T2P 1J9"></div>
-          <div class="form-group"><label>Phone Number *</label><input type="tel" id="co-phone" placeholder="e.g. +1 403 555 0123"></div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <div style="display:flex;gap:8px;">
+              <select id="co-phone-code" style="width:auto;flex:0 0 108px;padding:11px 8px;border:2px solid var(--border);border-radius:10px;font-size:13px;font-family:inherit;color:var(--text-primary);outline:none;background:white;">
+                <option value="+1" selected>+1 Canada</option>
+              <option value="+1">+1 United States</option>
+              <option value="+92">+92 Pakistan</option>
+              <option value="+91">+91 India</option>
+              <option value="+880">+880 Bangladesh</option>
+              <option value="+63">+63 Philippines</option>
+              <option value="+234">+234 Nigeria</option>
+              <option value="+86">+86 China</option>
+              <option value="+93">+93 Afghanistan</option>
+              <option value="+355">+355 Albania</option>
+              <option value="+213">+213 Algeria</option>
+              <option value="+54">+54 Argentina</option>
+              <option value="+61">+61 Australia</option>
+              <option value="+43">+43 Austria</option>
+              <option value="+973">+973 Bahrain</option>
+              <option value="+32">+32 Belgium</option>
+              <option value="+55">+55 Brazil</option>
+              <option value="+359">+359 Bulgaria</option>
+              <option value="+855">+855 Cambodia</option>
+              <option value="+237">+237 Cameroon</option>
+              <option value="+56">+56 Chile</option>
+              <option value="+57">+57 Colombia</option>
+              <option value="+385">+385 Croatia</option>
+              <option value="+53">+53 Cuba</option>
+              <option value="+420">+420 Czech Republic</option>
+              <option value="+45">+45 Denmark</option>
+              <option value="+20">+20 Egypt</option>
+              <option value="+372">+372 Estonia</option>
+              <option value="+251">+251 Ethiopia</option>
+              <option value="+679">+679 Fiji</option>
+              <option value="+358">+358 Finland</option>
+              <option value="+33">+33 France</option>
+              <option value="+49">+49 Germany</option>
+              <option value="+233">+233 Ghana</option>
+              <option value="+30">+30 Greece</option>
+              <option value="+502">+502 Guatemala</option>
+              <option value="+592">+592 Guyana</option>
+              <option value="+509">+509 Haiti</option>
+              <option value="+504">+504 Honduras</option>
+              <option value="+852">+852 Hong Kong</option>
+              <option value="+36">+36 Hungary</option>
+              <option value="+354">+354 Iceland</option>
+              <option value="+62">+62 Indonesia</option>
+              <option value="+98">+98 Iran</option>
+              <option value="+964">+964 Iraq</option>
+              <option value="+353">+353 Ireland</option>
+              <option value="+972">+972 Israel</option>
+              <option value="+39">+39 Italy</option>
+              <option value="+1876">+1876 Jamaica</option>
+              <option value="+81">+81 Japan</option>
+              <option value="+962">+962 Jordan</option>
+              <option value="+254">+254 Kenya</option>
+              <option value="+965">+965 Kuwait</option>
+              <option value="+961">+961 Lebanon</option>
+              <option value="+218">+218 Libya</option>
+              <option value="+60">+60 Malaysia</option>
+              <option value="+52">+52 Mexico</option>
+              <option value="+212">+212 Morocco</option>
+              <option value="+95">+95 Myanmar</option>
+              <option value="+977">+977 Nepal</option>
+              <option value="+31">+31 Netherlands</option>
+              <option value="+64">+64 New Zealand</option>
+              <option value="+47">+47 Norway</option>
+              <option value="+968">+968 Oman</option>
+              <option value="+507">+507 Panama</option>
+              <option value="+675">+675 Papua New Guinea</option>
+              <option value="+595">+595 Paraguay</option>
+              <option value="+51">+51 Peru</option>
+              <option value="+48">+48 Poland</option>
+              <option value="+351">+351 Portugal</option>
+              <option value="+974">+974 Qatar</option>
+              <option value="+40">+40 Romania</option>
+              <option value="+7">+7 Russia</option>
+              <option value="+966">+966 Saudi Arabia</option>
+              <option value="+381">+381 Serbia</option>
+              <option value="+65">+65 Singapore</option>
+              <option value="+421">+421 Slovakia</option>
+              <option value="+386">+386 Slovenia</option>
+              <option value="+252">+252 Somalia</option>
+              <option value="+27">+27 South Africa</option>
+              <option value="+82">+82 South Korea</option>
+              <option value="+34">+34 Spain</option>
+              <option value="+94">+94 Sri Lanka</option>
+              <option value="+249">+249 Sudan</option>
+              <option value="+46">+46 Sweden</option>
+              <option value="+41">+41 Switzerland</option>
+              <option value="+963">+963 Syria</option>
+              <option value="+886">+886 Taiwan</option>
+              <option value="+255">+255 Tanzania</option>
+              <option value="+66">+66 Thailand</option>
+              <option value="+1868">+1868 Trinidad and Tobago</option>
+              <option value="+216">+216 Tunisia</option>
+              <option value="+90">+90 Turkey</option>
+              <option value="+256">+256 Uganda</option>
+              <option value="+380">+380 Ukraine</option>
+              <option value="+971">+971 United Arab Emirates</option>
+              <option value="+44">+44 United Kingdom</option>
+              <option value="+598">+598 Uruguay</option>
+              <option value="+58">+58 Venezuela</option>
+              <option value="+84">+84 Vietnam</option>
+              <option value="+967">+967 Yemen</option>
+              <option value="+260">+260 Zambia</option>
+              <option value="+263">+263 Zimbabwe</option>
+              </select>
+              <input type="tel" id="co-phone" placeholder="e.g. 403 555 0123" style="flex:1;">
+            </div>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:8px;margin-top:-8px;">
+            <input type="checkbox" id="co-has-whatsapp" checked style="width:16px;height:16px;cursor:pointer;">
+            <label for="co-has-whatsapp" style="margin:0;font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;">I have WhatsApp on this number</label>
+          </div>
+          <div class="form-group" id="co-email-group" style="display:none;">
+            <label>Email Address <span id="co-email-required-mark">*</span></label>
+            <input type="email" id="co-email" placeholder="e.g. ahmed@example.com">
+            <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">Since you don't have WhatsApp, we'll use this to reach you about your order.</p>
+          </div>
           <div class="form-group"><label>Additional Notes (delivery day, time, instructions)</label><textarea id="co-notes" rows="3" placeholder="e.g. Please deliver Saturday afternoon. Ring doorbell."></textarea></div>
           <div class="promo-row">
             <input type="text" id="co-promo" placeholder="Promo code (optional)" style="text-transform:uppercase;">
@@ -390,6 +509,14 @@ function openCheckout() {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   renderCheckoutSummary();
+
+  const coHasWa = document.getElementById('co-has-whatsapp');
+  const coEmailGroup = document.getElementById('co-email-group');
+  function toggleCoEmailField() {
+    coEmailGroup.style.display = coHasWa.checked ? 'none' : 'block';
+  }
+  coHasWa.addEventListener('change', toggleCoEmailField);
+  toggleCoEmailField();
 }
 
 function closeCheckout() {
@@ -443,18 +570,45 @@ function applyPromo() {
 }
 
 // ── Place Order ──────────────────────────────
+function isValidPhoneCO(digits) {
+  const cleaned = digits.replace(/[\s\-()]/g, '');
+  return /^\d{7,15}$/.test(cleaned);
+}
+
+function isValidEmailCO(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 async function placeOrder() {
   const name = document.getElementById('co-name').value.trim();
   const address = document.getElementById('co-address').value.trim();
   const postcode = document.getElementById('co-postcode').value.trim();
-  const phone = document.getElementById('co-phone').value.trim();
+  const phoneCode = document.getElementById('co-phone-code').value;
+  const phoneRaw = document.getElementById('co-phone').value.trim();
+  const hasWhatsapp = document.getElementById('co-has-whatsapp').checked;
+  const email = document.getElementById('co-email').value.trim();
   const notes = document.getElementById('co-notes').value.trim();
 
-  if (!name || !address || !postcode || !phone) {
+  if (!name || !address || !postcode || !phoneRaw) {
     alert('Please fill in all required fields: Name, Address, Postal Code and Phone.');
     return;
   }
+  if (!isValidPhoneCO(phoneRaw)) {
+    alert('Please enter a valid phone number (digits only, at least 7 digits).');
+    return;
+  }
+  if (!hasWhatsapp && !email) {
+    alert("Since you don't have WhatsApp, please provide your email so we can reach you about your order.");
+    return;
+  }
+  if (!hasWhatsapp && email && !isValidEmailCO(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
   if (cart.length === 0) { alert('Your cart is empty.'); return; }
+
+  const phone = `${phoneCode} ${phoneRaw}`;
+  const whatsappStatus = hasWhatsapp ? 'Yes' : 'No — use email instead';
 
   const btn = document.getElementById('place-order-btn');
   btn.textContent = '⏳ Sending order...';
@@ -475,6 +629,8 @@ NEW ORDER — Mattbed Canada
 CUSTOMER DETAILS
 Name: ${name}
 Phone: ${phone}
+Has WhatsApp: ${whatsappStatus}
+Email: ${email || 'Not provided'}
 Address: ${address}
 City/Postcode: ${postcode}
 Delivery City: ${city.toUpperCase()}
@@ -502,6 +658,8 @@ Order placed via mattressbedframe.ca
       body: JSON.stringify({
         name: name,
         phone: phone,
+        hasWhatsapp: whatsappStatus,
+        email: email,
         address: address,
         postcode: postcode,
         order_total: `$${total.toLocaleString()} CAD`,
