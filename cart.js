@@ -20,17 +20,22 @@ const FREE_DELIVERY_PROMO_CODES = ['FREESHIP','NOFEE','SHIPFREE','FREEDROP'];
 let cart = [];
 let appliedPromo = null;
 
-// All 5 cities (Calgary, Edmonton, Vancouver, Red Deer, Toronto/GTA) now have
-// light distance-based delivery charges ($20-30, decided by the driver at drop-off)
-// instead of the previous free-delivery-in-some-cities model. A free-delivery
-// promo code (see FREE_DELIVERY_PROMO_CODES above) waives the charge entirely.
+// Calgary, Edmonton and Red Deer have free delivery. Vancouver and Toronto/GTA
+// have distance-based delivery charges, decided by the driver at drop-off.
+// A free-delivery promo code (see FREE_DELIVERY_PROMO_CODES above) waives the
+// charge entirely, even for Vancouver/Toronto orders.
 // (Function name kept as isVancouverDelivery for backward compatibility with
-// every existing call site — it now means "does this order have a delivery charge".)
+// every existing call site — it now checks both city and promo override.)
 function hasFreeDeliveryPromo() {
   return FREE_DELIVERY_PROMO_CODES.includes(appliedPromo);
 }
+function isChargedDeliveryCity() {
+  const city = (localStorage.getItem('mc_city') || '').toLowerCase();
+  return city.includes('vancouver') || city.includes('toronto');
+}
 function isVancouverDelivery() {
-  return !hasFreeDeliveryPromo();
+  if (hasFreeDeliveryPromo()) return false;
+  return isChargedDeliveryCity();
 }
 function deliveryLabel() {
   return isVancouverDelivery() ? 'Charges may apply by distance' : 'Free delivery';
