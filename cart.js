@@ -13,14 +13,24 @@ const PROMO_CODES = [
 ];
 const PROMO_DISCOUNT = 10;
 
+// Separate list: these codes waive the delivery charge instead of discounting the subtotal.
+const FREE_DELIVERY_PROMO_CODES = ['FREESHIP','NOFEE','SHIPFREE','FREEDROP'];
+
 // ── Cart State ───────────────────────────────
 let cart = [];
 let appliedPromo = null;
 
-// Vancouver has distance-based delivery charges; Calgary, Edmonton and
-// Red Deer have free delivery. This checks the currently selected city.
+// All 5 cities (Calgary, Edmonton, Vancouver, Red Deer, Toronto/GTA) now have
+// light distance-based delivery charges ($20-30, decided by the driver at drop-off)
+// instead of the previous free-delivery-in-some-cities model. A free-delivery
+// promo code (see FREE_DELIVERY_PROMO_CODES above) waives the charge entirely.
+// (Function name kept as isVancouverDelivery for backward compatibility with
+// every existing call site — it now means "does this order have a delivery charge".)
+function hasFreeDeliveryPromo() {
+  return FREE_DELIVERY_PROMO_CODES.includes(appliedPromo);
+}
 function isVancouverDelivery() {
-  return (localStorage.getItem('mc_city') || '').toLowerCase().includes('vancouver');
+  return !hasFreeDeliveryPromo();
 }
 function deliveryLabel() {
   return isVancouverDelivery() ? 'Charges may apply by distance' : 'Free delivery';
@@ -30,7 +40,7 @@ function deliveryShortLabel() {
 }
 
 function getCartTotal() { return cart.reduce((sum, i) => sum + i.price * i.qty, 0); }
-function getDiscount() { return appliedPromo ? PROMO_DISCOUNT : 0; }
+function getDiscount() { return (appliedPromo && PROMO_CODES.includes(appliedPromo)) ? PROMO_DISCOUNT : 0; }
 function getFinalTotal() { return Math.max(0, getCartTotal() - getDiscount()); }
 function cartCount() { return cart.reduce((sum, i) => sum + i.qty, 0); }
 
@@ -546,8 +556,9 @@ function renderCheckoutSummary() {
     <div style="border-top:2px solid var(--border);margin-top:12px;padding-top:12px;">
       <div class="summary-total-row"><span>Subtotal</span><span>$${subtotal.toLocaleString()} CAD</span></div>
       <div class="summary-total-row"><span>Delivery</span><span style="color:${isVancouverDelivery() ? 'var(--text-muted)' : 'var(--success)'};">${deliveryShortLabel()}</span></div>
-      ${isVancouverDelivery() ? '<p style="font-size:11px;color:var(--text-muted);margin-top:-4px;">We\'ll confirm your exact delivery charge via WhatsApp before dispatch.</p>' : ''}
+      ${isVancouverDelivery() ? '<p style="font-size:11px;color:var(--text-muted);margin-top:-4px;">Delivery charges may apply and are decided by the driver at drop-off.</p>' : ''}
       ${discount > 0 ? `<div class="summary-total-row" style="color:var(--success);"><span>Promo (${appliedPromo})</span><span>−$${discount}</span></div>` : ''}
+      ${hasFreeDeliveryPromo() ? `<div class="summary-total-row" style="color:var(--success);"><span>Promo (${appliedPromo})</span><span>Free delivery</span></div>` : ''}
       <div class="summary-total-row" style="font-size:16px;font-weight:700;color:var(--navy);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">
         <span>Total to Pay</span><span>$${total.toLocaleString()} CAD</span>
       </div>
@@ -562,6 +573,11 @@ function applyPromo() {
   if (PROMO_CODES.includes(code)) {
     appliedPromo = code;
     msg.innerHTML = `<span style="color:var(--success);">✅ Code applied — $${PROMO_DISCOUNT} off your order!</span>`;
+    input.disabled = true;
+    renderCheckoutSummary();
+  } else if (FREE_DELIVERY_PROMO_CODES.includes(code)) {
+    appliedPromo = code;
+    msg.innerHTML = `<span style="color:var(--success);">✅ Code applied — free delivery on this order!</span>`;
     input.disabled = true;
     renderCheckoutSummary();
   } else {
@@ -640,8 +656,8 @@ ${orderLines}
 
 ORDER SUMMARY
 Subtotal: $${subtotal.toLocaleString()} CAD
-Delivery: ${isVancouverDelivery() ? 'CHARGES MAY APPLY (Vancouver) — confirm with customer via WhatsApp before delivery' : 'FREE'}
-${appliedPromo ? `Promo Code: ${appliedPromo} (−$${discount})` : 'No promo code used'}
+Delivery: ${isVancouverDelivery() ? 'CHARGES MAY APPLY (distance-based) — decided by the driver at drop-off' : 'FREE (promo code applied)'}
+${appliedPromo ? (hasFreeDeliveryPromo() ? `Promo Code: ${appliedPromo} (FREE DELIVERY)` : `Promo Code: ${appliedPromo} (−$${discount})`) : 'No promo code used'}
 TOTAL TO COLLECT: $${total.toLocaleString()} CAD
 
 DELIVERY NOTES
@@ -698,7 +714,7 @@ function showOrderSuccess(name, total) {
         📱 <strong>Confirmation:</strong> Sent via text message<br>
         💵 <strong>Payment:</strong> Cash on delivery<br>
         🚚 <strong>Delivery:</strong> Same day (if ordered before 4pm)<br>
-        ${isVancouverDelivery() ? '📍 <strong>Delivery fee:</strong> May apply by distance, we\'ll confirm via WhatsApp' : '✅ <strong>Delivery fee:</strong> Free'}
+        ${isVancouverDelivery() ? '📍 <strong>Delivery fee:</strong> May apply by distance, decided at drop-off' : '✅ <strong>Delivery fee:</strong> Free'}
       </div>
       <p style="color:var(--text-secondary);font-size:13px;margin-bottom:16px;">Have questions? Continue the chat on WhatsApp anytime.</p>
       <a href="https://wa.me/15878389102" target="_blank" rel="noopener" class="btn btn-wa" style="padding:12px 32px;border-radius:12px;display:inline-block;margin-bottom:10px;text-decoration:none;">
