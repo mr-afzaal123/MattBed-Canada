@@ -71,6 +71,8 @@
   </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=60&auto=format" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,7 +85,7 @@
       position: absolute;
       inset: 0;
       background-color: #0A1628;
-      background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1400&q=80');
+      background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=60&auto=format');
       background-size: cover;
       background-position: center top;
       filter: brightness(0.3) saturate(0.8);
@@ -690,7 +692,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="https://cdn.jsdelivr.net/gh/mr-afzaal123/MattBed-Canada@main/images/mattbed-logo-header.png" alt="MattBed Canada logo" class="logo-img-footer">
+          <img src="https://cdn.jsdelivr.net/gh/mr-afzaal123/MattBed-Canada@main/images/mattbed-logo-header.png" alt="MattBed Canada logo" class="logo-img-footer" width="48" height="40" loading="lazy">
           <p>Affordable same-day mattress & bedframe delivery across Alberta & BC. Cash on delivery. Free delivery.</p>
         </div>
         <div class="footer-links"><h4>Cities</h4><ul><li><a href="edmonton.html">Edmonton</a></li><li><a href="calgary.html">Calgary</a></li><li><a href="vancouver.html">Vancouver</a></li><li><a href="reddeer.html">Red Deer</a></li></ul></div>
