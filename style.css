@@ -1589,3 +1589,10 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 @media (max-width: 767px) {
   table { display: block !important; overflow-x: auto !important; max-width: 100%; -webkit-overflow-scrolling: touch; }
 }
+
+/* Checkout form: keep inside the panel on small phones */
+.checkout-inner{grid-template-columns:minmax(0,1fr);}
+@media(min-width:680px){.checkout-inner{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);}}
+.checkout-form-col,.checkout-summary-col{min-width:0;}
+.checkout-panel input,.checkout-panel select,.checkout-panel textarea{min-width:0;max-width:100%;box-sizing:border-box;}
+@media(max-width:480px){.checkout-inner{padding:24px 16px;gap:24px;}}
