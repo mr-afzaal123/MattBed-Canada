@@ -790,31 +790,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initViewDetailButtons();
   updateCartBadge();
 });
-
-
-/* ── Sale countdown timer ─────────────────────────────────── */
-(function() {
-  function updateCountdown() {
-    // 24hr rolling countdown - resets each day at midnight Edmonton time
-    const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(23, 59, 59, 999);
-    const diff = midnight - now;
-    
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    
-    const hEl = document.getElementById('cd-h');
-    const mEl = document.getElementById('cd-m');
-    const sEl = document.getElementById('cd-s');
-    if (hEl) hEl.textContent = String(h).padStart(2,'0');
-    if (mEl) mEl.textContent = String(m).padStart(2,'0');
-    if (sEl) sEl.textContent = String(s).padStart(2,'0');
-    
-    const timerBar = document.getElementById('saleBarTimer');
-    if (timerBar) timerBar.textContent = `⏰ Ends in ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  }
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-})();
