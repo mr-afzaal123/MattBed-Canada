@@ -35,7 +35,7 @@ if (navToggle && nav) {
 const modal = document.getElementById('city-modal');
 if (modal) {
   const saved = localStorage.getItem('mc_city');
-  if (!saved) modal.style.display = 'flex';
+  // No automatic popup: visitors see prices and delivery info straight away.
   modal.querySelectorAll('.city-pick-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       localStorage.setItem('mc_city', btn.dataset.city);
@@ -189,6 +189,34 @@ if (header) {
       else filterBar.classList.remove('scrolled');
     }
   }, { passive: true });
+})();
+
+// ── Sticky WhatsApp CTA (all pages) ─────────
+(function () {
+  if (document.querySelector('.mb-wa-sticky')) return;
+  var p = (location.pathname || '').toLowerCase();
+  var map = { 'calgary': 'Calgary', 'edmonton': 'Edmonton', 'vancouver': 'Vancouver', 'reddeer': 'Red Deer', 'red-deer': 'Red Deer', 'toronto': 'Toronto' };
+  var found = {};
+  Object.keys(map).forEach(function (k) { if (p.indexOf(k) !== -1) found[map[k]] = 1; });
+  var cities = Object.keys(found);
+  var city = cities.length === 1 ? cities[0] : '';
+  if (!city) {
+    try {
+      var s = localStorage.getItem('mc_city');
+      var m2 = { calgary: 'Calgary', edmonton: 'Edmonton', vancouver: 'Vancouver', reddeer: 'Red Deer', toronto: 'Toronto' };
+      if (s && m2[s] && cities.length === 0) city = m2[s];
+    } catch (e) {}
+  }
+  var msg = "Hi, I'd like today's price for a mattress" + (city ? ' in ' + city : '') + '.';
+  var a = document.createElement('a');
+  a.className = 'mb-wa-sticky' + (document.querySelector('.whatsapp-float') ? ' mb-mobile-only' : '');
+  a.href = 'https://wa.me/15878389102?text=' + encodeURIComponent(msg);
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.setAttribute('aria-label', "WhatsApp for today's price");
+  a.innerHTML = '<span aria-hidden="true">💬</span> WhatsApp for Today\'s Price';
+  document.body.appendChild(a);
+  document.body.classList.add('mb-has-sticky');
 })();
 
 // Rotating sale bar messages

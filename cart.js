@@ -174,7 +174,7 @@ function renderCartDrawer() {
     <button onclick="openCheckout()" class="btn btn-primary" style="width:100%;padding:14px;font-size:15px;margin-top:16px;border-radius:12px;">
       Proceed to Checkout →
     </button>
-    <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Cash on delivery · ${deliveryLabel()}</p>`;
+    <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Cash on delivery · ${deliveryLabel()} · Check before you pay</p>`;
 }
 
 // ── Product Detail Modal ─────────────────────
@@ -187,11 +187,11 @@ function openProductDetail(card) {
 
   // Descriptions per product (keyed by first few words of name)
   const descriptions = {
-    'DreamBreeze': 'Breathable bamboo-certified cover with high-density supportive foam core. Naturally temperature-regulating and moisture-wicking — ideal for Canada\'s climate. Excellent pressure relief for back, side and stomach sleepers. Available in single/twin, double/full, queen and king.',
-    'CloudPillow': 'Luxuriously plush pillow top surface with certified bamboo cover and multiple deep foam layers. The extra depth gives a hotel-like sleeping experience. Perfect for those who prefer a softer, cloud-like feel. Available in single/twin through king.',
-    'LuxReve': 'Hotel-quality 14 inch EuroTop with individually wrapped pocket coils for zero motion transfer — ideal for couples. Deep cushioning layers with bamboo-certified fabric. The finest mattress in our collection, perfect for master bedrooms.',
+    'DreamBreeze': 'Breathable bamboo-fabric cover with high-density supportive foam core. Naturally temperature-regulating and moisture-wicking — ideal for Canada\'s climate. Excellent pressure relief for back, side and stomach sleepers. Available in single/twin, double/full, queen and king.',
+    'CloudPillow': 'Luxuriously plush pillow top surface with bamboo cover and multiple deep foam layers. The extra depth gives a hotel-like sleeping experience. Perfect for those who prefer a softer, cloud-like feel. Available in single/twin through king.',
+    'LuxReve': 'Hotel-quality 14 inch EuroTop with individually wrapped pocket coils for zero motion transfer — ideal for couples. Deep cushioning layers with bamboo-fabric fabric. The finest mattress in our collection, perfect for master bedrooms.',
     'DualFirm': 'Extra firm, double-sided high-density foam mattress, often called an orthopedic-style mattress. A firm, supportive surface with minimal sink that generally suits back and stomach sleepers and anyone who prefers a hard sleeping surface. Flip it over to extend its lifespan. Looking for a firm mattress for back pain? Comfort is personal; if you have ongoing back pain, ask your doctor or physiotherapist what firmness suits you.',
-    'OrganicRest': 'Certified organic cotton cover with supportive foam core. Natural, breathable and hypoallergenic — ideal for families with allergies or sensitivities. No synthetic materials, no off-gassing. Safe for children and adults alike.',
+    'OrganicRest': 'Organic cotton cover with supportive foam core. Natural, breathable and hypoallergenic — ideal for families with allergies or sensitivities. No synthetic materials, no off-gassing. Safe for children and adults alike.',
     'PureRest': 'Eco-friendly bamboo foam mattress available in 5", 7" and 9" thickness options. The most affordable mattress in our collection — perfect for newcomers, guest rooms and children\'s beds. Breathable bamboo fabric keeps you cool through the night.',
     'BoxFresh': 'Compressed and rolled for easy delivery through narrow hallways and apartment doors — simply unbox and it expands to full size within a few hours. 9 inch premium foam. Available in queen size with same-day delivery.',
     'RegalNight': 'Classic button-tufted upholstered headboard in faux leather. Strong and durable platform frame — no box spring required. Easy to assemble with all tools included. Adds elegance to any bedroom.',
@@ -227,7 +227,7 @@ function openProductDetail(card) {
   // Features list
   const features = [
     'Same-day delivery (order before 4pm)',
-    'Cash on delivery — pay when it arrives',
+    'Check your order when it arrives — then pay in cash',
     isVancouverDelivery() ? 'Delivery charges may apply by distance' : 'Free delivery — no hidden charges',
     'No advance payment or deposit required',
     'Easy assembly — all tools included'
@@ -296,6 +296,7 @@ function openProductDetail(card) {
           <div class="detail-trust">
             <span>🚚 Same-day</span>
             <span>💵 Cash on delivery</span>
+            <span>👀 Check before you pay</span>
             <span>${isVancouverDelivery() ? '📍 Charges may apply by distance' : '✅ Free delivery'}</span>
           </div>
           <div style="margin:20px 0 16px;">
@@ -313,7 +314,8 @@ function openProductDetail(card) {
           <button id="detail-add-btn" onclick="addToCartFromDetail()" class="btn btn-primary" style="width:100%;padding:14px;font-size:15px;margin-top:20px;border-radius:12px;">
             🛒 Add to Cart — $${sizes[0].price.toLocaleString()}
           </button>
-          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Pay cash when your order arrives at your door</p>
+          <a href="#" onclick="return waOrderFromDetail(event)" class="btn btn-wa" style="display:block;box-sizing:border-box;width:100%;padding:13px;font-size:15px;margin-top:10px;border-radius:12px;text-align:center;text-decoration:none;">💬 Order on WhatsApp</a>
+          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">Check your order at your door, then pay cash. No deposit.</p>
         </div>
       </div>
     </div>`;
@@ -326,6 +328,28 @@ function openProductDetail(card) {
 
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function mbCityLabel() {
+  var p = (location.pathname || '').toLowerCase();
+  var map = { 'calgary': 'Calgary', 'edmonton': 'Edmonton', 'vancouver': 'Vancouver', 'reddeer': 'Red Deer', 'toronto': 'Toronto' };
+  for (var k in map) { if (p.indexOf(k) !== -1) return map[k]; }
+  try { var s = localStorage.getItem('mc_city'); if (s && map[s]) return map[s]; } catch (e) {}
+  return '';
+}
+function waOrderFromDetail(ev) {
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var modal = document.getElementById('product-detail-modal');
+  var name = (modal && modal._productName) || 'a mattress';
+  var sel = document.querySelector('#detail-sizes .size-btn.selected');
+  var size = sel ? sel.dataset.size : '';
+  var price = sel ? sel.dataset.price : '';
+  var colBtn = document.querySelector('#detail-colors .size-btn.selected');
+  var color = colBtn ? colBtn.dataset.color : '';
+  var city = mbCityLabel();
+  var msg = "Hi, I'd like to order: " + name + (size ? ' — ' + size : '') + (color ? ' — ' + color : '') + (price ? ' ($' + price + ')' : '') + (city ? ' in ' + city : '') + '. My address and preferred delivery time: ';
+  window.open('https://wa.me/15878389102?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  return false;
 }
 
 function closeProductDetail() {
@@ -379,7 +403,7 @@ function openCheckout() {
       <div class="checkout-inner">
         <div class="checkout-form-col">
           <h2 style="font-size:1.3rem;color:var(--navy);margin-bottom:6px;">📦 Place Your Order</h2>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:24px;">Fill in your details and we'll deliver same day. Pay cash on delivery.</p>
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:24px;">Fill in your details and we'll confirm your delivery time. You check your order at your door, then pay cash.</p>
           <div class="form-group"><label>Full Name *</label><input type="text" id="co-name" placeholder="e.g. Ahmed Hassan" required></div>
           <div class="form-group"><label>Delivery Address *</label><input type="text" id="co-address" placeholder="Street address, unit number"></div>
           <div class="form-group"><label>City & Postal Code *</label><input type="text" id="co-postcode" placeholder="e.g. Calgary, AB T2P 1J9"></div>

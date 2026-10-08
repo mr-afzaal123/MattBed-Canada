@@ -1596,3 +1596,42 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .checkout-form-col,.checkout-summary-col{min-width:0;}
 .checkout-panel input,.checkout-panel select,.checkout-panel textarea{min-width:0;max-width:100%;box-sizing:border-box;}
 @media(max-width:480px){.checkout-inner{padding:24px 16px;gap:24px;}}
+
+
+/* ===== MattBed conversion additions (Oct 2026) ===== */
+.mb-wa-sticky{display:flex;position:fixed;right:20px;bottom:20px;z-index:7000;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-weight:700;font-size:15px;padding:12px 18px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.28);text-decoration:none;font-family:inherit}
+.mb-wa-sticky:hover{background:#128C7E;color:#fff}
+.mb-wa-sticky.mb-mobile-only{display:none}
+@media (max-width:767px){
+  .mb-wa-sticky.mb-mobile-only{display:flex}
+  .whatsapp-float{display:none!important}
+  .mb-wa-sticky{left:12px;right:12px;bottom:12px;border-radius:14px;padding:14px 16px;font-size:16px}
+  body.mb-has-sticky{padding-bottom:78px}
+  #back-to-top{bottom:84px!important}
+}
+.mb-hero-price{color:rgba(255,255,255,.92);font-size:15px;margin:0 auto 22px;max-width:660px;line-height:1.65;text-align:center}
+.mb-hero-price strong{color:var(--gold)}
+.mb-flow-section{padding:36px 0 8px}
+.mb-flow-section h2{text-align:center;font-size:1.6rem;margin-bottom:6px}
+.mb-flow-sub{text-align:center;color:var(--text-secondary);margin:0 auto 22px;max-width:640px;font-size:15px}
+.mb-flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mb-flow li{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center}
+.mb-flow li span{display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;align-items:center;justify-content:center;margin-bottom:8px}
+.mb-flow li strong{display:block;color:var(--navy);font-size:15px;margin-bottom:4px}
+.mb-flow li em{font-style:normal;font-size:13px;color:var(--text-secondary);line-height:1.45}
+@media (min-width:768px){.mb-flow{grid-template-columns:repeat(4,1fr)}}
+.mb-why-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px}
+@media (min-width:600px){.mb-why-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.mb-why-grid{grid-template-columns:repeat(3,1fr)}}
+.mb-why{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px}
+.mb-why .ic{font-size:26px;margin-bottom:6px}
+.mb-why h3{font-size:15px;color:var(--navy);margin:0 0 6px}
+.mb-why p{font-size:13.5px;color:var(--text-secondary);margin:0;line-height:1.55}
+.mb-table-wrap{overflow-x:auto;margin-top:18px}
+.mb-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);font-size:14px}
+.mb-table th,.mb-table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.mb-table th{background:#F8FAFC;color:var(--navy);font-size:13px}
+.mb-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.mb-note{text-align:center;color:var(--text-secondary);font-size:14px;max-width:680px;margin:16px auto 0;line-height:1.6}
+.btn-dark-outline{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn-dark-outline:hover{background:var(--navy);color:#fff}
