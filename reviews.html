@@ -120,7 +120,7 @@
   <div class="sale-announcement-bar">
     <div class="sale-bar-inner">
       <div class="bar-msg active">
-      <span>🚚 DreamBreeze Queen Mattress <strong>$240</strong> · Calgary &amp; Edmonton</span>
+      <span>🚚 DreamBreeze Queen Mattress <strong>$280</strong> · Calgary &amp; Edmonton</span>
       <a href="queen-mattress-sale-canada.html">Shop mattresses →</a>
       </div>
       <div class="bar-msg">
@@ -361,7 +361,7 @@
       if (!rating) { alert('Please select a star rating'); return; }
 
       const data = new FormData(form);
-      data.append('_subject', 'New Review — Mattbed Canada ⭐'.repeat(parseInt(rating)));
+      data.append('_subject', 'New Review (' + parseInt(rating) + '/5) — Mattbed Canada');
 
       try {
         const res = await fetch('https://formspree.io/f/meebzolk', {
