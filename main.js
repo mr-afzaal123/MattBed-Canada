@@ -194,6 +194,7 @@ if (header) {
 // ── Sticky WhatsApp CTA (all pages) ─────────
 (function () {
   if (document.querySelector('.mb-wa-sticky')) return;
+  if ((location.pathname || '').indexOf('weekend-sale') !== -1) return; // the sale page has its own order buttons
   var p = (location.pathname || '').toLowerCase();
   var map = { 'calgary': 'Calgary', 'edmonton': 'Edmonton', 'vancouver': 'Vancouver', 'reddeer': 'Red Deer', 'red-deer': 'Red Deer', 'toronto': 'Toronto' };
   var found = {};
@@ -229,4 +230,21 @@ if (header) {
     i = (i + 1) % msgs.length;
     msgs[i].classList.add('active');
   }, 4500);
+})();
+
+// ── Weekend Sale button (all pages) ─────────
+(function () {
+  var ONLY_FRI_TO_SUN = false; // set to true to show the button only on Friday, Saturday and Sunday
+  if (document.querySelector('.weekend-sale-btn')) return;
+  var inner = document.querySelector('.header-inner');
+  if (!inner) return;
+  if (ONLY_FRI_TO_SUN) {
+    var d = new Date().getDay();
+    if (d !== 5 && d !== 6 && d !== 0) return;
+  }
+  var a = document.createElement('a');
+  a.className = 'weekend-sale-btn';
+  a.href = 'weekend-sale.html';
+  a.textContent = '🏷 Weekend Sale';
+  inner.insertBefore(a, inner.querySelector('.nav-toggle'));
 })();
