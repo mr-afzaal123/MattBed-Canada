@@ -1,25 +1,93 @@
 {
   "redirects": [
-    {"source": "/weekend-mattress-sale-calgary-edmonton-vancouver.html", "destination": "/mattress-prices-calgary-edmonton-2026.html", "permanent": true},
-    {"source": "/mattressdeliveryvancouverbc.html", "destination": "/mattress-delivery-vancouver-bc.html", "permanent": true},
-    {"source": "/mattress-delivery-vancouver-bc", "destination": "/mattress-delivery-vancouver-bc.html", "permanent": true},
-    {"source": "/bestmattressdeliveryedmonton.html", "destination": "/best-mattress-delivery-edmonton.html", "permanent": true},
-    {"source": "/best-mattress-delivery-edmonton", "destination": "/best-mattress-delivery-edmonton.html", "permanent": true},
-    {"source": "/best-mattress-delivery-calgary", "destination": "/best-mattress-delivery-calgary.html", "permanent": true},
-    {"source": "/Mattressfornewcomers.html", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
-    {"source": "/mattressfornewcomers.html", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
-    {"source": "/mattress-for-newcomers-canada", "destination": "/mattress-for-newcomers-canada.html", "permanent": true},
-    {"source": "/red-deer.html", "destination": "/reddeer.html", "permanent": true},
-    {"source": "/cheap-mattress-delivery-canada.html", "destination": "/affordable-mattress-delivery-edmonton-calgary.html", "permanent": true}
+    {
+      "source": "/weekend-mattress-sale-calgary-edmonton-vancouver.html",
+      "destination": "/mattress-prices-calgary-edmonton-2026.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattressdeliveryvancouverbc.html",
+      "destination": "/mattress-delivery-vancouver-bc.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattress-delivery-vancouver-bc",
+      "destination": "/mattress-delivery-vancouver-bc.html",
+      "permanent": true
+    },
+    {
+      "source": "/bestmattressdeliveryedmonton.html",
+      "destination": "/best-mattress-delivery-edmonton.html",
+      "permanent": true
+    },
+    {
+      "source": "/best-mattress-delivery-edmonton",
+      "destination": "/best-mattress-delivery-edmonton.html",
+      "permanent": true
+    },
+    {
+      "source": "/best-mattress-delivery-calgary",
+      "destination": "/best-mattress-delivery-calgary.html",
+      "permanent": true
+    },
+    {
+      "source": "/Mattressfornewcomers.html",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattressfornewcomers.html",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/mattress-for-newcomers-canada",
+      "destination": "/mattress-for-newcomers-canada.html",
+      "permanent": true
+    },
+    {
+      "source": "/red-deer.html",
+      "destination": "/reddeer.html",
+      "permanent": true
+    },
+    {
+      "source": "/cheap-mattress-delivery-canada.html",
+      "destination": "/affordable-mattress-delivery-edmonton-calgary.html",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "X-Content-Type-Options", "value": "nosniff"},
-        {"key": "X-Frame-Options", "value": "SAMEORIGIN"},
-        {"key": "X-XSS-Protection", "value": "1; mode=block"},
-        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"}
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms https://*.clarity.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://formspree.io https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.clarity.ms https://c.bing.com https://*.doubleclick.net https://www.google.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'self'"
+        }
       ]
     }
   ]
