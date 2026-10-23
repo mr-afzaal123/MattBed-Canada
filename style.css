@@ -1635,3 +1635,5 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .mb-note{text-align:center;color:var(--text-secondary);font-size:14px;max-width:680px;margin:16px auto 0;line-height:1.6}
 .btn-dark-outline{background:transparent;color:var(--navy);border:2px solid var(--navy)}
 .btn-dark-outline:hover{background:var(--navy);color:#fff}
+
+@media (prefers-reduced-motion: reduce) { .weekend-sale-btn { animation: none; } }
