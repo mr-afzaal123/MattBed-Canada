@@ -208,14 +208,14 @@ if (header) {
       if (s && m2[s] && cities.length === 0) city = m2[s];
     } catch (e) {}
   }
-  var msg = "Hi, I'd like today's price for a mattress" + (city ? ' in ' + city : '') + '.';
+  var msg = "Hi, I'd like to ask about deals and discounts on a mattress" + (city ? ' in ' + city : '') + '.';
   var a = document.createElement('a');
   a.className = 'mb-wa-sticky' + (document.querySelector('.whatsapp-float') ? ' mb-mobile-only' : '');
   a.href = 'https://wa.me/15878389102?text=' + encodeURIComponent(msg);
   a.target = '_blank';
   a.rel = 'noopener';
-  a.setAttribute('aria-label', "WhatsApp for today's price");
-  a.innerHTML = '<span aria-hidden="true">💬</span> WhatsApp for Today\'s Price';
+  a.setAttribute('aria-label', 'WhatsApp for deals and discounts');
+  a.innerHTML = '<span aria-hidden="true">💬</span> WhatsApp for Deals &amp; Discounts';
   document.body.appendChild(a);
   document.body.classList.add('mb-has-sticky');
 })();
@@ -242,9 +242,22 @@ if (header) {
     var d = new Date().getDay();
     if (d !== 5 && d !== 6 && d !== 0) return;
   }
-  var a = document.createElement('a');
-  a.className = 'weekend-sale-btn';
-  a.href = 'weekend-sale.html';
-  a.textContent = '🔥 Weekend Sale';
-  inner.insertBefore(a, inner.querySelector('.nav-toggle'));
+  // phones: next to the menu icon
+  var m = document.createElement('a');
+  m.className = 'weekend-sale-btn weekend-sale-mobile';
+  m.href = 'weekend-sale.html';
+  m.textContent = '🔥 Weekend Sale';
+  inner.insertBefore(m, inner.querySelector('.nav-toggle'));
+  // computers: last item in the menu row
+  var ul = document.querySelector('#nav > ul') || document.querySelector('.nav > ul');
+  if (ul) {
+    var li = document.createElement('li');
+    li.className = 'weekend-sale-li';
+    var a2 = document.createElement('a');
+    a2.className = 'weekend-sale-btn weekend-sale-desktop';
+    a2.href = 'weekend-sale.html';
+    a2.textContent = '🔥 Weekend Sale';
+    li.appendChild(a2);
+    ul.appendChild(li);
+  }
 })();
