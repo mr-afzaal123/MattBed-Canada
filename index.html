@@ -29,8 +29,6 @@
   </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=60&auto=format" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,10 +42,7 @@
       position: absolute;
       inset: 0;
       background-color: #0A1628;
-      background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=60&auto=format');
-      background-size: cover;
-      background-position: center top;
-      filter: brightness(0.3) saturate(0.8);
+      background-image: radial-gradient(ellipse at 20% 0%, #1A3A6B 0%, rgba(26,58,107,0) 55%), linear-gradient(180deg, #0F2142 0%, #0A1628 100%);
       z-index: 0;
     }
     .hero {
@@ -128,11 +123,12 @@
 
     /* Newcomers section background */
     .newcomers-section {
-      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80');
+      background-color: #0A1628;
       background-size: cover;
       background-position: center;
       position: relative;
     }
+    .newcomers-section.bg-loaded { background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80'); }
     .newcomers-section::before {
       content: '';
       position: absolute;
@@ -282,7 +278,7 @@
       <div class="city-grid">
 
         <a href="edmonton.html" class="city-card fade-up delay-1" onclick="localStorage.setItem('mc_city','edmonton')">
-          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');">
+          <div class="city-card-img" data-bg="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80">
             <div class="city-card-img-inner">
               <span class="city-name">Edmonton</span><br>
               <span class="city-province">Alberta · AB</span>
@@ -295,7 +291,7 @@
         </a>
 
         <a href="calgary.html" class="city-card fade-up delay-2" onclick="localStorage.setItem('mc_city','calgary')">
-          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80');">
+          <div class="city-card-img" data-bg="https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80">
             <div class="city-card-img-inner">
               <span class="city-name">Calgary</span><br>
               <span class="city-province">Alberta · AB</span>
@@ -308,7 +304,7 @@
         </a>
 
         <a href="vancouver.html" class="city-card fade-up delay-3" onclick="localStorage.setItem('mc_city','vancouver')">
-          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1559511260-66a654ae982a?w=600&q=80');">
+          <div class="city-card-img" data-bg="https://images.unsplash.com/photo-1559511260-66a654ae982a?w=600&q=80">
             <div class="city-card-img-inner">
               <span class="city-name">Vancouver</span><br>
               <span class="city-province">British Columbia · BC</span>
@@ -321,7 +317,7 @@
         </a>
 
         <a href="reddeer.html" class="city-card fade-up delay-4" onclick="localStorage.setItem('mc_city','reddeer')">
-          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80');">
+          <div class="city-card-img" data-bg="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80">
             <div class="city-card-img-inner">
               <span class="city-name">Red Deer</span><br>
               <span class="city-province">Alberta · AB</span>
@@ -334,7 +330,7 @@
         </a>
 
         <a href="toronto.html" class="city-card fade-up delay-5" onclick="localStorage.setItem('mc_city','toronto')">
-          <div class="city-card-img" style="background-image:url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80');">
+          <div class="city-card-img" data-bg="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80">
             <div class="city-card-img-inner">
               <span class="city-name">Toronto</span><br>
               <span class="city-province">Ontario · GTA</span>
@@ -359,7 +355,7 @@
       <div class="cat-grid">
 
         <a href="#cities" class="cat-card fade-up delay-1">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80">
             <span class="cat-photo-icon">🛏</span>
           </div>
           <div class="cat-info">
@@ -369,7 +365,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-2">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=400&q=80">
             <span class="cat-photo-icon">🧠</span>
           </div>
           <div class="cat-info">
@@ -379,7 +375,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-3">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=400&q=80">
             <span class="cat-photo-icon">💪</span>
           </div>
           <div class="cat-info">
@@ -389,7 +385,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-4">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?w=400&q=80">
             <span class="cat-photo-icon">☁️</span>
           </div>
           <div class="cat-info">
@@ -399,7 +395,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-1">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=80">
             <span class="cat-photo-icon">🪵</span>
           </div>
           <div class="cat-info">
@@ -409,7 +405,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-2">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=80">
             <span class="cat-photo-icon">📦</span>
           </div>
           <div class="cat-info">
@@ -419,7 +415,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-3">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80">
             <span class="cat-photo-icon">🛋</span>
           </div>
           <div class="cat-info">
@@ -429,7 +425,7 @@
         </a>
 
         <a href="#cities" class="cat-card fade-up delay-4">
-          <div class="cat-card-photo" style="background-image:url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80');">
+          <div class="cat-card-photo" data-bg="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=400&q=80">
             <span class="cat-photo-icon">🗄</span>
           </div>
           <div class="cat-info">
@@ -708,5 +704,15 @@
   <a href="https://wa.me/15878389102" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 2.667c-7.364 0-13.334 5.97-13.334 13.334 0 2.353.615 4.66 1.783 6.686L2.667 29.333l6.83-1.79a13.27 13.27 0 0 0 6.504 1.657h.006c7.363 0 13.333-5.97 13.333-13.334 0-3.562-1.387-6.912-3.905-9.43a13.246 13.246 0 0 0-9.434-3.769zm0 24.4h-.005a11.05 11.05 0 0 1-5.634-1.543l-.404-.24-4.053 1.063 1.082-3.951-.263-.406a11.02 11.02 0 0 1-1.69-5.889c0-6.104 4.966-11.07 11.072-11.07a11 11 0 0 1 7.83 3.246 10.998 10.998 0 0 1 3.239 7.83c0 6.104-4.967 11.07-11.174 11.07zm6.073-8.29c-.333-.167-1.966-.97-2.271-1.081-.305-.111-.527-.167-.749.167s-.86 1.08-1.054 1.303c-.194.222-.388.25-.72.083-.334-.167-1.409-.52-2.684-1.657-.992-.885-1.663-1.979-1.858-2.312-.194-.334-.021-.514.146-.68.15-.15.334-.389.5-.583.167-.194.222-.334.334-.556.111-.222.055-.417-.028-.583-.083-.167-.75-1.806-1.027-2.474-.271-.65-.545-.562-.75-.573l-.638-.011a1.226 1.226 0 0 0-.887.417c-.305.334-1.166 1.14-1.166 2.78s1.194 3.223 1.36 3.446c.167.222 2.35 3.588 5.694 5.032.796.343 1.417.549 1.901.703.799.254 1.526.218 2.101.132.641-.096 1.966-.803 2.243-1.58.278-.775.278-1.44.194-1.579-.083-.14-.305-.222-.638-.389z"/></svg>
   </a>
+<script>
+/* Load the photo backgrounds below the first screen only when they are about to be seen */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-bg], .newcomers-section'));
+  function load(e){ if(e.hasAttribute('data-bg')){ e.style.backgroundImage="url('"+e.getAttribute('data-bg')+"')"; } else { e.classList.add('bg-loaded'); } }
+  if(!('IntersectionObserver' in window)){ els.forEach(load); return; }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(x){ if(x.isIntersecting){ load(x.target); io.unobserve(x.target); } }); },{rootMargin:'400px 0px'});
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
 </body>
 </html>
