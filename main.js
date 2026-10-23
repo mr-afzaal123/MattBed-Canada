@@ -245,6 +245,6 @@ if (header) {
   var a = document.createElement('a');
   a.className = 'weekend-sale-btn';
   a.href = 'weekend-sale.html';
-  a.textContent = '🏷 Weekend Sale';
+  a.textContent = '🔥 Weekend Sale';
   inner.insertBefore(a, inner.querySelector('.nav-toggle'));
 })();
