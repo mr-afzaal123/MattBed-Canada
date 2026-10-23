@@ -724,6 +724,7 @@ Order placed via mattressbedframe.ca
       })
     });
     if (response.ok) {
+      try { if (window.gtag) gtag('event', 'order_placed', { value: total, currency: 'CAD', page_path: location.pathname }); } catch (e) {}
       showOrderSuccess(name, total);
       cart = [];
       appliedPromo = null;
