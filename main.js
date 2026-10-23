@@ -268,3 +268,16 @@ if (header) {
     ul.appendChild(li);
   }
 })();
+
+
+// ── Google Analytics: count WhatsApp taps (which page and which button) ─────────
+document.addEventListener('click', function (e) {
+  try {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+    if (!a || !window.gtag) return;
+    gtag('event', 'whatsapp_click', {
+      page_path: location.pathname,
+      link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60)
+    });
+  } catch (err) {}
+}, true);
