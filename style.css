@@ -1645,3 +1645,6 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   .nav ul li a.weekend-sale-btn { display: inline-block; padding: 8px 14px; margin: 0 0 0 10px; color: #fff; font-size: 13px; animation: none; }
 }
 @media (max-width: 767px) { .nav .weekend-sale-li { display: none; } }
+
+/* Weekend Sale button pulse: use transform (smooth on phones) instead of animating box-shadow */
+@keyframes weekendPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
