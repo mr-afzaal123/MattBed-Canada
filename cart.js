@@ -624,15 +624,24 @@ function isValidEmailCO(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// Escape text before it is placed into HTML (stops script injection through form fields)
+function escapeHtml(v) {
+  return String(v).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+
+let lastOrderAt = 0;
+
 async function placeOrder() {
-  const name = document.getElementById('co-name').value.trim();
-  const address = document.getElementById('co-address').value.trim();
-  const postcode = document.getElementById('co-postcode').value.trim();
+  const name = document.getElementById('co-name').value.trim().slice(0, 100);
+  const address = document.getElementById('co-address').value.trim().slice(0, 250);
+  const postcode = document.getElementById('co-postcode').value.trim().slice(0, 20);
   const phoneCode = document.getElementById('co-phone-code').value;
   const phoneRaw = document.getElementById('co-phone').value.trim();
   const hasWhatsapp = document.getElementById('co-has-whatsapp').checked;
-  const email = document.getElementById('co-email').value.trim();
-  const notes = document.getElementById('co-notes').value.trim();
+  const email = document.getElementById('co-email').value.trim().slice(0, 150);
+  const notes = document.getElementById('co-notes').value.trim().slice(0, 600);
 
   if (!name || !address || !postcode || !phoneRaw) {
     alert('Please fill in all required fields: Name, Address, Postal Code and Phone.');
@@ -651,6 +660,8 @@ async function placeOrder() {
     return;
   }
   if (cart.length === 0) { alert('Your cart is empty.'); return; }
+  if (Date.now() - lastOrderAt < 30000) { alert('Your order was just sent. Please wait a few seconds before sending another one.'); return; }
+  lastOrderAt = Date.now();
 
   const phone = `${phoneCode} ${phoneRaw}`;
   const whatsappStatus = hasWhatsapp ? 'Yes' : 'No — use email instead';
@@ -737,7 +748,7 @@ function showOrderSuccess(name, total) {
     <div class="success-box">
       <div style="font-size:56px;margin-bottom:16px;">🎉</div>
       <h2 style="color:var(--navy);margin-bottom:10px;">Order Placed!</h2>
-      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px;">Thank you <strong>${name}</strong> for placing your order!</p>
+      <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px;">Thank you <strong>${escapeHtml(name)}</strong> for placing your order!</p>
       <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px;">Your order of <strong>$${total.toLocaleString()} CAD</strong> has been received. You will soon receive a text message on your provided phone number confirming your order and delivery details.</p>
       <div style="background:var(--navy-pale);border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:var(--text-secondary);text-align:left;">
         📱 <strong>Confirmation:</strong> Sent via text message<br>
