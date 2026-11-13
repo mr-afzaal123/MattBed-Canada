@@ -469,6 +469,7 @@
           headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
+          try { if (window.gtag) gtag('event', 'review_submitted', { rating: parseInt(rating), page_path: location.pathname }); } catch (e) {}
           form.style.display = 'none';
           document.getElementById('successMsg').classList.add('show');
         } else {
