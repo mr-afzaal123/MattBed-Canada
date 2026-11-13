@@ -680,7 +680,7 @@ async function placeOrder() {
   const city = localStorage.getItem('mc_city') || 'Not specified';
 
   const orderText = `
-NEW ORDER — Mattbed Canada
+NEW ORDER — MattBed Canada
 ==========================
 CUSTOMER DETAILS
 Name: ${name}
