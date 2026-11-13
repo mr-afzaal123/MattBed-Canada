@@ -1,4 +1,4 @@
-# Mattbed Canada - mattressbedframe.ca
+# MattBed Canada - mattressbedframe.ca
 # Search engines and AI assistants are welcome to read and cite this site.
 
 User-agent: *
