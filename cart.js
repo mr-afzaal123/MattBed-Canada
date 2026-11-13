@@ -57,7 +57,17 @@ function updateCartBadge() {
   });
 }
 
+// ── Analytics helper (no personal data is ever sent) ──
+function trackEvent(name, params) {
+  try { if (window.gtag) gtag('event', name, params || {}); } catch (e) {}
+}
+
 function addToCart(product) {
+  trackEvent('add_to_cart', {
+    item_name: product.name, item_category: product.category || '', item_variant: product.size || '',
+    value: product.price, currency: 'CAD', page_path: location.pathname,
+    items: [{ item_name: product.name, item_variant: product.size || '', price: product.price, quantity: 1 }]
+  });
   const existing = cart.find(i => i.name === product.name && i.size === product.size && i.color === product.color);
   if (existing) { existing.qty += 1; }
   else { cart.push({ ...product, qty: 1, id: Date.now() + Math.random() }); }
@@ -184,6 +194,7 @@ function openProductDetail(card) {
   const cat = card.querySelector('.product-cat-tag')?.textContent || '';
   const img = card.querySelector('.product-img img')?.src || '';
   const badge = card.querySelector('.product-badge')?.textContent || '';
+  trackEvent('view_product', { item_name: name.trim().slice(0, 80), item_category: cat.trim().slice(0, 40), page_path: location.pathname });
 
   // Descriptions per product (keyed by first few words of name)
   const descriptions = {
@@ -361,8 +372,15 @@ function selectDetailSize(btn) {
   document.getElementById('detail-sizes').querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   const price = parseInt(btn.dataset.price);
-  document.getElementById('detail-price').innerHTML = `$${price.toLocaleString()} <span>CAD · cash on delivery</span>`;
-  document.getElementById('detail-add-btn').textContent = `🛒 Add to Cart — $${price.toLocaleString()}`;
+  const nowEl = document.querySelector('#product-detail-modal .detail-sale-now');
+  if (nowEl) nowEl.textContent = `$${price.toLocaleString()}`;
+  const wasEl = document.querySelector('#product-detail-modal .detail-sale-was');
+  const saveEl = document.querySelector('#product-detail-modal .detail-sale-save');
+  const orig = btn.dataset.orig ? parseInt(btn.dataset.orig) : 0;
+  if (wasEl) { wasEl.textContent = orig ? `$${orig.toLocaleString()}` : ''; wasEl.style.display = orig ? '' : 'none'; }
+  if (saveEl) { saveEl.textContent = orig ? `Save $${(orig - price).toLocaleString()}` : ''; saveEl.style.display = orig ? '' : 'none'; }
+  const addBtn = document.getElementById('detail-add-btn');
+  if (addBtn) addBtn.textContent = `🛒 Add to Cart — $${price.toLocaleString()}`;
 }
 
 function selectDetailColor(btn) {
@@ -389,6 +407,11 @@ function addToCartFromDetail() {
 
 // ── Checkout Modal ───────────────────────────
 function openCheckout() {
+  try {
+    var _total = cart.reduce(function (s, i) { return s + (i.price * i.qty); }, 0);
+    var _items = cart.reduce(function (s, i) { return s + i.qty; }, 0);
+    trackEvent('begin_checkout', { value: _total, currency: 'CAD', item_count: _items, page_path: location.pathname });
+  } catch (e) {}
   closeCart();
   let modal = document.getElementById('checkout-modal');
   if (!modal) {
