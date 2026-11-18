@@ -19,27 +19,81 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Same-Day Mattress Delivery vs. Online Mattress Brands in the GTA 2026",
-    "description": "A comparison of same-day, cash-on-delivery mattress shopping against major online mattress brands' delivery timelines in the Greater Toronto Area.",
-    "author": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "publisher": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.mattressbedframe.ca/same-day-vs-online-mattress-brands-gta.html"}
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Same-Day Mattress Delivery vs. Online Mattress Brands in the GTA 2026",
+  "description": "A comparison of same-day, cash-on-delivery mattress shopping against major online mattress brands' delivery timelines in the Greater Toronto Area.",
+  "author": {
+    "@id": "https://www.mattressbedframe.ca/#business"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.mattressbedframe.ca/#business",
+    "name": "MattBed Canada",
+    "url": "https://www.mattressbedframe.ca/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn.jsdelivr.net/gh/mr-afzaal123/MattBed-Canada@main/images/mattbed-logo-header.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattressbedframe.ca/same-day-vs-online-mattress-brands-gta.html"
+  },
+  "inLanguage": "en-CA",
+  "isPartOf": {
+    "@id": "https://www.mattressbedframe.ca/#website"
+  },
+  "image": "https://www.mattressbedframe.ca/apple-touch-icon.png"
+}
   </script>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"How long does mattress delivery take with Endy, Douglas, or Casper in the GTA?","acceptedAnswer":{"@type":"Answer","text":"Major online mattress brands sold in Canada, including Endy, Douglas, Casper and Silk & Snow, typically deliver within 3 to 10 business days, since mattresses are compressed and shipped by courier from a central warehouse. None of these brands offer same-day delivery in the GTA."}},
-      {"@type":"Question","name":"Is there a mattress company with same-day delivery in Toronto or the GTA?","acceptedAnswer":{"@type":"Answer","text":"Yes. MattBed Canada offers same-day mattress delivery across Toronto and the GTA, including Mississauga, Brampton, Vaughan, Markham, Oakville, Milton and Bolton, when ordered before 4pm. This is faster than any major online mattress brand currently shipping to Canada."}},
-      {"@type":"Question","name":"Do I have to pay online before a same-day mattress arrives?","acceptedAnswer":{"@type":"Answer","text":"No. MattBed Canada operates on cash on delivery — you inspect the mattress at your door before paying, with no credit card or online payment required in advance. Online brands require full payment at checkout, before you've seen the product."}},
-      {"@type":"Question","name":"Are same-day mattresses cheaper than Endy, Douglas or Sleep Country?","acceptedAnswer":{"@type":"Answer","text":"MattBed Canada's SleepMore mattress line in the GTA starts at $70 for a basic foam single, with most sizes and firmness levels priced well under $300. Major online brands typically start around $675-$800 for a queen mattress, reflecting a different quality tier and brand positioning."}},
-      {"@type":"Question","name":"What if I need a mattress today because I'm moving into a new apartment?","acceptedAnswer":{"@type":"Answer","text":"Same-day delivery is designed exactly for this situation. Order before 4pm and a mattress can arrive at your new address the same day, which online brands with multi-day shipping cannot match."}}
-    ]
-  }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does mattress delivery take with Endy, Douglas, or Casper in the GTA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Major online mattress brands sold in Canada, including Endy, Douglas, Casper and Silk & Snow, typically deliver within 3 to 10 business days, since mattresses are compressed and shipped by courier from a central warehouse. None of these brands offer same-day delivery in the GTA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a mattress company with same-day delivery in Toronto or the GTA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. MattBed Canada offers same-day mattress delivery across Toronto and the GTA, including Mississauga, Brampton, Vaughan, Markham, Oakville, Milton and Bolton, when ordered before 4pm. This is faster than any major online mattress brand currently shipping to Canada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to pay online before a same-day mattress arrives?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. MattBed Canada operates on cash on delivery — you inspect the mattress at your door before paying, with no credit card or online payment required in advance. Online brands require full payment at checkout, before you've seen the product."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are same-day mattresses cheaper than Endy, Douglas or Sleep Country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MattBed Canada's SleepMore mattress line in the GTA starts at $70 for a basic foam single, with most sizes and firmness levels priced well under $300. Major online brands typically start around $675-$800 for a queen mattress, reflecting a different quality tier and brand positioning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I need a mattress today because I'm moving into a new apartment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Same-day delivery is designed exactly for this situation. Order before 4pm and a mattress can arrive at your new address the same day, which online brands with multi-day shipping cannot match."
+      }
+    }
+  ]
+}
   </script>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -98,6 +152,9 @@
     .faq-a.open{padding:14px 17px;max-height:320px;}
     .faq-a p{font-size:14px;color:#4A5568;line-height:1.75;margin:0;}
   </style>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mattressbedframe.ca/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mattressbedframe.ca/blog.html"}, {"@type": "ListItem", "position": 3, "name": "Same-Day Mattress Delivery vs. Online Mattress Brands in the GTA", "item": "https://www.mattressbedframe.ca/same-day-vs-online-mattress-brands-gta.html"}]}
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

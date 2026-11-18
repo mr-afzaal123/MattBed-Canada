@@ -19,27 +19,81 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Foam vs Bamboo vs Orthopaedic vs Pocket Coil: GTA Mattress Type Guide",
-    "description": "A research-backed comparison of mattress types available in the GTA, including what the term orthopedic actually means and how to match a type to your sleep needs.",
-    "author": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "publisher": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.mattressbedframe.ca/mattress-type-guide-gta.html"}
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Foam vs Bamboo vs Orthopaedic vs Pocket Coil: GTA Mattress Type Guide",
+  "description": "A research-backed comparison of mattress types available in the GTA, including what the term orthopedic actually means and how to match a type to your sleep needs.",
+  "author": {
+    "@id": "https://www.mattressbedframe.ca/#business"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.mattressbedframe.ca/#business",
+    "name": "MattBed Canada",
+    "url": "https://www.mattressbedframe.ca/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn.jsdelivr.net/gh/mr-afzaal123/MattBed-Canada@main/images/mattbed-logo-header.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattressbedframe.ca/mattress-type-guide-gta.html"
+  },
+  "inLanguage": "en-CA",
+  "isPartOf": {
+    "@id": "https://www.mattressbedframe.ca/#website"
+  },
+  "image": "https://www.mattressbedframe.ca/apple-touch-icon.png"
+}
   </script>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"What does \"orthopedic mattress\" actually mean?","acceptedAnswer":{"@type":"Answer","text":"\"Orthopedic\" is not a regulated or certified term for mattresses in Canada — it's a marketing description. What actually matters for back support is medium-firm support and proper spinal alignment, which research has associated with better outcomes for back pain than very firm or very soft mattresses."}},
-      {"@type":"Question","name":"Is pocket coil or foam better for a mattress?","acceptedAnswer":{"@type":"Answer","text":"Neither is universally better — it depends on preference. Pocket coil mattresses offer better airflow (sleeping cooler), more bounce, and strong edge support, individually wrapped coils. Foam mattresses offer better motion isolation and pressure-relieving contouring, generally at a lower cost, but can retain more heat."}},
-      {"@type":"Question","name":"What is the difference between high density foam and regular foam?","acceptedAnswer":{"@type":"Answer","text":"High density foam uses denser, more compact foam layers, which creates a firmer feel and generally more durable support over time compared to lower-density foam of the same thickness."}},
-      {"@type":"Question","name":"Is a bamboo mattress different from a regular foam mattress?","acceptedAnswer":{"@type":"Answer","text":"Bamboo mattresses typically use a bamboo-derived fabric or fiber in the cover or comfort layer, often chosen for breathability and a cooler sleep surface, while the core support structure can still be foam."}},
-      {"@type":"Question","name":"Which mattress type is best for couples?","acceptedAnswer":{"@type":"Answer","text":"Pocket coil mattresses are often preferred by couples because each coil moves independently, isolating motion from one side of the bed to the other better than continuous coil systems. Foam mattresses also isolate motion well, through material absorption rather than independent coils."}}
-    ]
-  }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does \"orthopedic mattress\" actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "\"Orthopedic\" is not a regulated or certified term for mattresses in Canada — it's a marketing description. What actually matters for back support is medium-firm support and proper spinal alignment, which research has associated with better outcomes for back pain than very firm or very soft mattresses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is pocket coil or foam better for a mattress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Neither is universally better — it depends on preference. Pocket coil mattresses offer better airflow (sleeping cooler), more bounce, and strong edge support, individually wrapped coils. Foam mattresses offer better motion isolation and pressure-relieving contouring, generally at a lower cost, but can retain more heat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between high density foam and regular foam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "High density foam uses denser, more compact foam layers, which creates a firmer feel and generally more durable support over time compared to lower-density foam of the same thickness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a bamboo mattress different from a regular foam mattress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bamboo mattresses typically use a bamboo-derived fabric or fiber in the cover or comfort layer, often chosen for breathability and a cooler sleep surface, while the core support structure can still be foam."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which mattress type is best for couples?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pocket coil mattresses are often preferred by couples because each coil moves independently, isolating motion from one side of the bed to the other better than continuous coil systems. Foam mattresses also isolate motion well, through material absorption rather than independent coils."
+      }
+    }
+  ]
+}
   </script>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -97,6 +151,9 @@
     .faq-a.open{padding:14px 17px;max-height:320px;}
     .faq-a p{font-size:14px;color:#4A5568;line-height:1.75;margin:0;}
   </style>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mattressbedframe.ca/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mattressbedframe.ca/blog.html"}, {"@type": "ListItem", "position": 3, "name": "Foam vs Bamboo vs Orthopaedic vs Pocket Coil", "item": "https://www.mattressbedframe.ca/mattress-type-guide-gta.html"}]}
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

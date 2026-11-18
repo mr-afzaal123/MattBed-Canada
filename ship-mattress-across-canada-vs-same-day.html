@@ -18,27 +18,81 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Shipping a Mattress Across Canada vs Same-Day Local Delivery",
-    "description": "How long cross-Canada mattress shipping actually takes, and when same-day local delivery is a faster alternative.",
-    "author": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "publisher": {"@type": "Organization", "name": "MattBed Canada", "url": "https://www.mattressbedframe.ca"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.mattressbedframe.ca/ship-mattress-across-canada-vs-same-day.html"}
-  }
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Shipping a Mattress Across Canada vs Same-Day Local Delivery",
+  "description": "How long cross-Canada mattress shipping actually takes, and when same-day local delivery is a faster alternative.",
+  "author": {
+    "@id": "https://www.mattressbedframe.ca/#business"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.mattressbedframe.ca/#business",
+    "name": "MattBed Canada",
+    "url": "https://www.mattressbedframe.ca/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cdn.jsdelivr.net/gh/mr-afzaal123/MattBed-Canada@main/images/mattbed-logo-header.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.mattressbedframe.ca/ship-mattress-across-canada-vs-same-day.html"
+  },
+  "inLanguage": "en-CA",
+  "isPartOf": {
+    "@id": "https://www.mattressbedframe.ca/#website"
+  },
+  "image": "https://www.mattressbedframe.ca/apple-touch-icon.png"
+}
   </script>
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"How long does it take to ship a mattress across Canada?","acceptedAnswer":{"@type":"Answer","text":"Most Canada-wide mattress shipping combines 1-6 business days of processing before the order ships, plus 1-4 business days of courier transit once it does, for a realistic total of roughly 3 to 10 business days depending on the retailer and your location. Western Canada (Alberta, BC) typically sees longer transit times than Ontario and Quebec, since most national retailers ship from Ontario."}},
-      {"@type":"Question","name":"Is same-day mattress delivery available instead of cross-Canada shipping?","acceptedAnswer":{"@type":"Answer","text":"It depends on your city. MattBed Canada offers same-day delivery (order before 4pm) in Calgary, Edmonton, Vancouver, Red Deer and Toronto/GTA, which is faster than cross-Canada courier shipping for customers already located in those cities."}},
-      {"@type":"Question","name":"Do box springs and bedframes ship the same way as mattresses?","acceptedAnswer":{"@type":"Answer","text":"Not usually. Roll-packed mattresses can ship by courier, but box springs, foundations and many bedframes don't compress the same way and often ship by freight instead, which is typically slower than courier shipping."}},
-      {"@type":"Question","name":"Why would same-day local delivery be better than free cross-Canada shipping?","acceptedAnswer":{"@type":"Answer","text":"Free shipping doesn't mean fast shipping. If a mattress ships from a warehouse in another province, 'free' shipping can still take a week or more to arrive, while same-day local delivery (where available) gets it to you the same day you order, for a comparable or lower price."}},
-      {"@type":"Question","name":"Which Canadian cities does MattBed Canada deliver to same-day?","acceptedAnswer":{"@type":"Answer","text":"Calgary, Edmonton, Vancouver, Red Deer, and Toronto/GTA including Mississauga, Brampton, Vaughan, Markham, Oakville, Milton and Bolton."}}
-    ]
-  }
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to ship a mattress across Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most Canada-wide mattress shipping combines 1-6 business days of processing before the order ships, plus 1-4 business days of courier transit once it does, for a realistic total of roughly 3 to 10 business days depending on the retailer and your location. Western Canada (Alberta, BC) typically sees longer transit times than Ontario and Quebec, since most national retailers ship from Ontario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is same-day mattress delivery available instead of cross-Canada shipping?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on your city. MattBed Canada offers same-day delivery (order before 4pm) in Calgary, Edmonton, Vancouver, Red Deer and Toronto/GTA, which is faster than cross-Canada courier shipping for customers already located in those cities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do box springs and bedframes ship the same way as mattresses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not usually. Roll-packed mattresses can ship by courier, but box springs, foundations and many bedframes don't compress the same way and often ship by freight instead, which is typically slower than courier shipping."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would same-day local delivery be better than free cross-Canada shipping?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free shipping doesn't mean fast shipping. If a mattress ships from a warehouse in another province, 'free' shipping can still take a week or more to arrive, while same-day local delivery (where available) gets it to you the same day you order, for a comparable or lower price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Canadian cities does MattBed Canada deliver to same-day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Calgary, Edmonton, Vancouver, Red Deer, and Toronto/GTA including Mississauga, Brampton, Vaughan, Markham, Oakville, Milton and Bolton."
+      }
+    }
+  ]
+}
   </script>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -96,6 +150,9 @@
     .faq-a.open{padding:14px 17px;max-height:320px;}
     .faq-a p{font-size:14px;color:#4A5568;line-height:1.75;margin:0;}
   </style>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mattressbedframe.ca/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.mattressbedframe.ca/blog.html"}, {"@type": "ListItem", "position": 3, "name": "Shipping a Mattress Across Canada? Check Same-Day Delivery First", "item": "https://www.mattressbedframe.ca/ship-mattress-across-canada-vs-same-day.html"}]}
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
