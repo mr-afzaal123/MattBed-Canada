@@ -924,7 +924,7 @@ function applyBlackFridaySale() {
       b.id = 'bf-banner';
       b.style.cssText = 'background:#fff4f4;border:2px solid #c8102e;border-radius:12px;padding:16px 18px;margin:0 0 20px;';
       b.innerHTML = '<div style="font-weight:800;color:#c8102e;font-size:1.05rem;margin-bottom:4px;">Black Friday sale: Nov 23 to 30</div>' +
-        '<div style="color:#334155;font-size:14px;line-height:1.6;">Sale prices are available now, so you can pre-order today. Products marked Black Friday have discounted sizes. Deliveries will be busy that week, so we deliver as soon as we can and confirm your delivery day on WhatsApp.</div>' +
+        '<div style="color:#334155;font-size:14px;line-height:1.6;">Sale prices are available now, so you can pre-order today. Products marked Black Friday have discounted sizes. Pre-orders are delivered during the sale period, Nov 23 to 30, and we confirm your delivery day on WhatsApp.</div>' +
         '<div style="margin-top:8px;color:#334155;font-size:14px;line-height:1.6;">Bedframes are also in the Black Friday sale. Message us on WhatsApp to get the sale price.</div>' +
         '<a href="https://wa.me/15878389102?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;margin-right:8px;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;">Ask about the Black Friday sale on WhatsApp</a>' +
         '<a href="black-friday-sale-2026.html" style="display:inline-block;margin-top:10px;background:#fff;color:#c8102e;border:2px solid #c8102e;font-weight:700;padding:8px 16px;border-radius:10px;text-decoration:none;font-size:14px;">See all Black Friday prices</a>';
