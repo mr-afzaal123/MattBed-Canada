@@ -852,23 +852,29 @@ var BF_SALE = {
       'DreamBreeze 10" Bamboo Comfort Mattress': { 'Single/Twin': 199, 'Double/Full': 230, 'Queen': 250, 'King': 350 },
       '5 Inches Foam Medium Firm': { 'Single/Twin': 99, 'Double/Full': 150, 'Queen': 199 },
       'CloudPillow 12" Bamboo Pillow Top': { 'Single/Twin': 250, 'Double/Full': 299, 'Queen': 350, 'King': 450 },
-      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 550, 'King': 650 }
+      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 550, 'King': 650 },
+      'SleepBase 7" Box Spring Foundation (Regular)': { 'Single/Twin': 145, 'Double/Full': 185, 'Queen': 223 },
+      'SleepBase 7" Box Spring Foundation (Split)': { 'Queen': 231, 'King': 228 }
     },
     edmonton: {
       'DreamBreeze 10" Bamboo Comfort Mattress': { 'Single/Twin': 199, 'Double/Full': 230, 'Queen': 250, 'King': 350 },
       '5 Inches Foam Medium Firm': { 'Single/Twin': 110, 'Double/Full': 160, 'Queen': 210 },
       'CloudPillow 12" Bamboo Pillow Top': { 'Single/Twin': 250, 'Double/Full': 299, 'Queen': 350, 'King': 450 },
-      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 550, 'King': 650 }
+      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 550, 'King': 650 },
+      'SleepBase 7" Box Spring Foundation (Regular)': { 'Single/Twin': 145, 'Double/Full': 185, 'Queen': 223 },
+      'SleepBase 7" Box Spring Foundation (Split)': { 'Queen': 231, 'King': 228 }
     },
     vancouver: {
       'DreamBreeze 10" Bamboo Comfort Mattress': { 'Single/Twin': 199, 'Double/Full': 250, 'Queen': 280, 'King': 360 },
       '5 Inches Foam Medium Firm': { 'Single/Twin': 110, 'Double/Full': 160, 'Queen': 199 },
       'CloudPillow 12" Bamboo Pillow Top': { 'Queen': 350, 'King': 450 },
-      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 650, 'King': 650 }
+      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 650, 'King': 650 },
+      'SleepBase 7" Box Spring Foundation (Regular)': { 'Single/Twin': 145, 'Double/Full': 185, 'Queen': 223 },
+      'SleepBase 7" Box Spring Foundation (Split)': { 'Queen': 231, 'King': 228 }
     }
   }
 };
-function bfPct(orig, price) { return Math.floor((orig - price) * 100 / orig); }
+function bfPct(orig, price) { return Math.round((orig - price) * 100 / orig); }
 function applyBlackFridaySale() {
   try {
     if (Date.now() >= Date.parse(BF_SALE.end)) return;
@@ -904,6 +910,14 @@ function applyBlackFridaySale() {
         if (!firstGrid) firstGrid = card.parentNode;
       }
     });
+    var bfh = document.getElementById('bedframes');
+    if (bfh && !document.getElementById('bf-bed-note')) {
+      var n = document.createElement('p');
+      n.id = 'bf-bed-note';
+      n.style.cssText = 'background:#fff4f4;border-left:4px solid #c8102e;padding:10px 14px;border-radius:8px;margin:0 0 16px;font-size:14px;color:#334155;';
+      n.innerHTML = '<strong style="color:#c8102e;">Black Friday:</strong> bedframes are also on sale. <a href="https://wa.me/15878389102?text=' + encodeURIComponent("Hi MattBed Canada, I'm messaging about the Black Friday sale (BF2026) on bedframes. City: " + cityName + ". Style and size: ") + '" target="_blank" rel="noopener" style="color:#128C7E;font-weight:700;">Message us on WhatsApp</a> to get the sale price.';
+      bfh.parentNode.insertBefore(n, bfh.nextSibling);
+    }
     if (firstGrid && !document.getElementById('bf-banner')) {
       var msg = "Hi MattBed Canada, I'm messaging about the Black Friday sale (BF2026). City: " + cityName + ". Mattress and size: ";
       var b = document.createElement('div');
@@ -911,7 +925,9 @@ function applyBlackFridaySale() {
       b.style.cssText = 'background:#fff4f4;border:2px solid #c8102e;border-radius:12px;padding:16px 18px;margin:0 0 20px;';
       b.innerHTML = '<div style="font-weight:800;color:#c8102e;font-size:1.05rem;margin-bottom:4px;">Black Friday sale: Nov 23 to 30</div>' +
         '<div style="color:#334155;font-size:14px;line-height:1.6;">Sale prices are available now, so you can pre-order today. Products marked Black Friday have discounted sizes. Deliveries will be busy that week, so we deliver as soon as we can and confirm your delivery day on WhatsApp.</div>' +
-        '<a href="https://wa.me/15878389102?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;">Ask about the Black Friday sale on WhatsApp</a>';
+        '<div style="margin-top:8px;color:#334155;font-size:14px;line-height:1.6;">Bedframes are also in the Black Friday sale. Message us on WhatsApp to get the sale price.</div>' +
+        '<a href="https://wa.me/15878389102?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;margin-right:8px;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;">Ask about the Black Friday sale on WhatsApp</a>' +
+        '<a href="black-friday-sale-2026.html" style="display:inline-block;margin-top:10px;background:#fff;color:#c8102e;border:2px solid #c8102e;font-weight:700;padding:8px 16px;border-radius:10px;text-decoration:none;font-size:14px;">See all Black Friday prices</a>';
       firstGrid.parentNode.insertBefore(b, firstGrid);
     }
   } catch (e) {}
