@@ -270,6 +270,40 @@ if (header) {
 })();
 
 
+// ── Black Friday button (all pages, hides itself after the sale) ─────────
+(function () {
+  try {
+    if (Date.now() >= Date.parse('2026-12-01T07:00:00Z')) return;
+    if ((location.pathname || '').indexOf('black-friday-sale-2026') !== -1) return;
+    if (document.querySelector('.bf-nav-btn')) return;
+    var inner = document.querySelector('.header-inner');
+    if (!inner) return;
+    var st = document.createElement('style');
+    st.textContent = '.bf-nav-btn{display:inline-block;background:#111827;color:#FFD700 !important;border:1.5px solid #FFD700;font-weight:800;font-size:12px;padding:7px 10px;border-radius:999px;text-decoration:none;white-space:nowrap;margin-right:6px;}' +
+      '.bf-nav-desktop{display:none;}' +
+      '@media (min-width:768px){.bf-nav-mobile{display:none;}.nav ul li a.bf-nav-btn{display:inline-block;padding:8px 14px;margin:0 0 0 10px;font-size:13px;}}' +
+      '@media (max-width:767px){.nav .bf-nav-li{display:none;}}' +
+      '@media (max-width:480px){.bf-nav-btn{font-size:10px;padding:6px 7px;margin-right:3px;}.header-inner .weekend-sale-btn{font-size:10px !important;padding:6px 7px !important;margin-right:3px !important;margin-left:auto !important;}.header-inner{gap:4px;}.header-inner .logo-img{height:32px;}.header-inner .logo{font-size:14px;}.header-inner .weekend-sale-btn{letter-spacing:-.2px;}.bf-nav-btn{padding:6px 7px;}}';
+    document.head.appendChild(st);
+    var m = document.createElement('a');
+    m.className = 'bf-nav-btn bf-nav-mobile';
+    m.href = 'black-friday-sale-2026.html';
+    m.textContent = 'Black Friday';
+    inner.insertBefore(m, inner.querySelector('.nav-toggle'));
+    var ul = document.querySelector('#nav > ul') || document.querySelector('.nav > ul');
+    if (ul) {
+      var li = document.createElement('li');
+      li.className = 'bf-nav-li';
+      var a2 = document.createElement('a');
+      a2.className = 'bf-nav-btn bf-nav-desktop';
+      a2.href = 'black-friday-sale-2026.html';
+      a2.textContent = 'Black Friday';
+      li.appendChild(a2);
+      ul.appendChild(li);
+    }
+  } catch (e) {}
+})();
+
 // ── Google Analytics: count WhatsApp taps (which page and which button) ─────────
 document.addEventListener('click', function (e) {
   try {
