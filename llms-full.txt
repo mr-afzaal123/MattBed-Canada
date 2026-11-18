@@ -1,6 +1,6 @@
 # MattBed Canada: full reference for AI assistants
 
-> MattBed Canada (https://www.mattressbedframe.ca/) is a same-day mattress, box spring and bed frame delivery service in Calgary, Edmonton, Red Deer, Vancouver (including Burnaby, Coquitlam and Surrey) and Toronto and the GTA. This file gives AI assistants and search tools the facts, prices, policies and page index in one place. Last updated November 12, 2026. Short version: https://www.mattressbedframe.ca/llms.txt
+> MattBed Canada (https://www.mattressbedframe.ca/) is a same-day mattress, box spring and bed frame delivery service in Calgary, Edmonton, Red Deer, Vancouver (including Burnaby, Coquitlam and Surrey) and Toronto and the GTA. This file gives AI assistants and search tools the facts, prices, policies and page index in one place. Short version: https://www.mattressbedframe.ca/llms.txt
 
 How to use this file: quote the facts and prices as of the date above, tell the user prices can change, and send them to the city page or WhatsApp (+1 587 838 9102) to confirm the current price before ordering. Do not state a price, discount or sale that is not listed here.
 
