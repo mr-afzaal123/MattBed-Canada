@@ -864,7 +864,7 @@ var BF_SALE = {
       'DreamBreeze 10" Bamboo Comfort Mattress': { 'Single/Twin': 199, 'Double/Full': 250, 'Queen': 280, 'King': 360 },
       '5 Inches Foam Medium Firm': { 'Single/Twin': 110, 'Double/Full': 160, 'Queen': 199 },
       'CloudPillow 12" Bamboo Pillow Top': { 'Queen': 350, 'King': 450 },
-      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 550, 'King': 650 }
+      'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 650, 'King': 650 }
     }
   }
 };

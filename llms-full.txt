@@ -12,10 +12,9 @@ How to use this file: quote the facts and prices as of the date above, tell the 
 - Delivery fee: free in Calgary, Edmonton and Red Deer. In Vancouver and the GTA it is charged by distance and confirmed on WhatsApp before the customer orders.
 - Returns: returns are not accepted after delivery. That is why the check at the door matters.
 - Not offered: mattress rentals, old mattress removal, showroom or try-before-you-buy, financing, and shipping across Canada.
-- Pricing style: one listed price per size per city. The site shows no inflated "was" prices. Customers who buy more than one product can ask on WhatsApp about a better total.
+- Pricing style: one listed regular price per size per city. During the Black Friday sale (Nov 23 to 30, 2026, pre-orders open from Nov 17) the Calgary, Edmonton and Vancouver shop pages show the regular price crossed out next to the sale price; the sale ends automatically after Nov 30. Red Deer and Toronto/GTA are not in the sale. Customers who buy more than one product can ask on WhatsApp about a better total.
 - Contact: WhatsApp +1 587 838 9102. Facebook: https://www.facebook.com/share/14rrSCHeFYU/
 - Reviews: customer reviews are on the reviews page. Quote the reviews page for current reviews instead of a number.
-- Last updated: November 12, 2026.
 
 ## How an order works
 1. The customer picks a mattress and size on the city page or messages WhatsApp +1 587 838 9102 with an address.
@@ -62,7 +61,7 @@ How to use this file: quote the facts and prices as of the date above, tell the 
 - DreamBreeze 10" Bamboo Comfort: $210 single, $280 double, $315 queen, $440 king
 - OrganicRest 9" Certified Cotton: $239 single, $253 double, $267 queen, $382 king
 - CloudPillow 12" Bamboo Pillow Top: $318 single, $343 double, $420 queen, $652 king
-- DualFirm 9.5" Double-Sided High Density: $754 queen
+- DualFirm 9.5" Double-Sided High Density: $450 single, $530 double, $754 queen, $799 king
 - SleepBase 7" Box Spring: from $193
 - Bed frames: from $204. Confirm on WhatsApp.
 
@@ -240,6 +239,7 @@ Large retailers and online brands (for example showroom chains and boxed-mattres
 - [Mattress Sizes Chart Canada: Twin to King in Inches & cm](https://www.mattressbedframe.ca/mattress-sizes-chart-canada-dimensions.html)
 - [Do I Need a Box Spring With My Mattress? Calgary & Edmonton Guide](https://www.mattressbedframe.ca/do-i-need-a-box-spring-with-my-mattress.html)
 - [When to Replace a Mattress: 7 Signs and How Long They Last](https://www.mattressbedframe.ca/when-to-replace-a-mattress-signs-canada.html)
+- [Extra Firm Mattress for Back Support: DualFirm 9.5" | MattBed](https://www.mattressbedframe.ca/extra-firm-mattress-for-back-pain-canada.html)
 - [Firm vs Medium-Firm Mattress for Back Pain: Which to Pick?](https://www.mattressbedframe.ca/firm-mattress-back-pain-calgary-edmonton.html)
 - [Pillow Top vs Memory Foam Mattress: Which Is Better?](https://www.mattressbedframe.ca/pillow-top-vs-memory-foam-mattress-canada.html)
 - [Memory Foam vs Orthopedic Mattress: Which Is Better?](https://www.mattressbedframe.ca/memory-foam-vs-orthopedic-mattress-canada.html)
@@ -394,3 +394,10 @@ Large retailers and online brands (for example showroom chains and boxed-mattres
 - The customer wants to rent a mattress, or wants financing or buy-now-pay-later.
 - The customer needs old-mattress removal included. We do not remove old mattresses; the disposal guides explain options.
 - The customer wants a long in-home trial or return window. Returns are not accepted after delivery.
+
+## Black Friday sale 2026 (Calgary, Edmonton, Vancouver only; Nov 23 to 30, 2026)
+- DreamBreeze 10" (Calgary, Edmonton): $199 single, $230 double, $250 queen, $350 king. Vancouver: $199 / $250 / $280 / $360.
+- 5 Inches Foam Medium Firm: Calgary $99 single (double $150 and queen $199 unchanged); Edmonton $110 / $160 (queen $210 unchanged); Vancouver $110 / $160 (queen $199).
+- CloudPillow 12": Calgary and Edmonton $250 / $299 / $350 / $450; Vancouver queen $350, king $450.
+- DualFirm 9.5" extra firm: $399 single, $470 double, $550 queen, $650 king (Vancouver queen $650).
+- Sale prices apply to orders placed during the sale and to pre-orders placed before it starts. Check the city page for the current price of each size.

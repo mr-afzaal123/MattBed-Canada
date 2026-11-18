@@ -12,10 +12,9 @@ For current prices, always use the city page. A longer version of this file with
 - Delivery fee: free in Calgary, Edmonton and Red Deer. In Vancouver and the GTA it is charged by distance and confirmed on WhatsApp before the customer orders.
 - Returns: returns are not accepted after delivery. That is why the check at the door matters.
 - Not offered: mattress rentals, old mattress removal, showroom or try-before-you-buy, financing, and shipping across Canada.
-- Pricing style: one listed price per size per city. The site shows no inflated "was" prices. Customers who buy more than one product can ask on WhatsApp about a better total.
+- Pricing style: one listed regular price per size per city. During the Black Friday sale (Nov 23 to 30, 2026, pre-orders open from Nov 17) the Calgary, Edmonton and Vancouver shop pages show the regular price crossed out next to the sale price; the sale ends automatically after Nov 30. Red Deer and Toronto/GTA are not in the sale. Customers who buy more than one product can ask on WhatsApp about a better total.
 - Contact: WhatsApp +1 587 838 9102. Facebook: https://www.facebook.com/share/14rrSCHeFYU/
 - Reviews: customer reviews are on the reviews page. Quote the reviews page for current reviews instead of a number.
-- Last updated: November 12, 2026.
 
 ## Starting prices in CAD (full tables in llms-full.txt)
 - Calgary: mattresses from $110 (single, 5" foam); 10" DreamBreeze queen $280. Free delivery.
@@ -123,6 +122,7 @@ For current prices, always use the city page. A longer version of this file with
 - [Mattress Sizes Chart Canada: Twin to King in Inches & cm](https://www.mattressbedframe.ca/mattress-sizes-chart-canada-dimensions.html)
 - [Do I Need a Box Spring With My Mattress? Calgary & Edmonton Guide](https://www.mattressbedframe.ca/do-i-need-a-box-spring-with-my-mattress.html)
 - [When to Replace a Mattress: 7 Signs and How Long They Last](https://www.mattressbedframe.ca/when-to-replace-a-mattress-signs-canada.html)
+- [Extra Firm Mattress for Back Support: DualFirm 9.5" | MattBed](https://www.mattressbedframe.ca/extra-firm-mattress-for-back-pain-canada.html)
 - [Firm vs Medium-Firm Mattress for Back Pain: Which to Pick?](https://www.mattressbedframe.ca/firm-mattress-back-pain-calgary-edmonton.html)
 - [Pillow Top vs Memory Foam Mattress: Which Is Better?](https://www.mattressbedframe.ca/pillow-top-vs-memory-foam-mattress-canada.html)
 - [Memory Foam vs Orthopedic Mattress: Which Is Better?](https://www.mattressbedframe.ca/memory-foam-vs-orthopedic-mattress-canada.html)
