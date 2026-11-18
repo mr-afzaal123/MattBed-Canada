@@ -1603,10 +1603,9 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
 .mb-wa-sticky:hover{background:#128C7E;color:#fff}
 .mb-wa-sticky.mb-mobile-only{display:none}
 @media (max-width:767px){
-  .mb-wa-sticky.mb-mobile-only{display:flex}
-  .whatsapp-float{display:none!important}
-  .mb-wa-sticky{left:12px;right:12px;bottom:12px;border-radius:14px;padding:14px 16px;font-size:16px}
-  body.mb-has-sticky{padding-bottom:78px}
+  .mb-wa-sticky.mb-mobile-only{display:none!important}
+  .whatsapp-float{display:flex!important;right:16px;bottom:16px}
+  body.mb-has-sticky{padding-bottom:0}
   #back-to-top{bottom:84px!important}
 }
 .mb-hero-price{color:rgba(255,255,255,.92);font-size:15px;margin:0 auto 22px;max-width:660px;line-height:1.65;text-align:center}
