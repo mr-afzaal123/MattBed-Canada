@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/weekend-mattress-sale-calgary-edmonton-vancouver.html",
       "destination": "/mattress-prices-calgary-edmonton-2026.html",
       "permanent": true
