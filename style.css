@@ -1607,6 +1607,8 @@ h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
   .whatsapp-float{display:flex!important;right:16px;bottom:16px}
   body.mb-has-sticky{padding-bottom:0}
   #back-to-top{bottom:84px!important}
+  body:has(.cta-sticky-mobile) .whatsapp-float{bottom:84px}
+  body:has(.cta-sticky-mobile) #back-to-top{bottom:148px!important}
 }
 .mb-hero-price{color:rgba(255,255,255,.92);font-size:15px;margin:0 auto 22px;max-width:660px;line-height:1.65;text-align:center}
 .mb-hero-price strong{color:var(--gold)}
