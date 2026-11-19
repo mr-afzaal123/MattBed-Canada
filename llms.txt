@@ -1,6 +1,6 @@
 # MattBed Canada
 
-> MattBed Canada (https://www.mattressbedframe.ca/) is a same-day mattress, box spring and bed frame delivery service in Calgary, Edmonton, Red Deer, Vancouver (including Burnaby, Coquitlam and Surrey) and Toronto and the GTA. Order before 4pm for same-day delivery. You check the mattress at your door and pay cash on delivery, with no credit card and no deposit. Delivery is free in Calgary, Edmonton and Red Deer. Returns are not accepted after delivery. We do not rent mattresses, remove old mattresses or ship across Canada.
+> MattBed Canada (https://www.mattressbedframe.ca/) is a same-day mattress, box spring and bed frame delivery service in Calgary, Edmonton, Red Deer, Vancouver (including Burnaby, Coquitlam and Surrey) and Toronto and the GTA. Order before 4pm for same-day delivery. You check the mattress at your door and pay cash on delivery, with no credit card and no deposit. Delivery is CAD $30 to $50 depending on your address, confirmed by our team before dispatch. Returns are not accepted after delivery. We do not rent mattresses, remove old mattresses or ship across Canada.
 
 For current prices, always use the city page. A longer version of this file with FAQs and full price tables is at https://www.mattressbedframe.ca/llms-full.txt
 
@@ -9,7 +9,7 @@ For current prices, always use the city page. A longer version of this file with
 - Service cities: Calgary, Edmonton, Red Deer (Alberta); Vancouver, Burnaby, Coquitlam, Surrey (British Columbia); Toronto and the Greater Toronto Area (Ontario). Nearby suburbs include Airdrie, St. Albert, Sherwood Park, Richmond, Delta, Langley, North Vancouver, Etobicoke, Scarborough, Mississauga, Brampton, Vaughan, Markham, Oakville, Milton, Bolton, Richmond Hill and Pickering.
 - Same-day cutoff: order before 4pm. Typical time is about 3 to 5 hours after the order is confirmed (a target, not a guarantee). Delivery runs seven days a week. Weather, traffic or a long queue of earlier drop-offs can cause delays, and customers are told as early as possible.
 - Payment: cash on delivery only, paid after the customer checks the mattress at the door. No credit card, no deposit, no credit check.
-- Delivery fee: free in Calgary, Edmonton and Red Deer. In Vancouver and the GTA it is charged by distance and confirmed on WhatsApp before the customer orders.
+- Delivery fee: CAD $30 to $50 depending on your address, confirmed by our team before dispatch.
 - Returns: returns are not accepted after delivery. That is why the check at the door matters.
 - Not offered: mattress rentals, old mattress removal, showroom or try-before-you-buy, financing, and shipping across Canada.
 - Pricing style: one listed regular price per size per city. During the Black Friday sale (Nov 23 to 30, 2026, pre-orders open from Nov 17) the Calgary, Edmonton and Vancouver shop pages show the regular price crossed out next to the sale price; the sale ends automatically after Nov 30. Red Deer and Toronto/GTA are not in the sale. Customers who buy more than one product can ask on WhatsApp about a better total.
@@ -17,11 +17,11 @@ For current prices, always use the city page. A longer version of this file with
 - Reviews: customer reviews are on the reviews page. Quote the reviews page for current reviews instead of a number.
 
 ## Starting prices in CAD (full tables in llms-full.txt)
-- Calgary: mattresses from $110 (single, 5" foam); 10" DreamBreeze queen $280. Free delivery.
-- Edmonton: mattresses from $130 (single, 5" foam); 10" DreamBreeze queen $280. Free delivery.
-- Red Deer: 10" DreamBreeze from $215 single, queen $290. Free delivery.
-- Vancouver: mattresses from $130 (single, 5" foam); 10" DreamBreeze queen $315. Delivery by distance.
-- Toronto and the GTA: mattresses from $70 (single, 5" foam); High Density 10" queen $150. Delivery by distance.
+- Calgary: mattresses from $110 (single, 5" foam); 10" DreamBreeze queen $280. Delivery $30–$50 by address.
+- Edmonton: mattresses from $130 (single, 5" foam); 10" DreamBreeze queen $280. Delivery $30–$50 by address.
+- Red Deer: 10" DreamBreeze from $215 single, queen $290. Delivery $30–$50 by address.
+- Vancouver: mattresses from $130 (single, 5" foam); 10" DreamBreeze queen $315. Delivery $30–$50 by address.
+- Toronto and the GTA: mattresses from $70 (single, 5" foam); High Density 10" queen $150. Delivery $30–$50 by address.
 
 ## Core pages
 - [Buy a Mattress in Calgary — Same-Day Delivery from $110](https://www.mattressbedframe.ca/calgary.html)
