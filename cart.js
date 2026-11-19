@@ -429,9 +429,9 @@ function openCheckout() {
         <div class="checkout-form-col">
           <h2 style="font-size:1.3rem;color:var(--navy);margin-bottom:6px;">📦 Place Your Order</h2>
           <p style="font-size:13px;color:var(--text-secondary);margin-bottom:24px;">Fill in your details. Our team will check your address and confirm your delivery charge and delivery time before dispatch. You check your order at your door, then pay cash.</p>
-          <div class="form-group"><label>Full Name *</label><input type="text" id="co-name" placeholder="e.g. Ahmed Hassan" required></div>
-          <div class="form-group"><label>Delivery Address *</label><input type="text" id="co-address" placeholder="Street address, unit number"></div>
-          <div class="form-group"><label>City & Postal Code *</label><input type="text" id="co-postcode" placeholder="e.g. Calgary, AB T2P 1J9"></div>
+          <div class="form-group"><label>Full Name *</label><input type="text" id="co-name" placeholder="e.g. Ahmed Hassan" autocomplete="name" required></div>
+          <div class="form-group"><label>Delivery Address *</label><input type="text" id="co-address" placeholder="Street address, unit number" autocomplete="street-address"></div>
+          <div class="form-group"><label>City & Postal Code *</label><input type="text" id="co-postcode" placeholder="e.g. Calgary, AB T2P 1J9" autocomplete="postal-code"></div>
           <div class="form-group">
             <label>Phone Number *</label>
             <div style="display:flex;gap:8px;">
@@ -540,7 +540,7 @@ function openCheckout() {
               <option value="+260">+260 Zambia</option>
               <option value="+263">+263 Zimbabwe</option>
               </select>
-              <input type="tel" id="co-phone" placeholder="e.g. 403 555 0123" style="flex:1;">
+              <input type="tel" id="co-phone" placeholder="e.g. 403 555 0123" inputmode="tel" autocomplete="tel-national" style="flex:1;">
             </div>
           </div>
           <div class="form-group" style="display:flex;align-items:center;gap:8px;margin-top:-8px;">
@@ -549,18 +549,20 @@ function openCheckout() {
           </div>
           <div class="form-group" id="co-email-group" style="display:none;">
             <label>Email Address <span id="co-email-required-mark">*</span></label>
-            <input type="email" id="co-email" placeholder="e.g. ahmed@example.com">
+            <input type="email" id="co-email" placeholder="e.g. ahmed@example.com" inputmode="email" autocomplete="email">
             <p style="font-size:12px;color:var(--text-muted);margin-top:4px;">Since you don't have WhatsApp, we'll use this to reach you about your order.</p>
           </div>
           <div class="form-group"><label>Additional Notes (delivery day, time, instructions)</label><textarea id="co-notes" rows="3" placeholder="e.g. Please deliver Saturday afternoon. Ring doorbell."></textarea></div>
+          <div style="margin:14px 0 4px;padding:12px 14px;border-radius:10px;background:var(--navy-pale);font-size:13px;line-height:1.55;color:var(--text-secondary);"><strong style="color:var(--navy);">Delivery charges.</strong> ${deliveryFeePending() ? DELIVERY_FEE_NOTE : 'A free-delivery promo code is applied. Our team will still confirm your address before dispatch.'}</div>
           <div class="promo-row">
             <input type="text" id="co-promo" placeholder="Promo code (optional)" style="text-transform:uppercase;">
             <button onclick="applyPromo()" class="btn btn-navy" style="padding:10px 18px;border-radius:10px;font-size:13px;">Apply</button>
           </div>
           <div id="promo-msg" style="font-size:13px;margin-top:6px;min-height:18px;"></div>
           <button onclick="placeOrder()" id="place-order-btn" class="btn btn-primary" style="width:100%;padding:15px;font-size:16px;margin-top:20px;border-radius:12px;">
-            ✅ Place Order — Cash on Delivery
+            Submit Order Request – Cash on Delivery
           </button>
+          <div id="co-error" role="alert" style="display:none;margin-top:10px;padding:10px 12px;border-radius:10px;background:#fdecec;color:#9b1c1c;font-size:13px;line-height:1.5;"></div>
           <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">No advance payment · ${deliveryLabel()}</p>
         </div>
         <div class="checkout-summary-col">
@@ -659,8 +661,21 @@ function escapeHtml(v) {
 }
 
 let lastOrderAt = 0;
+let orderInFlight = false;
+
+function showCheckoutError(msg) {
+  const e = document.getElementById('co-error');
+  if (e) { e.textContent = msg; e.style.display = 'block'; try { e.scrollIntoView({ block: 'nearest' }); } catch (x) {} }
+  else { alert(msg); }
+}
+function clearCheckoutError() {
+  const e = document.getElementById('co-error');
+  if (e) { e.textContent = ''; e.style.display = 'none'; }
+}
 
 async function placeOrder() {
+  if (orderInFlight) return;
+  clearCheckoutError();
   const name = document.getElementById('co-name').value.trim().slice(0, 100);
   const address = document.getElementById('co-address').value.trim().slice(0, 250);
   const postcode = document.getElementById('co-postcode').value.trim().slice(0, 20);
@@ -671,67 +686,76 @@ async function placeOrder() {
   const notes = document.getElementById('co-notes').value.trim().slice(0, 600);
 
   if (!name || !address || !postcode || !phoneRaw) {
-    alert('Please fill in all required fields: Name, Address, Postal Code and Phone.');
+    showCheckoutError('Please fill in all required fields: Name, Address, Postal Code and Phone.');
     return;
   }
   if (!isValidPhoneCO(phoneRaw)) {
-    alert('Please enter a valid phone number (digits only, at least 7 digits).');
+    showCheckoutError('Please enter a valid phone number (digits only, at least 7 digits).');
     return;
   }
   if (!hasWhatsapp && !email) {
-    alert("Since you don't have WhatsApp, please provide your email so we can reach you about your order.");
+    showCheckoutError("Since you don't have WhatsApp, please provide your email so we can reach you about your order.");
     return;
   }
   if (!hasWhatsapp && email && !isValidEmailCO(email)) {
-    alert('Please enter a valid email address.');
+    showCheckoutError('Please enter a valid email address.');
     return;
   }
-  if (cart.length === 0) { alert('Your cart is empty.'); return; }
-  if (Date.now() - lastOrderAt < 30000) { alert('Your order was just sent. Please wait a few seconds before sending another one.'); return; }
+  if (cart.length === 0) { showCheckoutError('Your cart is empty.'); return; }
+  if (Date.now() - lastOrderAt < 30000) { showCheckoutError('Your order request was just sent. Please wait a few seconds before sending another one.'); return; }
   lastOrderAt = Date.now();
+  orderInFlight = true;
 
   const phone = `${phoneCode} ${phoneRaw}`;
   const whatsappStatus = hasWhatsapp ? 'Yes' : 'No — use email instead';
 
   const btn = document.getElementById('place-order-btn');
-  btn.textContent = '⏳ Sending order...';
+  btn.textContent = '⏳ Sending your order request...';
   btn.disabled = true;
-
-  const orderLines = cart.map(item =>
-    `• ${item.name} | Size: ${item.size}${item.color?' | Colour: '+item.color:''} | Qty: ${item.qty} | $${(item.price*item.qty).toLocaleString()} CAD`
-  ).join('\n');
 
   const subtotal = getCartTotal();
   const discount = getDiscount();
   const total = getFinalTotal();
   const city = localStorage.getItem('mc_city') || 'Not specified';
 
+  const pending = deliveryFeePending();
+  const itemLines = cart.map(item =>
+    `• ${item.name}\n  Size: ${item.size || 'N/A'} | Colour: ${item.color || 'N/A'} | Qty: ${item.qty}\n  Price each: $${Number(item.price).toLocaleString()} CAD | Line total: $${(item.price*item.qty).toLocaleString()} CAD`
+  ).join('\n');
   const orderText = `
-NEW ORDER — MattBed Canada
-==========================
+ORDER REQUEST — MattBed Canada (NOT YET CONFIRMED)
+==================================================
 CUSTOMER DETAILS
 Name: ${name}
 Phone: ${phone}
-Has WhatsApp: ${whatsappStatus}
+WhatsApp available: ${whatsappStatus}
 Email: ${email || 'Not provided'}
-Address: ${address}
-City/Postcode: ${postcode}
-Delivery City: ${city.toUpperCase()}
+Delivery address: ${address}
+City and postal code: ${postcode}
+City selected on site: ${city.toUpperCase()}
 
 ORDER ITEMS
-${orderLines}
+${itemLines}
 
 ORDER SUMMARY
-Subtotal: $${subtotal.toLocaleString()} CAD
-Delivery fee: ${deliveryFeePending() ? 'TO BE CONFIRMED after address check (CAD $30-$50) — confirm with the customer BEFORE dispatch' : 'FREE (free-delivery promo code applied)'}
-${appliedPromo ? (hasFreeDeliveryPromo() ? `Promo Code: ${appliedPromo} (FREE DELIVERY)` : `Promo Code: ${appliedPromo} (−$${discount})`) : 'No promo code used'}
-${deliveryFeePending() ? `PRODUCT TOTAL (excludes delivery): $${total.toLocaleString()} CAD\nFINAL AMOUNT TO COLLECT: product total + confirmed delivery fee` : `TOTAL TO COLLECT: $${total.toLocaleString()} CAD`}
+Product subtotal: $${subtotal.toLocaleString()} CAD
+Discount: ${appliedPromo ? (hasFreeDeliveryPromo() ? `Promo ${appliedPromo} (free-delivery code, no price discount)` : `-$${discount} CAD (promo ${appliedPromo})`) : 'None'}
+Product total: $${total.toLocaleString()} CAD (excludes delivery)
+Delivery fee: ${pending ? 'PENDING ADDRESS VERIFICATION' : `Free-delivery promo ${appliedPromo} entered by customer - verify before confirming`}
+Final payable amount: ${pending ? 'PENDING DELIVERY CONFIRMATION (product total + confirmed delivery fee)' : `$${total.toLocaleString()} CAD once the address is confirmed`}
 
-DELIVERY NOTES
+DELIVERY STATUS
+- Address verification required
+- ${pending ? 'Delivery charge pending confirmation (usually CAD $30 to $50 within coverage)' : 'Free-delivery promo to be verified'}
+- Customer must be contacted before dispatch
+- If the address is outside coverage, review manually before dispatch
+
+CUSTOMER NOTES
 ${notes || 'None provided'}
 
-==========================
-Order placed via mattressbedframe.ca
+==================================================
+Payment: Cash on Delivery after the customer inspects the order.
+Submitted via mattressbedframe.ca
   `.trim();
 
   try {
@@ -752,20 +776,29 @@ Order placed via mattressbedframe.ca
       })
     });
     if (response.ok) {
-      try { if (window.gtag) gtag('event', 'order_placed', { value: total, currency: 'CAD', page_path: location.pathname }); } catch (e) {}
+      try {
+        if (window.gtag) {
+          // order_placed is kept for continuity with existing GA4 reports. It now means an order REQUEST was received, not a confirmed sale.
+          gtag('event', 'order_placed', { value: total, currency: 'CAD', page_path: location.pathname });
+          gtag('event', 'order_request_submitted', { value: total, currency: 'CAD', item_count: cart.reduce((s, i) => s + i.qty, 0), delivery_fee_status: pending ? 'pending' : 'promo', page_path: location.pathname });
+        }
+      } catch (e) {}
       showOrderSuccess(name, total);
       cart = [];
       appliedPromo = null;
       updateCartBadge();
+      orderInFlight = false;
       closeCheckout();
     } else {
       throw new Error('Submission failed');
     }
   } catch (err) {
     console.error('Formspree error:', err);
-    btn.textContent = '✅ Place Order — Cash on Delivery';
+    orderInFlight = false;
+    lastOrderAt = 0;
+    btn.textContent = 'Submit Order Request – Cash on Delivery';
     btn.disabled = false;
-    alert('There was an issue sending your order. Please try again.');
+    showCheckoutError('We could not send your order request. Please check your internet connection and try again, or message us on WhatsApp at +1 587 838 9102.');
   }
 }
 
