@@ -24,8 +24,11 @@ For current prices, always use the city page. A longer version of this file with
 - Toronto and the GTA: mattresses from $70 (single, 5" foam); High Density 10" queen $150. Delivery $30–$50 by address.
 
 ## Core pages
-- [Buy a Mattress in Calgary — Same-Day Delivery from $110](https://www.mattressbedframe.ca/calgary.html)
-- [Buy a Mattress in Edmonton — Same-Day Delivery from $130](https://www.mattressbedframe.ca/edmonton.html)
+- [Queen Mattress Calgary: From $199, Same-Day Delivery](https://www.mattressbedframe.ca/queen-mattress-calgary.html)
+- [Queen Mattress Edmonton: From $210, Same-Day Delivery](https://www.mattressbedframe.ca/queen-mattress-edmonton.html)
+- [Mattress Delivery Areas: Calgary, Edmonton, Vancouver, Toronto](https://www.mattressbedframe.ca/delivery-areas-canada.html)
+- [Mattress Calgary: Cheap Queen from $199, Same-Day Delivery](https://www.mattressbedframe.ca/calgary.html)
+- [Mattress Edmonton: Cheap Queen from $210, Same-Day Delivery](https://www.mattressbedframe.ca/edmonton.html)
 - [Same-Day Mattress Delivery Vancouver — From $130](https://www.mattressbedframe.ca/vancouver.html)
 - [Buy a Mattress in Red Deer — Same-Day Delivery from $215](https://www.mattressbedframe.ca/reddeer.html)
 - [Mattress Delivery Toronto & GTA — Same-Day from $70](https://www.mattressbedframe.ca/toronto.html)

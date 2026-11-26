@@ -917,6 +917,8 @@ function applyBlackFridaySale() {
   try {
     if (Date.now() >= Date.parse(BF_SALE.end)) return;
     var key = (location.pathname.split('/').pop() || '').replace('.html', '');
+    if (key === 'queen-mattress-calgary') key = 'calgary';
+    if (key === 'queen-mattress-edmonton') key = 'edmonton';
     var cityCfg = BF_SALE.cities[key];
     if (!cityCfg) return;
     var cityName = { calgary: 'Calgary', edmonton: 'Edmonton', vancouver: 'Vancouver' }[key];
