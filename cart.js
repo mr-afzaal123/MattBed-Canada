@@ -305,7 +305,7 @@ function openProductDetail(card) {
             <span class="detail-sale-now">$${sizes[0].price.toLocaleString()}</span>
             ${sizes[0].orig ? `<span class="detail-sale-was">$${sizes[0].orig.toLocaleString()}</span><span class="detail-sale-save">Save $${(sizes[0].orig - sizes[0].price).toLocaleString()} (${bfPct(sizes[0].orig, sizes[0].price)}% off)</span>` : ''}
           </div>
-          ${card.dataset.bf === '1' ? '<p style="margin:8px 0 12px;font-size:13px;color:#c8102e;font-weight:600;">Black Friday sale: Nov 23 to 30. Not every size is discounted.</p>' : ''}
+          ${card.dataset.bf === '1' ? '<p style="margin:8px 0 12px;font-size:13px;color:#c8102e;font-weight:600;">Black Friday sale: ' + bfDates() + '. Not every size is discounted.</p>' : ''}
           <div class="detail-trust">
             <span>🚚 Same-day</span>
             <span>💵 Cash on delivery</span>
@@ -909,10 +909,18 @@ var BF_SALE = {
       'DualFirm 9.5" Double-Sided High Density Mattress': { 'Single/Twin': 399, 'Double/Full': 470, 'Queen': 650, 'King': 650 },
       'SleepBase 7" Box Spring Foundation (Regular)': { 'Single/Twin': 145, 'Double/Full': 185, 'Queen': 223 },
       'SleepBase 7" Box Spring Foundation (Split)': { 'Queen': 231, 'King': 228 }
-    }
+    },
+    toronto: { pct: 10, dates: 'Nov 27 to 30' }
   }
 };
 function bfPct(orig, price) { return Math.round((orig - price) * 100 / orig); }
+function bfDates() {
+  try {
+    var k = (location.pathname.split('/').pop() || '').replace('.html', '');
+    var cfg = BF_SALE.cities[k];
+    return (cfg && cfg.dates) || 'Nov 23 to 30';
+  } catch (e) { return 'Nov 23 to 30'; }
+}
 function applyBlackFridaySale() {
   try {
     if (Date.now() >= Date.parse(BF_SALE.end)) return;
@@ -921,18 +929,18 @@ function applyBlackFridaySale() {
     if (key === 'queen-mattress-edmonton') key = 'edmonton';
     var cityCfg = BF_SALE.cities[key];
     if (!cityCfg) return;
-    var cityName = { calgary: 'Calgary', edmonton: 'Edmonton', vancouver: 'Vancouver' }[key];
+    var cityName = { calgary: 'Calgary', edmonton: 'Edmonton', vancouver: 'Vancouver', toronto: 'Toronto' }[key];
     var firstGrid = null;
     document.querySelectorAll('.product-card').forEach(function (card) {
       var nameEl = card.querySelector('.product-name');
       if (!nameEl) return;
-      var cfg = cityCfg[nameEl.textContent.trim()];
+      var cfg = cityCfg.pct ? {} : cityCfg[nameEl.textContent.trim()];
       if (!cfg) return;
       var discounted = false;
       card.querySelectorAll('.size-btn[data-price]').forEach(function (btn) {
-        var sale = cfg[btn.dataset.size];
-        if (sale == null) return;
         var reg = parseInt(btn.dataset.price, 10);
+        var sale = cityCfg.pct ? Math.round(reg * (100 - cityCfg.pct) / 100) : cfg[btn.dataset.size];
+        if (sale == null) return;
         if (!(sale <= reg)) return;
         if (bfPct(reg, sale) >= 1) { btn.dataset.orig = reg; discounted = true; }
         btn.dataset.price = sale;
@@ -963,8 +971,9 @@ function applyBlackFridaySale() {
       var b = document.createElement('div');
       b.id = 'bf-banner';
       b.style.cssText = 'background:#fff4f4;border:2px solid #c8102e;border-radius:12px;padding:16px 18px;margin:0 0 20px;';
-      b.innerHTML = '<div style="font-weight:800;color:#c8102e;font-size:1.05rem;margin-bottom:4px;">Black Friday sale: Nov 23 to 30</div>' +
-        '<div style="color:#334155;font-size:14px;line-height:1.6;">Sale prices are available now, so you can pre-order today. Products marked Black Friday have discounted sizes. Pre-orders are delivered during the sale period, Nov 23 to 30, and we confirm your delivery day on WhatsApp.</div>' +
+      b.innerHTML = '<div style="font-weight:800;color:#c8102e;font-size:1.05rem;margin-bottom:4px;">Black Friday sale: ' + bfDates() + '</div>' +
+        (cityCfg.pct ? '<div style="color:#334155;font-size:14px;line-height:1.6;margin-bottom:6px;"><strong>' + cityCfg.pct + '% off every mattress in Toronto and the GTA.</strong> The sale price is shown on each product.</div>' : '') +
+        '<div style="color:#334155;font-size:14px;line-height:1.6;">Sale prices are available now, so you can pre-order today. Products marked Black Friday have discounted sizes. Pre-orders are delivered during the sale period, ' + bfDates() + ', and we confirm your delivery day on WhatsApp.</div>' +
         '<div style="margin-top:8px;color:#334155;font-size:14px;line-height:1.6;">Bedframes are also in the Black Friday sale. Message us on WhatsApp to get the sale price.</div>' +
         '<a href="https://wa.me/15878389102?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;margin-right:8px;background:#25D366;color:#fff;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;">Ask about the Black Friday sale on WhatsApp</a>' +
         '<a href="black-friday-sale-2026.html" style="display:inline-block;margin-top:10px;background:#fff;color:#c8102e;border:2px solid #c8102e;font-weight:700;padding:8px 16px;border-radius:10px;text-decoration:none;font-size:14px;">See all Black Friday prices</a>';
